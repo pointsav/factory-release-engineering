@@ -298,7 +298,7 @@ propagate_one() {
   notice_mode=$(yaml ".licenses.\"$license\".notice_file")
   case "$notice_mode" in
     required)
-      # Minimal Woodfine NOTICE. QUESTION: confirm content with counsel.
+      # Minimal Woodfine NOTICE.
       local year copyright_holder
       year=$(yaml '.defaults.year')
       copyright_holder=$(yaml '.defaults.copyright_holder')

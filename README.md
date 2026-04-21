@@ -93,7 +93,7 @@ Full mapping: see `LICENSE-MATRIX.md`.
 | Phase | Status |
 |---|---|
 | 1. Templates assembled in `factory-release-engineering/` | Complete |
-| 2. MEMO V8 drafted reflecting new licensing structure | Pending |
+| 2. MEMO V8 drafted reflecting new licensing structure | Drafted (pending counsel review) |
 | 3. `os-interface/` → `os-orchestration/` rename in monorepo | Pending |
 | 4. Monorepo per-directory licensing propagated | Pending |
 | 5. PointSav org peripheral repos licensed | Pending |
