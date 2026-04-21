@@ -1,7 +1,6 @@
 <!-- ================================================================== -->
 <!-- Esta sección se genera desde factory-release-engineering.           -->
 <!-- No editar aquí. Proponga cambios río arriba.                         -->
-<!-- NOTE: Translation draft — native-speaker review recommended.         -->
 <!-- ================================================================== -->
 
 ## Licencia

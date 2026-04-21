@@ -127,8 +127,7 @@ git commit -m "release-eng: stamp SPDX headers"
 ```
 
 Repositories under CC BY 4.0, CC BY-ND 4.0, and Apache-2.0 may skip
-this phase (no source-file SPDX templates). See LICENSE-MATRIX.md
-QUESTION E for Apache-2.0.
+this phase (no source-file SPDX templates).
 
 ---
 
