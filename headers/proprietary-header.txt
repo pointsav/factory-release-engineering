@@ -1,0 +1,6 @@
+SPDX-License-Identifier: ${proprietary-license-id}
+SPDX-FileCopyrightText: ${year} Woodfine Capital Projects Inc.
+
+This file is proprietary material of Woodfine Capital Projects Inc.
+See the LICENSE file in this repository for the full terms.
+Unauthorized use, reproduction, or distribution is prohibited.

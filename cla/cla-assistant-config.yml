@@ -1,0 +1,131 @@
+# factory-release-engineering / cla / cla-assistant-config.yml
+#
+# Configuration for CLA Assistant, which checks pull requests against
+# signed Contributor License Agreements before permitting merge.
+#
+# This is the canonical configuration. The selected implementation is
+# contributor-assistant/github-action — translate this file into
+# .github/workflows/cla.yml within target repositories at deploy time.
+#
+# Divergence between this file and mapping/repo-license-map.yaml
+# (where requires_cla: true) is a defect. Both must be updated in
+# the same PR.
+
+version: "1.0"
+effective_date: "2026-04-20"
+
+implementation: contributor-assistant/github-action
+
+# ============================================================================
+# CLA document references
+# ============================================================================
+cla:
+  individual:
+    path: cla/individual-cla.md
+    public_url: "https://github.com/pointsav/factory-release-engineering/blob/main/cla/individual-cla.md"
+    signature_mode: click_through
+    acceptance_phrase: "I have read the Individual CLA and I accept it."
+
+  corporate:
+    path: cla/corporate-cla.md
+    public_url: "https://github.com/pointsav/factory-release-engineering/blob/main/cla/corporate-cla.md"
+    # Corporate CLA is NOT click-through. Executed out of band via
+    # DocuSign or wet signature per cla/corporate-cla.md §13. CLA
+    # Assistant recognizes covered contributors by GitHub username
+    # on the basis of Woodfine's internal registry.
+    signature_mode: external
+    registry_path: cla/corporate-signatories/  # reserved; populated when CCLAs are executed
+
+# ============================================================================
+# Repositories requiring CLA
+# ============================================================================
+# This list matches all entries in mapping/repo-license-map.yaml where
+# the assigned license has requires_cla: true.
+# Currently those are: AGPL-3.0-or-later and FSL-1.1-ALv2.
+
+repositories:
+  - owner: pointsav
+    repos:
+      - os-totebox
+      - os-console
+      - os-workplace
+      - os-privategit
+      - os-orchestration
+      - os-infrastructure
+      - os-network-admin
+      - os-mediakit
+    # service-*, system-*, tool-*, moonshot-*, app-* will be added as
+    # those repositories are enumerated in the map.
+
+# ============================================================================
+# Exempt users — CLA check is skipped for these GitHub accounts
+# ============================================================================
+# Machine accounts. Woodfine staff employment agreements cover IP
+# assignment, making CLA signature administratively redundant; staff
+# usernames may be added here when internal policies confirm that
+# employment agreements are in force.
+
+exempt_users:
+  - dependabot[bot]
+  - renovate[bot]
+  - github-actions[bot]
+
+# ============================================================================
+# Labels applied to pull requests
+# ============================================================================
+labels:
+  signed: cla-signed          # applied when contributor has valid CLA on file
+  pending: cla-pending        # applied when CLA signature is outstanding
+  corporate: cla-corporate    # applied when contributor matched to CCLA
+
+# ============================================================================
+# PR comment template (first comment posted by CLA Assistant)
+# ============================================================================
+prompt: |
+  Hello @{contributor}, thank you for your pull request!
+
+  Before we can merge this, you need a signed Contributor License
+  Agreement on file with Woodfine.
+
+  **If you are contributing on your own behalf:**
+  Please review our Individual CLA at {individual_cla_url}.
+  If you accept its terms, reply to this PR with exactly:
+
+      I have read the Individual CLA and I accept it.
+
+  **If you are contributing on behalf of your employer:**
+  Your employer may have already signed a Corporate CLA covering
+  you. If so, the corporate CLA is sufficient and no action is
+  required from you personally — but please confirm with your
+  employer's legal team that a CCLA is in place with Woodfine.
+
+  If you have questions, email corporate.secretary@woodfinegroup.com.
+
+# ============================================================================
+# Signature storage
+# ============================================================================
+signature_storage:
+  backend: gist
+  gist_owner: pointsav  # GitHub org that owns signature gists. Aligned with
+                        # the org where CLA Assistant is installed (pointsav)
+                        # and where most CLA-requiring repos live. Legal party
+                        # (Woodfine Capital Projects Inc.) is identified inside
+                        # the ICLA text, not via gist ownership.
+
+# ============================================================================
+# CLA check behavior
+# ============================================================================
+check_behavior:
+  block_merge: true
+  post_comment: true
+  apply_pending_label: true
+  recheck_on_comment: true
+  update_labels: true
+
+# ============================================================================
+# Deployment notes
+# ============================================================================
+# The selected implementation is contributor-assistant/github-action.
+# The actual CLA Assistant deployment configuration (i.e.
+# .github/workflows/cla.yml for the GitHub Actions variant) should be
+# generated from this file or kept in sync with it manually.
