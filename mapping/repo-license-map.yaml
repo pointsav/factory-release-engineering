@@ -1,0 +1,214 @@
+# factory-release-engineering / mapping / repo-license-map.yaml
+#
+# Authoritative machine-readable mapping from repository → license.
+# Human-readable companion: /LICENSE-MATRIX.md
+# Read by: /scripts/propagate-licenses.sh
+#          /scripts/add-spdx-headers.sh
+#          /scripts/verify-repo-compliance.sh
+#
+# Divergence between this file and LICENSE-MATRIX.md is a defect.
+# Both files must be updated in the same PR.
+
+version: "1.0"
+effective_date: "2026-04-20"
+
+# ============================================================================
+# Defaults applied to every repository unless overridden at repo level.
+# ============================================================================
+defaults:
+  copyright_holder: "Woodfine Capital Projects Inc."
+  contacts:
+    open_source: "open.source@pointsav.com"             # security, conduct, community
+    corporate: "corporate.secretary@woodfinegroup.com"  # licensing, trademark, CLA, legal
+  governing_law: "Ontario"
+  year: "2026"
+  baseline_policies:
+    - CODE_OF_CONDUCT            # incorporated into every repo regardless of license
+
+# ============================================================================
+# License catalog.
+# Properties of each license the platform uses. Keyed by SPDX identifier where
+# one exists; otherwise by the filename stem in licenses/.
+# ============================================================================
+licenses:
+
+  AGPL-3.0-or-later:
+    license_file: licenses/AGPL-3.0.txt
+    header_template: headers/agpl-3.0-header.txt
+    policies: [CODE_OF_CONDUCT, CONTRIBUTING, SECURITY]
+    bilingual_readme: true
+    notice_file: optional
+    requires_cla: true
+
+  Apache-2.0:
+    license_file: licenses/Apache-2.0.txt
+    header_template: headers/apache-2.0-header.txt
+    policies: [CODE_OF_CONDUCT, CONTRIBUTING, SECURITY]
+    bilingual_readme: true
+    notice_file: required        # Apache-2.0 §4(d) — Woodfine-authored NOTICE.
+    requires_cla: false
+
+  FSL-1.1-ALv2:
+    license_file: licenses/FSL-1.1-Apache-2.0.txt
+    header_template: headers/fsl-1.1-header.txt
+    policies: [CODE_OF_CONDUCT, CONTRIBUTING, SECURITY]
+    bilingual_readme: true
+    notice_file: optional
+    requires_cla: true
+    template_substitutions:      # placeholders in the license text itself
+      "${year}": "2026"
+      "${licensor name}": "Woodfine Capital Projects Inc."
+
+  CC-BY-4.0:
+    license_file: licenses/CC-BY-4.0.txt
+    header_template: null        # content license — no per-source-file SPDX header
+    policies: [CODE_OF_CONDUCT]
+    bilingual_readme: true
+    notice_file: null
+    requires_cla: false
+
+  CC-BY-ND-4.0:
+    license_file: licenses/CC-BY-ND-4.0.txt
+    header_template: null
+    policies: [CODE_OF_CONDUCT]
+    bilingual_readme: false      # CC BY-ND prohibits derivative works incl.
+                                 # translations — repo is English-only in
+                                 # public distribution.
+    english_only: true
+    notice_file: null
+    requires_cla: false
+
+  PointSav-ARR:
+    license_file: licenses/PointSav-ARR.txt
+    header_template: headers/proprietary-header.txt
+    header_substitutions:
+      "${proprietary-license-id}": "LicenseRef-PointSav-ARR"
+    policies: [TRADEMARK, SECURITY]
+    bilingual_readme: true
+    notice_file: null
+    requires_cla: false
+    commercial_alternative: PointSav-Commercial
+
+  PointSav-Commercial:
+    license_file: licenses/PointSav-Commercial.txt
+    header_template: headers/proprietary-header.txt
+    header_substitutions:
+      "${proprietary-license-id}": "LicenseRef-PointSav-Commercial"
+    policies: [TRADEMARK, SECURITY]
+    bilingual_readme: false
+    notice_file: null
+    requires_cla: false
+    distribution: order-form      # NOT applied as LICENSE file in public repos;
+                                  # delivered per executed Order Form only.
+
+  MIXED:
+    # Used for monorepos containing multiple licenses at the directory
+    # level. The propagation script writes MIXED-MONOREPO-NOTICE.txt as
+    # LICENSE and relies on per-directory SPDX headers for actual
+    # licensing disambiguation.
+    license_file: licenses/MIXED-MONOREPO-NOTICE.txt
+    header_template: null         # per-directory via monorepo_directories
+    policies: [CODE_OF_CONDUCT, CONTRIBUTING, SECURITY, TRADEMARK]
+    bilingual_readme: true
+    notice_file: null
+    requires_cla: true            # monorepo contains AGPL/FSL directories
+
+# ============================================================================
+# Repositories.
+# Each entry assigns exactly one license to exactly one repository.
+# ============================================================================
+repositories:
+
+  # ---- pointsav GitHub org ----
+
+  - name: pointsav-monorepo
+    organization: pointsav
+    license: MIXED
+    note: "Multi-license monorepo. Per-directory licensing in monorepo_directories."
+
+  - name: content-wiki-documentation
+    organization: pointsav
+    license: CC-BY-4.0
+
+  - name: pointsav-design-system
+    organization: pointsav
+    license: PointSav-ARR
+
+  - name: pointsav-fleet-deployment
+    organization: pointsav
+    license: PointSav-ARR
+
+  - name: pointsav-media-assets
+    organization: pointsav
+    license: PointSav-ARR
+
+  - name: pointsav.github.io
+    organization: pointsav
+    license: Apache-2.0
+
+  - name: factory-release-engineering
+    organization: pointsav
+    license: MIXED
+    note: "This repository. Content is the canonical source; LICENSE-NOTICE explains per-file licensing."
+
+  # ---- woodfine GitHub org ----
+
+  - name: content-wiki-corporate
+    organization: woodfine
+    license: CC-BY-ND-4.0
+
+  - name: content-wiki-projects
+    organization: woodfine
+    license: CC-BY-ND-4.0
+
+  - name: woodfine-fleet-deployment
+    organization: woodfine
+    license: PointSav-ARR
+
+  - name: woodfine-media-assets
+    organization: woodfine
+    license: PointSav-ARR
+
+  - name: woodfine.github.io
+    organization: woodfine
+    license: Apache-2.0
+
+# ============================================================================
+# Monorepo per-directory licensing.
+# Used by propagate-licenses.sh and add-spdx-headers.sh when operating
+# inside a repository whose top-level license is MIXED.
+#
+# Matching rule: longest-prefix match. Exact directory names (ending in /)
+# override prefix patterns. Unmatched directories are a defect.
+# ============================================================================
+monorepo_directories:
+
+  # ---- Exact os-* module directories ----
+  "os-console/":         AGPL-3.0-or-later
+  "os-privategit/":      AGPL-3.0-or-later
+  "os-totebox/":         AGPL-3.0-or-later
+  "os-workplace/":       AGPL-3.0-or-later
+  "os-infrastructure/":  FSL-1.1-ALv2
+  "os-interface/":       FSL-1.1-ALv2   # renames to os-orchestration per Rollout Phase 3
+  "os-mediakit/":        FSL-1.1-ALv2
+  "os-network-admin/":   FSL-1.1-ALv2
+
+  # ---- Platform-wide prefix patterns (all AGPL) ----
+  "service-":            AGPL-3.0-or-later
+  "system-":             AGPL-3.0-or-later
+  "tool-":               AGPL-3.0-or-later
+  "moonshot-":           AGPL-3.0-or-later
+
+  # ---- app-* inheritance rule ----
+  # app-<domain>-<thing> inherits the license of os-<domain>.
+  # Patterns match any directory beginning with the prefix.
+  "app-console-":        AGPL-3.0-or-later
+  "app-privategit-":     AGPL-3.0-or-later
+  "app-totebox-":        AGPL-3.0-or-later
+  "app-workplace-":      AGPL-3.0-or-later
+  "app-mediakit-":       FSL-1.1-ALv2
+  "app-network-":        FSL-1.1-ALv2
+
+  # ---- Workspace infrastructure (AGPL) ----
+  "xtask/":              AGPL-3.0-or-later
+  "pointsav-pty-bridge/": AGPL-3.0-or-later

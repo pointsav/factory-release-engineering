@@ -1,0 +1,40 @@
+# CODEOWNERS — template
+#
+# Propagated from factory-release-engineering/github/CODEOWNERS.template
+# and customized per-repository by scripts/propagate-licenses.sh.
+#
+# Syntax: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-security/customizing-your-repository/about-code-owners
+
+# ---- Default owner for everything in this repository ----
+*                        ${default_owners}
+
+# ---- License and policy files ----
+# These are propagated from factory-release-engineering. Any local
+# modification should be reviewed by release-engineering before merge.
+LICENSE                  ${release_eng_owners}
+NOTICE                   ${release_eng_owners}
+CODE_OF_CONDUCT.md       ${release_eng_owners}
+CONTRIBUTING.md          ${release_eng_owners}
+SECURITY.md              ${release_eng_owners}
+TRADEMARK.md             ${release_eng_owners}
+.github/CODEOWNERS       ${release_eng_owners}
+
+# ---- CI/CD infrastructure ----
+.github/workflows/       ${infra_owners}
+Dockerfile               ${infra_owners}
+docker-compose*.yml      ${infra_owners}
+
+# ---- Per-repository extensions ----
+# Individual repositories may extend this CODEOWNERS with paths
+# specific to their source tree (e.g., /src/auth/ → auth team).
+# Those additions should be appended to this template — do not
+# edit the template sections above. The template is the canonical
+# baseline and is re-propagated on every factory-release-engineering
+# update; in-place edits will be overwritten.
+#
+# ---- Second-reviewer patterns ----
+# Per CONTRIBUTING.md §6, no mandatory second reviewer is required
+# at the factory-release-engineering level. Individual repositories
+# that require two approvals for specific paths should append those
+# entries here with multiple owner teams listed. CODEOWNERS treats
+# multiple teams on one line as the union of required approvals.

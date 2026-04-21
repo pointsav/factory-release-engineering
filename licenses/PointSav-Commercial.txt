@@ -1,0 +1,327 @@
+PointSav Commercial License
+Version 1.0 — Effective 2026-04-20
+Copyright (c) 2026 Woodfine Capital Projects Inc. All rights reserved.
+
+PREAMBLE
+
+This is the PointSav Commercial License ("this License"), offered by
+Woodfine Capital Projects Inc. ("Woodfine") as a commercial alternative
+to (i) the GNU Affero General Public License version 3.0 ("AGPLv3") for
+customers who cannot accept the copyleft obligations of that license,
+and (ii) the pre-conversion commercial tier of the Functional Source
+License 1.1 ("FSL-1.1") during its two-year Delayed Open Source
+Publication window.
+
+This License takes effect only when Woodfine and You have executed an
+Order Form referencing this License. The Order Form identifies the
+specific Licensed Software, the applicable Fees, the Subscription
+Term, and any negotiated variations. For commercial license inquiries,
+contact corporate.secretary@woodfinegroup.com.
+
+--------------------------------------------------------------------------------
+1. DEFINITIONS
+--------------------------------------------------------------------------------
+
+"Licensed Software" means the software identified in an Order Form,
+including any Updates provided during the Subscription Term.
+
+"Order Form" means a written ordering document (including electronic
+acceptance) executed by You and Woodfine, incorporating this License
+by reference.
+
+"Subscription Term" means the period identified on the Order Form
+during which Your rights under this License are active.
+
+"Fees" means the amounts payable under the Order Form.
+
+"Updates" means bug fixes, security patches, minor enhancements, and
+new versions of the Licensed Software that Woodfine makes generally
+available to commercial licensees.
+
+"Your End Users" means Your employees, contractors, and agents, and —
+if the Order Form permits Embedding under Section 7 — the end users
+of Your product or service that embeds the Licensed Software.
+
+--------------------------------------------------------------------------------
+2. SCOPE
+--------------------------------------------------------------------------------
+
+This License covers two commercial populations:
+
+  (A) AGPLv3-alternative customers — who take this License instead
+      of AGPLv3 to avoid copyleft obligations on their own code.
+  (B) FSL pre-DOSP customers — who take this License during the
+      two-year window before FSL automatically converts to Apache-2.0.
+
+The Order Form identifies which category applies and may impose terms
+specific to the applicable category.
+
+--------------------------------------------------------------------------------
+3. GRANT OF RIGHTS
+--------------------------------------------------------------------------------
+
+Subject to Your payment of Fees and compliance with this License,
+Woodfine grants You a non-exclusive, non-transferable, worldwide
+license during the Subscription Term to:
+
+  (a) install, configure, and run the Licensed Software for Your
+      internal business operations;
+  (b) make a reasonable number of backup and archival copies;
+  (c) permit Your employees, contractors, and agents to use the
+      Licensed Software on Your behalf, provided they are bound by
+      obligations at least as protective as those in this License;
+  (d) modify the Licensed Software for Your internal use, subject to
+      Section 5; and
+  (e) if and to the extent the Order Form permits "Embedding,"
+      incorporate the Licensed Software into Your product or service
+      for distribution to Your End Users under the terms of Section 7.
+
+For customers who take this License as an alternative to AGPLv3, this
+grant expressly relieves You of the obligation under AGPLv3 Section 13
+to offer corresponding source code to remote users.
+
+--------------------------------------------------------------------------------
+4. FEES AND PAYMENT
+--------------------------------------------------------------------------------
+
+Fees are charged on a per-deployment basis for direct use of the
+Licensed Software (one amount per production environment), and on a
+percentage-of-revenue basis where Embedding under Section 7 is
+permitted (the percentage and revenue definition stated in the Order
+Form). Other structures may be negotiated in the Order Form.
+
+Fees are due net thirty (30) days from invoice date. Late payments
+accrue interest at the lesser of 1.5% per month or the maximum rate
+permitted by law. Fees are non-refundable except as expressly stated
+in this License.
+
+--------------------------------------------------------------------------------
+5. RESTRICTIONS
+--------------------------------------------------------------------------------
+
+Except as expressly granted in Section 3, You MAY NOT:
+
+  (a) redistribute, sublicense, sell, rent, lease, or otherwise
+      transfer the Licensed Software outside Your organization, except
+      via Embedding under Section 7;
+  (b) remove or alter any copyright, trademark, or other proprietary
+      notice;
+  (c) use the Licensed Software to develop, train, benchmark, or
+      improve any product or service that competes with PointSav or
+      Woodfine;
+  (d) use the Licensed Software to train, fine-tune, or otherwise
+      develop any machine-learning model without a separate written
+      agreement;
+  (e) disclose the results of any benchmarking, stress testing, or
+      security testing of the Licensed Software to any third party
+      without Woodfine's prior written consent, except as required by
+      law or coordinated-disclosure agreement.
+
+Your modifications under Section 3(d) remain Your property, but You
+grant Woodfine a perpetual, royalty-free license to any bug reports,
+diagnostic information, or feedback You provide regarding the
+Licensed Software.
+
+--------------------------------------------------------------------------------
+6. SUPPORT AND MAINTENANCE
+--------------------------------------------------------------------------------
+
+During the Subscription Term, Woodfine will make Updates available
+to You via Woodfine's standard distribution mechanism. Woodfine is
+not obligated to issue Updates on any specific cadence.
+
+Named support tiers, including service-level agreements for response
+time and incident handling, are negotiated separately and documented
+in a Support Addendum. This License includes only the right to receive
+Updates that Woodfine makes generally available to commercial
+licensees.
+
+Security vulnerabilities will be disclosed and patched in accordance
+with the SECURITY.md policy in the factory-release-engineering
+directory, incorporated here by reference.
+
+--------------------------------------------------------------------------------
+7. EMBEDDING
+--------------------------------------------------------------------------------
+
+"Embedding" means incorporating the Licensed Software into Your
+product or service for distribution to Your End Users. Embedding is
+permitted ONLY IF the Order Form expressly identifies it and sets
+Fees on a percentage-of-revenue basis under Section 4.
+
+If the Order Form permits Embedding:
+
+  (a) You may distribute the Licensed Software solely as embedded
+      within Your product or service, under a pass-through end user
+      license agreement at least as protective of Woodfine as this
+      License.
+  (b) You remain responsible for all acts and omissions of Your
+      End Users with respect to the Licensed Software.
+  (c) On expiration or termination of Your Subscription Term, Your
+      End Users retain the right to continue using the version of
+      the Licensed Software they received as of the date of
+      expiration or termination, under the same pass-through EULA.
+      Your End Users have no right to receive Updates issued after
+      that date unless You obtain a renewed Subscription.
+
+--------------------------------------------------------------------------------
+8. AUDIT RIGHTS
+--------------------------------------------------------------------------------
+
+Upon thirty (30) days' written notice, and no more than once per
+twelve (12) month period, Woodfine may audit Your use of the Licensed
+Software to verify compliance with this License and the Order Form.
+Audits shall be conducted during normal business hours and shall not
+unreasonably interfere with Your operations. If an audit reveals
+underpayment of more than five percent (5%), You shall pay the
+shortfall plus Woodfine's reasonable audit costs.
+
+--------------------------------------------------------------------------------
+9. WARRANTIES
+--------------------------------------------------------------------------------
+
+Woodfine warrants that, during the Subscription Term, the Licensed
+Software will materially conform to its then-current documentation.
+Your sole and exclusive remedy for breach of this warranty is, at
+Woodfine's option, (i) correction of the non-conformity or (ii)
+refund of Fees paid for the non-conforming period, and termination
+of the affected Order Form.
+
+EXCEPT AS EXPRESSLY STATED ABOVE, THE LICENSED SOFTWARE IS PROVIDED
+"AS IS" AND WOODFINE DISCLAIMS ALL OTHER WARRANTIES, EXPRESS OR
+IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+
+--------------------------------------------------------------------------------
+10. INDEMNIFICATION
+--------------------------------------------------------------------------------
+
+Woodfine will defend You against any third-party claim that the
+Licensed Software, as provided by Woodfine and used in accordance
+with this License, infringes that third party's patent, copyright, or
+trademark rights, and will pay damages finally awarded against You
+or amounts paid in settlement approved by Woodfine, up to a cap equal
+to the Fees You paid in the twelve (12) months preceding the claim.
+
+This obligation does not apply to claims arising from (i) Your
+modifications to the Licensed Software, (ii) combinations with
+materials not provided by Woodfine, (iii) use outside the scope of
+this License, or (iv) versions of the Licensed Software that are no
+longer supported where a non-infringing Update was made available.
+
+If the Licensed Software becomes or is likely to become the subject
+of an infringement claim, Woodfine may, at its option, (a) procure
+the right for You to continue use, (b) modify the Licensed Software
+to be non-infringing, or (c) terminate the affected Order Form and
+refund unused prepaid Fees.
+
+This Section states Woodfine's entire liability and Your exclusive
+remedy for infringement claims.
+
+--------------------------------------------------------------------------------
+11. LIMITATION OF LIABILITY
+--------------------------------------------------------------------------------
+
+EXCEPT FOR (i) BREACH OF CONFIDENTIALITY, (ii) INFRINGEMENT OF THE
+OTHER PARTY'S INTELLECTUAL PROPERTY, (iii) INDEMNIFICATION
+OBLIGATIONS UNDER SECTION 10, AND (iv) YOUR PAYMENT OBLIGATIONS:
+
+  (a) NEITHER PARTY WILL BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL,
+      CONSEQUENTIAL, OR PUNITIVE DAMAGES, EVEN IF ADVISED OF THE
+      POSSIBILITY OF SUCH DAMAGES;
+  (b) EACH PARTY'S TOTAL CUMULATIVE LIABILITY UNDER THIS LICENSE AND
+      ANY ORDER FORM WILL NOT EXCEED THE FEES PAID BY YOU IN THE
+      TWELVE (12) MONTHS PRECEDING THE EVENT GIVING RISE TO LIABILITY.
+
+--------------------------------------------------------------------------------
+12. TERM AND TERMINATION
+--------------------------------------------------------------------------------
+
+The Subscription Term begins on the effective date of the Order Form
+and continues for the period stated therein. Unless either party
+provides written notice of non-renewal at least sixty (60) days
+before the end of the then-current Subscription Term, the
+Subscription Term automatically renews for successive twelve (12)
+month periods at Woodfine's then-current rates.
+
+Either party may terminate this License for material breach by the
+other party that remains uncured for thirty (30) days after written
+notice.
+
+Upon termination, You shall cease all use of the Licensed Software
+and destroy all copies in Your possession, except that end users of
+an Embedded product retain the rights described in Section 7.
+Sections 1, 5, 8, 9, 10, 11, and 13-17 survive termination.
+
+--------------------------------------------------------------------------------
+13. EXPORT CONTROL AND SANCTIONS
+--------------------------------------------------------------------------------
+
+You shall comply with all applicable export control and economic
+sanctions laws and regulations, including the Canadian Export and
+Import Permits Act, the U.S. Export Administration Regulations, and
+the sanctions programs administered by the Office of Foreign Assets
+Control. You shall not export, re-export, or make the Licensed
+Software available to any person or entity in any jurisdiction
+subject to comprehensive sanctions.
+
+--------------------------------------------------------------------------------
+14. DATA PROTECTION
+--------------------------------------------------------------------------------
+
+Where You deploy the Licensed Software on Your infrastructure,
+Woodfine does not access, receive, or process personal data
+originating from Your End Users, and no processor-controller
+relationship arises under applicable privacy law. If Your use of
+the Licensed Software evolves to require Woodfine to process
+personal data, the parties shall execute a separate Data Processing
+Addendum before such processing begins.
+
+--------------------------------------------------------------------------------
+15. GOVERNING LAW
+--------------------------------------------------------------------------------
+
+This License shall be governed by and construed in accordance with
+the laws of the Province of Ontario and the federal laws of Canada
+applicable therein, without regard to its conflict-of-laws
+principles. Any dispute arising out of or related to this License
+shall be submitted to the exclusive jurisdiction of the courts of
+the Province of Ontario sitting in Toronto.
+
+--------------------------------------------------------------------------------
+16. TRADEMARK
+--------------------------------------------------------------------------------
+
+Nothing in this License grants You any right to use any trademark,
+service mark, trade dress, logo, or name of Woodfine, PointSav
+Digital Systems(TM), or Woodfine Management Corp., except as
+required for attribution under Section 3 or as expressly permitted
+by TRADEMARK.md in the factory-release-engineering directory.
+
+--------------------------------------------------------------------------------
+17. MISCELLANEOUS
+--------------------------------------------------------------------------------
+
+Entire Agreement. This License, together with any Order Form and
+attached exhibits, constitutes the entire agreement between the
+parties concerning the Licensed Software and supersedes any prior
+understandings. In case of conflict between this License and an
+Order Form, the Order Form controls as to the matters expressly
+addressed therein.
+
+Severability. If any provision is held unenforceable, the remaining
+provisions shall remain in full force.
+
+No Waiver. Failure to enforce any provision shall not constitute a
+waiver.
+
+Assignment. Neither party may assign this License without the other
+party's prior written consent, except that either party may assign
+to a successor in a merger, acquisition, or sale of substantially
+all assets.
+
+Force Majeure. Neither party is liable for delay or failure in
+performance caused by circumstances beyond its reasonable control.
+
+Notices. Notices must be in writing and delivered to the addresses
+on the Order Form.
