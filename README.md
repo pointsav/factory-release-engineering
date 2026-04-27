@@ -106,6 +106,40 @@ Full mapping: see `LICENSE-MATRIX.md`.
 
 **MEMO authority.** Any change to licensing that contradicts MEMO V8 or later must be accompanied by a MEMO amendment in the same release cycle. The MEMO is the architectural authority; `factory-release-engineering/` is the implementation of what the MEMO specifies.
 
+## 6. Copyright structure (Canadian-simple posture)
+
+**Holder.** Copyright is held by **Woodfine Capital Projects Inc.** ("WCP Inc.") on the basis of Canadian Copyright Act § 13(3), which makes the employer the **first owner** of copyright in works made by an employee in the course of employment under a contract of service. § 13(3) creates first-ownership, not assignment; it does not require a separate written instrument for the right to vest, and the resulting ownership is not subject to the § 14(1) reversionary interest that applies to § 13(4) assignments.
+
+**Corporate structure.** The Foundry trajectory is operated under three entities of differing status:
+
+| Entity | Status | Role |
+|---|---|---|
+| Woodfine Capital Projects Inc. | Incorporated (BC); parent holding | Copyright + trademark holder for all software, documentation, content, and brand IP |
+| Woodfine Management Corp. | Incorporated (BC); operating sub | Operations / shield-blocker; **does not generate IP-derived revenue using WCP IP** |
+| PointSav Digital Systems | **Yet to be incorporated** | Operated as a **trade name** of WCP Inc. pre-incorporation; eventual BC operating subsidiary |
+
+**Why this works without inter-company IP agreements.** The structure has **no inter-company IP flow** while it operates this way. WCP holds IP and (through its employees) creates and uses it directly; Woodfine Management Corp. is genuinely non-operating with respect to WCP IP; "PointSav Digital Systems" is a trade name of WCP, not a separate legal person. Canadian Copyright Act § 13(3) is sufficient for vesting; CRA § 247 transfer-pricing documentation requirements that attach to inter-company IP use do not attach when there is no inter-company use.
+
+**Operational disciplines that maintain the posture.** This structure depends on the following disciplines being kept:
+
+- **Employee-only contributors.** Every IP-creating contributor is a bona fide WCP Inc. employee on T4 payroll, performing in-scope work under WCP direction. Independent contractors retain copyright by default under Canadian law and would require separate written assignment under § 13(4). Until counsel-drafted contractor IP-assignment templates are in place, the posture admits no contractor contributions to in-scope work.
+- **Woodfine Management Corp. stays non-operating** with respect to WCP IP. If Woodfine Management Corp. begins using WCP IP to generate revenue, an inter-company licence with arm's-length pricing documentation becomes expected.
+- **"PointSav Digital Systems" is a trade name of WCP** under BC's *Partnership Act* until incorporation. A Declaration of Trade Name with the BC Registrar should be filed if the brand is used commercially before incorporation.
+- **Moral rights gap acknowledged.** § 14.1 moral rights cannot be assigned, only waived in writing. § 13(3) does not waive them. The current posture admits this residual gap and does not paper it; counsel-drafted moral-rights waivers may be added later as the structure matures.
+
+**Trigger events that require revisiting this posture.** When any of the following occurs, the posture upgrades and counsel-drafted agreements (master IP assignment, inter-company IPAA, moral-rights waivers) become standard:
+
+- First hire who is not a founder/officer
+- First contractor contribution to in-scope code, content, or design work
+- First external revenue generated using WCP IP
+- Reporting-issuer status under BCSC NI 51-102
+- PointSav Digital Systems Inc. incorporation event (handled at the rollover; see PLAYBOOK)
+- Any inter-company IP use between WCP and an operating sub
+
+**Why this structure preserves WCP equity value.** Holding IP at the parent enables **share-sale** transactions (selling WCP equity transfers the entire IP estate in one transaction; no per-asset assignments, no Bulk Sales Act triggers, no consents required). Asset-sale alternatives at sub-co level require enumerated IP schedules, individual assignments, and customer consents. The asymmetry also runs forward in time: pushing IP **down** to PointSav Digital Systems Inc. on incorporation via § 85 rollover is a single-event transaction; pulling IP **up** from a sub-holder later requires § 13(4) assignment + § 247 documentation + potential GST/HST implications + FMV crystallisation. The posture preserves both share-sale optionality today and the cleaner downstream-rollover path at incorporation.
+
+**This section is not legal advice.** It describes the operational posture chosen for the current state of the Foundry trajectory. Counsel review is recommended before any trigger event above; the structure is intentionally minimal so it can be evolved as the project matures, without unwinding pre-existing agreements.
+
 ---
 
 *factory-release-engineering*
