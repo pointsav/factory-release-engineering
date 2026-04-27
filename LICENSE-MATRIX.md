@@ -17,6 +17,38 @@ When the two diverge, the YAML file controls for automated propagation
 and this matrix controls for human understanding. Divergences between
 the two are defects and should be resolved in the same PR.
 
+### 1.1 Per-country IP-holding note (Canada)
+
+Copyright across all repositories listed in this matrix is held by
+Woodfine Capital Projects Inc. ("WCP Inc.") under the Canadian-simple
+posture described in the README §6. Two Canadian-specific points
+inform the licensing posture:
+
+1. **§ 13(3) first-ownership vs § 13(4) assignment.** WCP's holding
+   of copyright is on the basis of Canadian Copyright Act § 13(3)
+   (employer is first owner of in-scope employee work under a
+   contract of service). § 13(3) creates first-ownership at the
+   moment of fixation; no separate written assignment instrument is
+   required for the right to vest. Distinguish this from § 13(4)
+   assignments, which require a written-signed instrument and are
+   subject to the § 14(1) reversionary interest below.
+2. **§ 14(1) reversionary interest.** Where copyright is **assigned**
+   under § 13(4) and the author is a natural person, the assignment
+   automatically terminates 25 years after the author's death, with
+   the reversionary interest passing to the author's estate. This
+   provision **does not apply** to § 13(3) employer-vested
+   first-ownership works (where the employer never received an
+   "assignment"). It does apply to assignments from contractors,
+   founders, or other natural-person contributors. The Canadian
+   reversionary interest cannot be contracted out of for assignments;
+   any downstream licensee taking under WCP-as-assignee should
+   understand the time-bounded nature of the underlying chain-of-title
+   for natural-person-authored works in the Canadian regime.
+
+This section is informational, not legal advice. Counsel review is
+recommended for any project where the chain-of-title shifts from
+§ 13(3) employer-vested to § 13(4) assigned-from-contributor.
+
 ## 2. Authority
 
 This matrix is maintained in the `factory-release-engineering`

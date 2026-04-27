@@ -251,3 +251,63 @@ Changes to this playbook are PR'd against
 `factory-release-engineering/`. Significant changes (new phases, new
 scripts invoked, new target-repo discovery mechanisms) require the
 same review posture as changes to the scripts themselves.
+
+---
+
+## PointSav Digital Systems Inc. incorporation event procedure
+
+**When this section applies.** PointSav Digital Systems is currently
+operated as a trade name of Woodfine Capital Projects Inc.
+("WCP Inc.") per README § 6. When the operating brand is incorporated
+as a separate BC corporation, the IP held by WCP for the
+PointSav-attributed work is transferred to PointSav Digital Systems
+Inc. via a **Section 85 rollover** under the federal *Income Tax Act*.
+This section describes the procedural shape; **counsel and Canadian
+tax advisors execute the actual rollover** — the playbook entries
+below are operational coordination, not legal/tax instruction.
+
+**At-the-event procedure (high level)**:
+
+1. **Counsel + tax advisor engagement.** PointSav Digital Systems
+   Inc. incorporation in BC; WCP and PointSav coordinate § 85
+   rollover documentation; counsel determines elected amount range
+   (between adjusted cost base and FMV); tax advisor prepares
+   **Form T2057** (joint election under § 85(1)).
+2. **IP enumeration.** Identify the IP being transferred to PointSav:
+   specific repositories, specific TOPIC/GUIDE corpora, specific
+   trademarks, specific domain assets. The default in this scaffold
+   is that IP related to the PointSav operating brand transfers;
+   IP related to Woodfine Management Corp. operations and to the
+   Foundry doctrine itself stays at WCP.
+3. **CLA novation.** External-contributor CLAs (ICLA, CCLA) name
+   "Woodfine" / WCP as the recipient of the contributor grant. On
+   incorporation + IP transfer, the contributor relationship needs
+   to either (a) novate to PointSav Digital Systems Inc. as the new
+   recipient (consent-based under contract law), or (b) the CLAs
+   are amended forward-only with notice + opt-out provision per
+   each CLA's terms. Counsel decides shape.
+4. **SPDX header update.** Per-file `SPDX-FileCopyrightText` lines
+   on files transferred to PointSav update from
+   `Woodfine Capital Projects Inc.` to `PointSav Digital Systems
+   Inc. and contributors` in a single cut-over commit. Historical
+   headers stay as historical record; the rollover transfers
+   underlying ownership, and going-forward authorship reads
+   PointSav.
+5. **Inter-company licensing (post-rollover).** If WCP retains any
+   trademark or "core platform" IP that PointSav uses, an
+   inter-company licence with quality-control provisions is
+   typically drafted at this point. This is the trigger event
+   referenced in README § 6.
+6. **PLAYBOOK updates.** This section gets updated post-event with
+   actual transferred IP scope, actual elected amount, and any
+   procedural amendments learned in execution.
+
+**No pre-incorporation custody declaration is required today** under
+the Canadian-simple posture in README § 6. The § 85 rollover
+documentation is the documentation event for the IP transfer; § 13(3)
+employer-vested ownership at WCP is the chain-of-title up to the
+event.
+
+This section is procedural reference, not legal/tax advice. Counsel
+and Canadian tax advisors execute the actual rollover at the time
+of the incorporation event.
