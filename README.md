@@ -145,3 +145,10 @@ Full mapping: see `LICENSE-MATRIX.md`.
 *factory-release-engineering*
 *Release-engineering authority for the PointSav platform.*
 *© 2026 Woodfine Capital Projects Inc. All rights reserved.*
+
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. See [LICENSE](LICENSE) for terms.*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
