@@ -150,6 +150,11 @@ Each `app-*/` directory inherits the license of its parent domain:
 | `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 3 |
 | `app-mediakit-*` | `os-mediakit` | FSL-1.1-ALv2 | 4 |
 | `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 8 |
+| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | EUPL-1.2 ¹ | 1 |
+
+¹ Exception to inheritance rule — `os-interface` maps to FSL-1.1-ALv2; `app-orchestration-bim`
+explicitly declares `license = "EUPL-1.2"` in Cargo.toml. Requires governance ratification.
+See `NEXT.md` DEF-001 and DEF-002.
 
 New `app-*/` directories must match one of these inheritance patterns.
 A new `app-*/` directory that does not match an existing domain is a
@@ -178,6 +183,7 @@ table states what the propagation script generates per license.
 | CC BY-ND 4.0          | licenses/CC-BY-ND-4.0.txt         | none (content license)       | no          | English-only section     | CODE_OF_CONDUCT                          |
 | PointSav-ARR          | licenses/PointSav-ARR.txt         | proprietary-header.txt       | no          | yes                      | TRADEMARK, SECURITY                      |
 | PointSav-Commercial   | delivered per Order Form          | proprietary-header.txt       | n/a         | n/a                      | TRADEMARK, SECURITY (per contract)       |
+| EUPL-1.2              | `licenses/EUPL-1.2.txt` (pending DEF-002) | `headers/eupl-1.2-header.txt` (stub) | optional | yes | CODE_OF_CONDUCT, CONTRIBUTING, SECURITY |
 | MIXED (monorepo)      | licenses/MIXED-MONOREPO-NOTICE.txt| per-directory via §4 rules   | no          | yes                      | CODE_OF_CONDUCT, CONTRIBUTING, SECURITY, TRADEMARK |
 
 The `MIXED` license type is used for monorepos containing directories

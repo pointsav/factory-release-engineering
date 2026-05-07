@@ -1,0 +1,2 @@
+// SPDX-FileCopyrightText: ${year} ${copyright holder}
+// SPDX-License-Identifier: EUPL-1.2

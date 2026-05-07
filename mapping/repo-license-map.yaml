@@ -101,6 +101,17 @@ licenses:
     distribution: order-form      # NOT applied as LICENSE file in public repos;
                                   # delivered per executed Order Form only.
 
+  EUPL-1.2:
+    # DEF-002 open — license_file and header_template are stubs until the
+    # canonical EUPL-1.2 text is downloaded. Do not run propagation scripts
+    # against EUPL-1.2 directories until DEF-002 is closed.
+    license_file: licenses/EUPL-1.2.txt        # pending DEF-002
+    header_template: headers/eupl-1.2-header.txt  # minimal stub — pending DEF-002
+    policies: [CODE_OF_CONDUCT, CONTRIBUTING, SECURITY]
+    bilingual_readme: true
+    notice_file: optional
+    requires_cla: false           # EUPL-1.2 has no Woodfine-specific CLA obligation
+
   MIXED:
     # Used for monorepos containing multiple licenses at the directory
     # level. The propagation script writes MIXED-MONOREPO-NOTICE.txt as
@@ -208,6 +219,7 @@ monorepo_directories:
   "app-workplace-":      AGPL-3.0-or-later
   "app-mediakit-":       FSL-1.1-ALv2
   "app-network-":        FSL-1.1-ALv2
+  "app-orchestration-":  EUPL-1.2   # DEF-001: exception to inheritance rule (parent os-interface is FSL); see NEXT.md
 
   # ---- Workspace infrastructure (AGPL) ----
   "xtask/":              AGPL-3.0-or-later
