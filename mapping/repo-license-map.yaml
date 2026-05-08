@@ -143,7 +143,7 @@ repositories:
 
   - name: pointsav-design-system
     organization: pointsav
-    license: PointSav-ARR
+    license: Apache-2.0
 
   - name: pointsav-fleet-deployment
     organization: pointsav

@@ -82,16 +82,22 @@ TRADEMARK.md even where the underlying copyrightable elements are
 permitted to be viewed under Section 2.
 
 --------------------------------------------------------------------------------
-5. DESIGN SYSTEM
+5. DESIGN SYSTEM (HISTORICAL — RELICENSED)
 --------------------------------------------------------------------------------
 
-The pointsav-design-system repository is licensed under this license.
-Third parties — including partners, franchisees, and vendors building
-interfaces — may not use its tokens, components, or patterns without
-a separate written agreement with Woodfine. Interfaces that need to
-interoperate visually with Woodfine products must obtain such an
-agreement or must be designed independently without reference to the
-design system's protected elements.
+The pointsav-design-system repository was previously licensed under
+this license. Effective 2026-05-08, that repository was relicensed to
+Apache License, Version 2.0 to match the open-source convention used
+by IBM Carbon, Adobe Spectrum, and other vendor-backed design systems.
+This section is retained for historical reference and does not govern
+the current state of pointsav-design-system. See LICENSE-MATRIX.md for
+the canonical repo-license assignments.
+
+Trademark and trade-dress elements (PointSav and Woodfine word marks,
+logos, brand colors as source identifiers, distinctive typography) in
+that repository remain governed by the TRADEMARK.md policy and are
+NOT granted by the Apache 2.0 license — Apache 2.0 §6 explicitly
+excludes trademark grants.
 
 --------------------------------------------------------------------------------
 6. WARRANTY DISCLAIMER

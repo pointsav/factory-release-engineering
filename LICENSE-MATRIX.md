@@ -69,7 +69,7 @@ Repositories are distributed across two GitHub organizations.
 | `pointsav-monorepo` | **MIXED** — see §4 | Platform code; per-directory licensing |
 | `factory-release-engineering` | **MIXED** — governance repo | This repository; canonical source for licenses, policies, scripts |
 | `content-wiki-documentation` | CC BY 4.0 | Open technical documentation |
-| `pointsav-design-system` | PointSav-ARR | Design system (strict licensing) |
+| `pointsav-design-system` | Apache-2.0 | Open-source design system (matches IBM Carbon, Adobe Spectrum convention) |
 | `pointsav-fleet-deployment` | PointSav-ARR | Operational deployment records |
 | `pointsav-media-assets` | PointSav-ARR | Branded imagery |
 | `pointsav.github.io` | Apache-2.0 | Public marketing site |
