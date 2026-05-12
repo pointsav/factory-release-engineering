@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: >-
+  If you reference the PointSav Factory Release Engineering governance
+  repository, please cite using these metadata.
+type: software
+title: "Factory Release Engineering — PointSav Digital Systems"
+abstract: >-
+  PointSav Digital Systems' release engineering and governance repository.
+  Canonical source for licensing matrices (LICENSE-MATRIX.md), contributor
+  licence agreements, trademark policy, compliance playbook, and
+  per-repository publication rules for the pointsav/* and woodfine/* GitHub
+  organisations. Implements Stage 5 of the vendor → customer → deployments
+  commit flow defined in the Foundry Doctrine 2030.
+authors:
+  - given-names: System Administrator
+    name-particle: PointSav
+    family-names: Digital Systems
+    email: open.source@pointsav.com
+    affiliation: PointSav Digital Systems
+repository-code: "https://github.com/pointsav/factory-release-engineering"
+url: "https://github.com/pointsav/factory-release-engineering"
+license: LicenseRef-PointSav-ARR
+version: "0.1.132"
+date-released: "2026-05-12"
+keywords:
+  - release-engineering
+  - governance
+  - licensing
+  - contributor-license-agreement
+  - trademark
+  - compliance
+identifiers:
+  - type: url
+    value: "https://github.com/pointsav/factory-release-engineering/blob/main/LICENSE-MATRIX.md"
+    description: Repository licence matrix — all pointsav/* and woodfine/* repos
+preferred-citation:
+  type: software
+  title: "Factory Release Engineering — PointSav Digital Systems"
+  authors:
+    - given-names: System Administrator
+      name-particle: PointSav
+      family-names: Digital Systems
+      email: open.source@pointsav.com
+      affiliation: PointSav Digital Systems
+  version: "0.1.132"
+  date-released: "2026-05-12"
+  url: "https://github.com/pointsav/factory-release-engineering"
