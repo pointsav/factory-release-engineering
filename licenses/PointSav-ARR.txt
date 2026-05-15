@@ -66,8 +66,8 @@ Except as expressly granted in Section 2, You MAY NOT:
       PointSav Digital Systems(TM).
 
 No exceptions are made for security researchers, named partners, or
-reviewers acting under non-disclosure agreements. Any broader use by
-such parties requires a separate written agreement with Woodfine.
+reviewers acting under non-disclosure agreements for uses beyond Section 2.
+Any broader use by such parties requires a separate written agreement with Woodfine.
 
 --------------------------------------------------------------------------------
 4. TRADEMARK
@@ -126,7 +126,7 @@ EXCEED ONE HUNDRED CANADIAN DOLLARS (CAD $100).
 
 This license terminates automatically and without notice if You breach
 any of its terms. Upon termination, You must cease all use of the
-Material and destroy all copies in Your possession. Sections 3, 6, 7,
+Material and destroy all copies in Your possession. Sections 3, 4, 6, 7,
 9, and 10 survive termination.
 
 --------------------------------------------------------------------------------
