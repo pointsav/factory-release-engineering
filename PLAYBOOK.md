@@ -311,3 +311,9 @@ event.
 This section is procedural reference, not legal/tax advice. Counsel
 and Canadian tax advisors execute the actual rollover at the time
 of the incorporation event.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

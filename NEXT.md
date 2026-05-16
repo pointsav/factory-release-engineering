@@ -81,3 +81,9 @@ with `content-wiki-documentation` (CC BY 4.0) and open-standard positioning.
 - [ ] Operator decision: confirm CC BY 4.0, or select an alternative data-layer license
 - [ ] Once decided: add `LICENSE` file to `woodfine-design-bim/` repo
 - [ ] Add per-file SPDX headers to DTCG JSON files (project-bim cluster session)
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

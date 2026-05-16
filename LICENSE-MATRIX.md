@@ -1,7 +1,7 @@
 # LICENSE-MATRIX
 
 Version 1.0 — Effective 2026-04-20
-Copyright (c) 2026 Woodfine Capital Projects Inc. All rights reserved.
+Copyright © 2026 Woodfine Capital Projects Inc. All rights reserved.
 
 This matrix is effective as of the date above, subject to amendment
 when MEMO V8 is ratified.
@@ -207,3 +207,9 @@ Changes to this matrix follow README §5:
   - New directories added to `pointsav-monorepo` must be covered by
     an entry in §4 before being merged. Unmatched new directories
     are blocked at propagation time by `verify-repo-compliance.sh`.
+
+---
+
+*Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.*
+
+*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
