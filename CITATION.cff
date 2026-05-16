@@ -10,7 +10,7 @@ abstract: >-
   licence agreements, trademark policy, compliance playbook, and
   per-repository publication rules for the pointsav/* and woodfine/* GitHub
   organisations. Implements Stage 5 of the vendor → customer → deployments
-  commit flow defined in the Foundry Doctrine 2030.
+  commit flow defined by PointSav release-engineering governance (vendor → customer → deployments).
 authors:
   - given-names: System Administrator
     name-particle: PointSav

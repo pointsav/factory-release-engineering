@@ -110,7 +110,7 @@ Full mapping: see `LICENSE-MATRIX.md`.
 
 **Holder.** Copyright is held by **Woodfine Capital Projects Inc.** ("WCP Inc.") on the basis of Canadian Copyright Act § 13(3), which makes the employer the **first owner** of copyright in works made by an employee in the course of employment under a contract of service. § 13(3) creates first-ownership, not assignment; it does not require a separate written instrument for the right to vest, and the resulting ownership is not subject to the § 14(1) reversionary interest that applies to § 13(4) assignments.
 
-**Corporate structure.** The Foundry trajectory is operated under three entities of differing status:
+**Corporate structure.** The PointSav platform is operated under three entities of differing status:
 
 | Entity | Status | Role |
 |---|---|---|
@@ -138,7 +138,7 @@ Full mapping: see `LICENSE-MATRIX.md`.
 
 **Why this structure preserves WCP equity value.** Holding IP at the parent enables **share-sale** transactions (selling WCP equity transfers the entire IP estate in one transaction; no per-asset assignments, no Bulk Sales Act triggers, no consents required). Asset-sale alternatives at sub-co level require enumerated IP schedules, individual assignments, and customer consents. The asymmetry also runs forward in time: pushing IP **down** to PointSav Digital Systems Inc. on incorporation via § 85 rollover is a single-event transaction; pulling IP **up** from a sub-holder later requires § 13(4) assignment + § 247 documentation + potential GST/HST implications + FMV crystallisation. The posture preserves both share-sale optionality today and the cleaner downstream-rollover path at incorporation.
 
-**This section is not legal advice.** It describes the operational posture chosen for the current state of the Foundry trajectory. Counsel review is recommended before any trigger event above; the structure is intentionally minimal so it can be evolved as the project matures, without unwinding pre-existing agreements.
+**This section is not legal advice.** It describes the operational posture chosen for the current state of the PointSav platform. Counsel review is recommended before any trigger event above; the structure is intentionally minimal so it can be evolved as the project matures, without unwinding pre-existing agreements.
 
 ---
 

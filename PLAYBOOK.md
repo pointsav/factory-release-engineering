@@ -278,7 +278,7 @@ below are operational coordination, not legal/tax instruction.
    trademarks, specific domain assets. The default in this scaffold
    is that IP related to the PointSav operating brand transfers;
    IP related to Woodfine Management Corp. operations and to the
-   Foundry doctrine itself stays at WCP.
+   platform governance itself stays at WCP.
 3. **CLA novation.** External-contributor CLAs (ICLA, CCLA) name
    "Woodfine" / WCP as the recipient of the contributor grant. On
    incorporation + IP transfer, the contributor relationship needs
