@@ -1,7 +1,7 @@
 # PointSav and Woodfine Trademark Policy
 
-Version 1.0 — Effective 2026-04-20
-Copyright (c) 2026 Woodfine Capital Projects Inc. All rights reserved.
+Version 1.1 — Effective 2026-05-16
+Copyright © 2026 Woodfine Capital Projects Inc. All rights reserved.
 
 ## Preamble
 
@@ -27,6 +27,8 @@ This Policy protects the following word marks as "Woodfine Marks":
   - "Woodfine Management Corp."
   - "PointSav"
   - "PointSav Digital Systems"
+  - "Totebox Orchestration"
+  - "Totebox Archive"
 
 This Policy also covers all logos, graphical marks, trade dress, and
 product names associated with these word marks, whether identified
@@ -34,8 +36,9 @@ here or adopted in the future. Any mark omitted from this enumeration
 is unprotected by this Policy until added by amendment.
 
 As of the effective date of this Policy, each Woodfine Mark is an
-unregistered common-law trademark used in commerce by Woodfine Capital
-Projects Inc. or its affiliates. Woodfine reserves the right to
+unregistered common-law trademark used in commerce in Canada, the
+United States, Latin America, and Europe by Woodfine Capital Projects
+Inc. or its affiliates. Woodfine reserves the right to
 register any mark with the Canadian Intellectual Property Office, the
 United States Patent and Trademark Office, the World Intellectual
 Property Organization, or any other registry. Upon registration,
@@ -243,3 +246,40 @@ governed by and construed in accordance with the laws of the Province
 of Ontario and the federal laws of Canada applicable therein. Any
 dispute shall be submitted to the exclusive jurisdiction of the courts
 of the Province of Ontario sitting in Toronto.
+
+---
+
+## 13. Standard Notice
+
+The following notice is the canonical form for use in README files,
+document footers, source-file headers, and any other surface where a
+combined copyright and trademark acknowledgement is required.
+
+Copyright and trademark notices must appear in this order and must not
+be merged into a single statement. The copyright line identifies the
+owner of the copyrightable expression. The trademark line identifies
+the source-identifier marks and their geographic use. Combining them,
+or placing the trademark acknowledgement before the copyright line,
+creates ambiguity about which protection applies to which element.
+
+**Canonical notice (short form):**
+
+```
+Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.
+
+Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™,
+Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital
+Projects Inc., used in Canada, the United States, Latin America, and Europe.
+All other trademarks are the property of their respective owners.
+```
+
+The year in the copyright line must reflect the year the work was first
+published. Documents that span multiple years use the range (e.g.,
+"2025–2026"). The trademark line is not year-specific and does not change
+with the calendar year.
+
+Source-file headers may abbreviate to the copyright line alone plus an
+SPDX-License-Identifier, provided the full notice appears in the
+repository's LICENSE or TRADEMARK file. Omitting the trademark line from
+individual source files is permitted; omitting it from a repository root
+file is not.
