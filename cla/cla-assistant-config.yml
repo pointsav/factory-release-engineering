@@ -46,16 +46,11 @@ cla:
 repositories:
   - owner: pointsav
     repos:
-      - os-totebox
-      - os-console
-      - os-workplace
-      - os-privategit
-      - os-orchestration
-      - os-infrastructure
-      - os-network-admin
-      - os-mediakit
-    # service-*, system-*, tool-*, moonshot-*, app-* will be added as
-    # those repositories are enumerated in the map.
+      - pointsav-monorepo
+    # All CLA-requiring directories (AGPL-3.0-or-later and FSL-1.1-ALv2)
+    # live in pointsav-monorepo. Per-directory licensing is tracked in
+    # mapping/repo-license-map.yaml. service-*, system-*, tool-*,
+    # moonshot-*, and app-* classes are sub-directories of the monorepo.
 
 # ============================================================================
 # Exempt users — CLA check is skipped for these GitHub accounts
