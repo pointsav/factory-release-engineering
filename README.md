@@ -2,7 +2,7 @@
 
 **Purpose.** Canonical source for all licenses, policies, and institutional-maturity templates that propagate across every PointSav and Woodfine repository. One location, version-controlled, authoritative. When a license or policy needs to change, it changes here first and propagates outward — never edited in place across twenty repos.
 
-**Copyright holder.** Woodfine Capital Projects Inc. PointSav Digital Systems™ and Woodfine Management Corp. operate under the intellectual property definitions of Woodfine Capital Projects Inc.
+**Copyright holder.** Woodfine Capital Projects Inc. PointSav Digital Systems™ and Woodfine Management Corp™ operate under the intellectual property definitions of Woodfine Capital Projects Inc.
 
 **Authority.** This directory is the release-engineering authority for the PointSav platform. It is referenced by — and supersedes — any individual repository's LICENSE, NOTICE, CONTRIBUTING, or policy file that diverges from its contents. When MEMO V8 is ratified, this directory's contents will reflect the licensing structure it formalizes.
 
@@ -14,7 +14,10 @@
 factory-release-engineering/
 ├── README.md                    ← this file
 ├── LICENSE-MATRIX.md            ← canonical per-repo and per-directory license mapping
-├── PLAYBOOK.md                  ← step-by-step rollout procedure for Claude Code
+├── PLAYBOOK.md                  ← step-by-step rollout procedure
+├── TRADEMARK.md                 ← canonical copyright and trademark notice
+├── NEXT.md                      ← open defects and governance items
+├── CITATION.cff                 ← software citation metadata
 │
 ├── licenses/                    ← full text of every license the platform uses
 │   ├── AGPL-3.0.txt
@@ -22,19 +25,25 @@ factory-release-engineering/
 │   ├── FSL-1.1-Apache-2.0.txt
 │   ├── CC-BY-4.0.txt
 │   ├── CC-BY-ND-4.0.txt
+│   ├── MIT.txt
+│   ├── MIXED-MONOREPO-NOTICE.txt
 │   ├── PointSav-ARR.txt
 │   └── PointSav-Commercial.txt
 │
 ├── headers/                     ← SPDX headers for source-file annotation
 │   ├── agpl-3.0-header.txt
+│   ├── apache-2.0-header.txt
+│   ├── eupl-1.2-header.txt
 │   ├── fsl-1.1-header.txt
 │   └── proprietary-header.txt
 │
 ├── policies/                    ← institutional maturity policy templates
 │   ├── CODE_OF_CONDUCT.md       ← Contributor Covenant 2.1
 │   ├── CONTRIBUTING.md
+│   ├── DISCLAIMER.md            ← website disclaimer (securities + IP)
+│   ├── HOMEPAGE-DISCLAIMER.md   ← homepage variant
 │   ├── SECURITY.md
-│   └── TRADEMARK.md
+│   └── TRADEMARK.md             ← full trademark policy (§§1–13)
 │
 ├── cla/                         ← CLA Assistant wiring + agreements
 │   ├── individual-cla.md
@@ -46,10 +55,14 @@ factory-release-engineering/
 │   │   ├── bug_report.md
 │   │   ├── feature_request.md
 │   │   └── security_report.md
-│   ├── PULL_REQUEST_TEMPLATE.md
-│   └── CODEOWNERS.template
+│   └── PULL_REQUEST_TEMPLATE.md
 │
-├── readmes/                     ← bilingual README sections pointing to licenses
+├── readmes/                     ← bilingual README and footer templates
+│   ├── footer-guide-en.md       ← GUIDE-* footer (English)
+│   ├── footer-readme-en.md      ← README footer (English)
+│   ├── footer-readme-es.md      ← README footer (Spanish)
+│   ├── footer-topic-en.md       ← TOPIC footer (English)
+│   ├── footer-topic-es.md       ← TOPIC footer (Spanish)
 │   ├── license-section-en.md
 │   └── license-section-es.md
 │
@@ -139,13 +152,6 @@ Full mapping: see `LICENSE-MATRIX.md`.
 **Why this structure preserves WCP equity value.** Holding IP at the parent enables **share-sale** transactions (selling WCP equity transfers the entire IP estate in one transaction; no per-asset assignments, no Bulk Sales Act triggers, no consents required). Asset-sale alternatives at sub-co level require enumerated IP schedules, individual assignments, and customer consents. The asymmetry also runs forward in time: pushing IP **down** to PointSav Digital Systems Inc. on incorporation via § 85 rollover is a single-event transaction; pulling IP **up** from a sub-holder later requires § 13(4) assignment + § 247 documentation + potential GST/HST implications + FMV crystallisation. The posture preserves both share-sale optionality today and the cleaner downstream-rollover path at incorporation.
 
 **This section is not legal advice.** It describes the operational posture chosen for the current state of the PointSav platform. Counsel review is recommended before any trigger event above; the structure is intentionally minimal so it can be evolved as the project matures, without unwinding pre-existing agreements.
-
----
-
-*factory-release-engineering*
-*Release-engineering authority for the PointSav platform.*
-*© 2026 Woodfine Capital Projects Inc. All rights reserved.*
-
 
 ---
 
