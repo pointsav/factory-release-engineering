@@ -35,6 +35,15 @@ product names associated with these word marks, whether identified
 here or adopted in the future. Any mark omitted from this enumeration
 is unprotected by this Policy until added by amendment.
 
+This Policy enumerates nine word marks (five canonical marks plus four
+bare-word forms without corporate suffix) for breadth of legal protection.
+The canonical five-mark short-form notice used in document footers and
+README files — "Woodfine Capital Projects™, Woodfine Management Corp™,
+PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™"
+— is an intentional abbreviation of this list for readability. The
+shorter list is sufficient for attribution purposes; this Policy's full
+enumeration governs enforcement.
+
 As of the effective date of this Policy, each Woodfine Mark is an
 unregistered common-law trademark used in commerce in Canada, the
 United States, Latin America, and Europe by Woodfine Capital Projects
