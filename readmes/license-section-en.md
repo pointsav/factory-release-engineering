@@ -11,5 +11,5 @@ which is authoritative.
 
 ${commercial_alternative_en}
 
-Copyright (c) ${year} ${copyright_holder}. All rights not expressly
+Copyright © ${year} ${copyright_holder} — all rights not expressly
 granted by the license are reserved.

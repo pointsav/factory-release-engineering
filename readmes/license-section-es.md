@@ -11,5 +11,5 @@ legal completo, el cual es la versión autoritativa.
 
 ${commercial_alternative_es}
 
-Copyright (c) ${year} ${copyright_holder}. Se reservan todos los
+Copyright © ${year} ${copyright_holder} — se reservan todos los
 derechos no concedidos expresamente por la licencia.
