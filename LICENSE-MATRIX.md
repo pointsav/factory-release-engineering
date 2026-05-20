@@ -150,11 +150,7 @@ Each `app-*/` directory inherits the license of its parent domain:
 | `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 3 |
 | `app-mediakit-*` | `os-mediakit` | FSL-1.1-ALv2 | 4 |
 | `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 8 |
-| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | EUPL-1.2 ¹ | 1 |
-
-¹ Exception to inheritance rule — `os-interface` maps to FSL-1.1-ALv2; `app-orchestration-bim`
-explicitly declares `license = "EUPL-1.2"` in Cargo.toml. Requires governance ratification.
-See `NEXT.md` DEF-001 and DEF-002.
+| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | FSL-1.1-ALv2 | 1 |
 
 New `app-*/` directories must match one of these inheritance patterns.
 A new `app-*/` directory that does not match an existing domain is a

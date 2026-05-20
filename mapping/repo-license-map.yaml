@@ -219,7 +219,7 @@ monorepo_directories:
   "app-workplace-":      AGPL-3.0-or-later
   "app-mediakit-":       FSL-1.1-ALv2
   "app-network-":        FSL-1.1-ALv2
-  "app-orchestration-":  EUPL-1.2   # DEF-001: exception to inheritance rule (parent os-interface is FSL); see NEXT.md
+  "app-orchestration-":  FSL-1.1-ALv2  # inherits os-interface → FSL-1.1-ALv2; DEF-001 closed 2026-05-20
 
   # ---- Workspace infrastructure (AGPL) ----
   "xtask/":              AGPL-3.0-or-later
