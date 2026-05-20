@@ -47,20 +47,13 @@ When the crate is written, all `.rs` source files must carry SPDX headers.
 ### DEF-004 — DTCG token data layer unlicensed (`woodfine-design-bim/`)
 
 **Raised:** 2026-05-07 from project-bim session-close audit
-**Status:** open — pending operator decision on data-layer license.
+**Closed:** 2026-05-20 — resolved by earlier project-bim session work.
 
-The DTCG JSON token files in `woodfine-design-bim/` have no stated license. The
-EUPL-1.2 Rust software and the DTCG data files are legally distinct works. A public
-repository without a stated license defaults to all-rights-reserved, which conflicts
-with the open-design-standard positioning of the BIM platform.
-
-Recommended resolution: CC BY 4.0 for `woodfine-design-bim/*.dtcg.json` — consistent
-with `content-wiki-documentation` (CC BY 4.0) and open-standard positioning.
-
-**Required actions:**
-- [ ] Operator decision: confirm CC BY 4.0, or select an alternative data-layer license
-- [ ] Once decided: add `LICENSE` file to `woodfine-design-bim/` repo
-- [ ] Add per-file SPDX headers to DTCG JSON files (project-bim cluster session)
+`woodfine-design-bim` was renamed to `woodfine-bim-library` and its LICENSE file
+changed to Apache-2.0 (commit 7267e15). The repo-level Apache-2.0 LICENSE covers
+all DTCG JSON token files. JSON files cannot carry inline SPDX comment headers;
+coverage by the repo-level LICENSE is the correct resolution. `woodfine-bim-library`
+added to repo-license-map.yaml and LICENSE-MATRIX.md §3.2 this session.
 
 ---
 

@@ -74,12 +74,13 @@ Repositories are distributed across two GitHub organizations.
 | `pointsav-media-assets` | PointSav-ARR | Branded imagery |
 | `pointsav.github.io` | Apache-2.0 | Public marketing site |
 
-### 3.2 woodfine GitHub org (5 repos)
+### 3.2 woodfine GitHub org (6 repos)
 
 | Repository | License | Purpose |
 |---|---|---|
 | `content-wiki-corporate` | CC BY-ND 4.0 | Corporate content (no derivatives) |
 | `content-wiki-projects` | CC BY-ND 4.0 | Project content (no derivatives) |
+| `woodfine-bim-library` | Apache-2.0 | BIM Object Library — DTCG token data files |
 | `woodfine-fleet-deployment` | PointSav-ARR | Operational deployment records |
 | `woodfine-media-assets` | PointSav-ARR | Branded imagery |
 | `woodfine.github.io` | Apache-2.0 | Public marketing site |

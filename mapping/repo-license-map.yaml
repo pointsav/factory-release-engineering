@@ -172,6 +172,11 @@ repositories:
     organization: woodfine
     license: CC-BY-ND-4.0
 
+  - name: woodfine-bim-library
+    organization: woodfine
+    license: Apache-2.0
+    note: "BIM Object Library — DTCG token data files covered by repo-level LICENSE."
+
   - name: woodfine-fleet-deployment
     organization: woodfine
     license: PointSav-ARR
