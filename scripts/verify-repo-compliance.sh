@@ -118,7 +118,7 @@ compare_file() {
   fi
   local rendered
   rendered=$(render_substituted "$canonical" "$license")
-  if diff -q <(printf '%s' "$rendered") "$target_file" >/dev/null 2>&1; then
+  if diff -q <(printf '%s\n' "$rendered") "$target_file" >/dev/null 2>&1; then
     record "$check_name" "pass" "matches canonical"
   else
     record "$check_name" "fail" "diverges from canonical"

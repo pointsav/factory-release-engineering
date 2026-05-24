@@ -1,5 +1,5 @@
 MULTI-LICENSE NOTICE
-Version 1.0 — Effective 2026-04-20
+Version 1.1 — Effective 2026-05-24
 Copyright © 2026 Woodfine Capital Projects Inc. All rights reserved.
 
 This repository contains code under multiple licenses. Each source file
@@ -29,6 +29,10 @@ Directories under AGPL-3.0-or-later:
   app-privategit-*/  — applications extending os-privategit
   app-totebox-*/     — applications extending os-totebox
   app-workplace-*/   — applications extending os-workplace
+  foundry-nodeclass/ — workspace node classification library
+  scripts/           — workspace build and automation scripts
+  slm/               — language model module configuration
+  docs/              — internal technical documentation
 
 Directories under FSL-1.1-ALv2 (Functional Source License 1.1 with
 Apache-2.0 future license):
@@ -39,12 +43,35 @@ Apache-2.0 future license):
   os-network-admin/    — network administration module
   app-mediakit-*/      — applications extending os-mediakit
   app-network-*/       — applications extending os-network-admin
+  templates/           — HTML/CSS shell templates for app-mediakit surfaces
+
+Directories carrying upstream third-party licenses:
+
+  vendor-virtio/     — virtio driver stubs; see vendor-virtio/README.md for SPDX
+  vendor-wireguard/  — WireGuard tooling; see vendor-wireguard/README.md for SPDX
 
 The full AGPL-3.0-or-later text is available at:
   https://github.com/pointsav/factory-release-engineering/blob/main/licenses/AGPL-3.0.txt
 
 The full FSL-1.1-ALv2 text is available at:
   https://github.com/pointsav/factory-release-engineering/blob/main/licenses/FSL-1.1-Apache-2.0.txt
+
+--------------------------------------------------------------------------------
+LOCAL-ONLY DIRECTORIES (not tracked in this repository)
+--------------------------------------------------------------------------------
+
+The following directories exist on operator machines but are gitignored and
+never committed to this repository:
+
+  app-infrastructure-*/  — per-deployment infrastructure instances
+  vendor-azure-auth/     — Microsoft Azure authentication libraries
+  vendor-gpu-drivers/    — GPU driver packages
+  vendor-linux-systemd/  — systemd library bindings
+  vendor-microsoft-graph/— Microsoft Graph SDK
+  vendor-phi3-mini/      — Phi-3 Mini model weights
+  vendor-sel4-kernel/    — seL4 microkernel source
+  vendor-slm-engine/     — local language model engine
+  discovery-queue/       — operator-local transaction queue
 
 --------------------------------------------------------------------------------
 COMMERCIAL ALTERNATIVE
@@ -64,6 +91,7 @@ Repository-wide policies apply regardless of per-directory licensing:
   - CODE_OF_CONDUCT.md  — Contributor Covenant 2.1
   - CONTRIBUTING.md     — contribution workflow and CLA requirements
   - SECURITY.md         — vulnerability disclosure policy
+  - TRADEMARK.md        — trademark and trade-dress policy
 
 All of these are propagated from factory-release-engineering and should
 not be edited in this repository. Propose changes upstream.
