@@ -105,6 +105,24 @@ a negotiated Order Form. Commercial use contexts:
   (b) FSL pre-DOSP — for customers using FSL-licensed code during
       the two-year window before automatic Apache-2.0 conversion.
 
+**Binary distribution (software.pointsav.com):** As copyright holder of all
+AGPL-3.0-or-later source code in `pointsav-monorepo` under Canadian Copyright
+Act § 13(3), Woodfine Capital Projects Inc. distributes pre-compiled binaries
+of AGPL-licensed modules (os-console, os-privategit, os-workplace, os-totebox,
+and the app-console-*, app-privategit-* family) under PointSav-Commercial terms
+that convey Apache-2.0-equivalent rights to the purchaser: no copyleft
+obligations; may fork, redistribute, and compete. This is not a source-level
+relicensing — the GitHub source remains AGPL-3.0-or-later. It is a separate
+commercial grant for the compiled binary artifact only.
+
+This tier is called **PointSav Commercial (Apache-compatible)** in storefront
+copy and uses `license_tier: commercial` in the `foundry-soft-v1` sidecar.
+FSL-licensed modules (os-mediakit, os-infrastructure, os-interface, and the
+app-mediakit-*, app-network-*, app-orchestration-* family) are distributed under
+their source license (FSL-1.1-ALv2) at the $19 tier (`license_tier: fsl`).
+
+Specification: `conventions/software-distribution-substrate.md`.
+
 ## 4. Per-directory licensing inside `pointsav-monorepo`
 
 The monorepo contains 102 top-level subdirectories assigned to
