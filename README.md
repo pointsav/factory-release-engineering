@@ -153,8 +153,15 @@ Full mapping: see `LICENSE-MATRIX.md`.
 
 **This section is not legal advice.** It describes the operational posture chosen for the current state of the PointSav platform. Counsel review is recommended before any trigger event above; the structure is intentionally minimal so it can be evolved as the project matures, without unwinding pre-existing agreements.
 
----
+<!-- ================================================================== -->
+<!-- This section is generated from factory-release-engineering.         -->
+<!-- Do not edit here. Propose changes upstream.                          -->
+<!-- ================================================================== -->
 
-*Copyright © 2026 Woodfine Capital Projects Inc. See [LICENSE](LICENSE) for terms.*
+## License
+
+This repository is licensed under **Multiple Licenses** — each file or directory carries its own license. See the `LICENSE` file in the root of this repository for the full per-file breakdown, which is authoritative.
+
+Copyright © 2026 Woodfine Capital Projects Inc. — all rights not expressly granted by the license are reserved.
 
 *Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
