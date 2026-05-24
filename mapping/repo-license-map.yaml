@@ -229,3 +229,26 @@ monorepo_directories:
   # ---- Workspace infrastructure (AGPL) ----
   "xtask/":              AGPL-3.0-or-later
   "pointsav-pty-bridge/": AGPL-3.0-or-later
+
+  # ---- Additional tracked directories ----
+  # Added 2026-05-24 — previously unmatched (defects per §4.4); resolved in audit.
+  "foundry-nodeclass/":  AGPL-3.0-or-later   # workspace node classification library
+  "scripts/":            AGPL-3.0-or-later   # build and automation scripts
+  "slm/":                AGPL-3.0-or-later   # language model module configuration
+  "docs/":               AGPL-3.0-or-later   # internal technical documentation
+  "templates/":          FSL-1.1-ALv2        # HTML/CSS shell templates (app-mediakit surface)
+  "vendor-virtio/":      upstream             # virtio stubs; README states upstream SPDX
+  "vendor-wireguard/":   upstream             # WireGuard tooling; README states upstream SPDX
+
+  # ---- Gitignored local-only directories (not tracked; listed for completeness) ----
+  # These directories exist on operator machines but are excluded from git tracking.
+  # No license assignment is needed; they are documented here to close §4.4 defects.
+  # "app-infrastructure-*/": local-only — provisioned at runtime
+  # "vendor-azure-auth/":    local-only — upstream Microsoft license
+  # "vendor-gpu-drivers/":   local-only — upstream vendor license
+  # "vendor-linux-systemd/": local-only — LGPL-2.1-or-later
+  # "vendor-microsoft-graph/":local-only — upstream Microsoft license
+  # "vendor-phi3-mini/":     local-only — MIT (Phi-3 Mini model)
+  # "vendor-sel4-kernel/":   local-only — GPL-2.0-only (seL4)
+  # "vendor-slm-engine/":    local-only — upstream vendor license
+  # "discovery-queue/":      local-only — operational data, gitignored 2026-05-24

@@ -1,0 +1,59 @@
+MULTI-LICENSE NOTICE
+Version 1.0 — Effective 2026-05-24
+Copyright © 2026 Woodfine Capital Projects Inc. All rights reserved.
+
+This repository (factory-release-engineering) is the canonical source for
+PointSav's release governance artifacts: license texts, policy files, SPDX
+header templates, and license assignment mapping. It is itself under a mixed
+license arrangement.
+
+--------------------------------------------------------------------------------
+PER-FILE LICENSING
+--------------------------------------------------------------------------------
+
+  licenses/         — License texts are reproduced verbatim under the terms of
+                      each respective license. No Woodfine copyright applies to
+                      these files; they carry only the copyright of their
+                      original authors.
+
+  policies/         — Policy files (CODE_OF_CONDUCT.md, CONTRIBUTING.md,
+                      SECURITY.md, TRADEMARK.md, DISCLAIMER.md) are copyright
+                      © 2026 Woodfine Capital Projects Inc., licensed
+                      CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+                      Attribution: Woodfine Capital Projects Inc.
+
+  headers/          — SPDX header templates are copyright © 2026 Woodfine
+                      Capital Projects Inc., licensed CC BY 4.0.
+
+  mapping/          — Machine-readable license mapping files are copyright
+                      © 2026 Woodfine Capital Projects Inc., licensed
+                      CC BY 4.0.
+
+  scripts/          — Propagation and verification scripts are copyright
+                      © 2026 Woodfine Capital Projects Inc., licensed
+                      AGPL-3.0-or-later.
+
+  cla/              — CLA templates are copyright © 2026 Woodfine Capital
+                      Projects Inc. All rights reserved (not open-source;
+                      use requires written agreement).
+
+  README.md, LICENSE-MATRIX.md, PLAYBOOK.md, CITATION.cff, TRADEMARK.md,
+  NEXT.md           — Copyright © 2026 Woodfine Capital Projects Inc.,
+                      licensed CC BY 4.0.
+
+--------------------------------------------------------------------------------
+AUTHORITATIVE MAPPING
+--------------------------------------------------------------------------------
+
+The authoritative per-repository license mapping for all PointSav and
+Woodfine repositories is:
+
+  mapping/repo-license-map.yaml  (machine-readable)
+  LICENSE-MATRIX.md              (human-readable companion)
+
+--------------------------------------------------------------------------------
+CONTACT
+--------------------------------------------------------------------------------
+
+Licensing and trademark inquiries: corporate.secretary@woodfinegroup.com
+Open-source and community:         open.source@pointsav.com

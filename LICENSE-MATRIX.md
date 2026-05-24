@@ -159,10 +159,44 @@ defect and must be resolved by either (a) creating the corresponding
 `os-*/` module first, or (b) amending this matrix to add a new
 inheritance pattern.
 
-### 4.4 Unmatched directories are defects
+### 4.4 Additional tracked directories
+
+Added 2026-05-24 (license audit). These directories are tracked in git and
+require explicit license assignment.
+
+| Directory | License | Notes |
+|---|---|---|
+| `foundry-nodeclass/` | AGPL-3.0-or-later | Workspace node classification library |
+| `scripts/` | AGPL-3.0-or-later | Build and automation scripts |
+| `slm/` | AGPL-3.0-or-later | Language model module configuration |
+| `docs/` | AGPL-3.0-or-later | Internal technical documentation |
+| `templates/` | FSL-1.1-ALv2 | HTML/CSS shell templates (app-mediakit surface) |
+| `vendor-virtio/` | upstream | virtio driver stubs; README.md states upstream SPDX identifier |
+| `vendor-wireguard/` | upstream | WireGuard tooling; README.md states upstream SPDX identifier |
+
+### 4.5 Gitignored local-only directories
+
+The following directories exist on operator machines but are excluded from
+git tracking via `.gitignore`. No license assignment is required; they are
+listed here to close §4.4 unmatched-directory defects surfaced in the
+2026-05-24 audit.
+
+| Directory | Notes |
+|---|---|
+| `app-infrastructure-*/` | Per-deployment infrastructure instances — provisioned at runtime |
+| `discovery-queue/` | Operator-local transaction queue — removed from tracking 2026-05-24 |
+| `vendor-azure-auth/` | Microsoft Azure authentication libraries — upstream license |
+| `vendor-gpu-drivers/` | GPU driver packages — upstream vendor license |
+| `vendor-linux-systemd/` | systemd library bindings — LGPL-2.1-or-later |
+| `vendor-microsoft-graph/` | Microsoft Graph SDK — upstream Microsoft license |
+| `vendor-phi3-mini/` | Phi-3 Mini model — MIT (Microsoft Research) |
+| `vendor-sel4-kernel/` | seL4 microkernel source — GPL-2.0-only (Data61/CSIRO) |
+| `vendor-slm-engine/` | Local language model engine — upstream vendor license |
+
+### 4.6 Unmatched directories are defects
 
 Any directory in `pointsav-monorepo` that does not match an entry in
-§4.1, §4.2, or §4.3 is undefined under this matrix. Such directories
+§4.1–§4.5 is undefined under this matrix. Such directories
 are defects and must be resolved before propagation. The propagation
 and verification scripts surface unmatched directories as errors.
 
