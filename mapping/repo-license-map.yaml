@@ -140,6 +140,12 @@ repositories:
   - name: content-wiki-documentation
     organization: pointsav
     license: CC-BY-4.0
+    note: "Legacy name retained for staging-mirror compatibility. Canonical name: media-knowledge-documentation."
+
+  - name: media-knowledge-documentation
+    organization: pointsav
+    license: CC-BY-4.0
+    note: "Renamed from content-wiki-documentation 2026-05. Canonical name in use at GitHub."
 
   - name: pointsav-design-system
     organization: pointsav
@@ -167,10 +173,22 @@ repositories:
   - name: content-wiki-corporate
     organization: woodfine
     license: CC-BY-ND-4.0
+    note: "Legacy name retained for staging-mirror compatibility. Canonical name: media-knowledge-corporate."
+
+  - name: media-knowledge-corporate
+    organization: woodfine
+    license: CC-BY-ND-4.0
+    note: "Renamed from content-wiki-corporate 2026-05. Canonical name in use at GitHub."
 
   - name: content-wiki-projects
     organization: woodfine
     license: CC-BY-ND-4.0
+    note: "Legacy name retained for staging-mirror compatibility. Canonical name: media-knowledge-projects."
+
+  - name: media-knowledge-projects
+    organization: woodfine
+    license: CC-BY-ND-4.0
+    note: "Renamed from content-wiki-projects 2026-05. Canonical name in use at GitHub."
 
   - name: woodfine-bim-library
     organization: woodfine
