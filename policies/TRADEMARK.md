@@ -29,6 +29,7 @@ This Policy protects the following word marks as "Woodfine Marks":
   - "PointSav Digital Systems"
   - "Totebox Orchestration"
   - "Totebox Archive"
+  - "Capability Geometry"
 
 This Policy also covers all logos, graphical marks, trade dress, and
 product names associated with these word marks, whether identified
@@ -277,8 +278,10 @@ creates ambiguity about which protection applies to which element.
 Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.
 
 Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™,
-Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital
-Projects Inc., used in Canada, the United States, Latin America, and Europe.
+Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks
+of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America,
+and Europe.
+Capability Geometry™ is an unregistered trademark of Woodfine Capital Projects Inc.
 All other trademarks are the property of their respective owners.
 ```
 
