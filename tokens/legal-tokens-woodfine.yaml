@@ -30,6 +30,7 @@ trademarks:
     - "PointSav Digital Systems™"
     - "Totebox Orchestration™"
     - "Totebox Archive™"
+    - "Capability Geometry™"
   jurisdictions:
     - Canada
     - United States
@@ -37,9 +38,15 @@ trademarks:
     - Europe
   statement: >
     Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™,
-    Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital
+    Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital
     Projects Inc., used in Canada, the United States, Latin America, and Europe.
     All other trademarks are the property of their respective owners.
+
+  statement_es: >
+    Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™,
+    Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital
+    Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa.
+    Todas las demás marcas comerciales son propiedad de sus respectivos titulares.
 
 footer:
   # Standard footer — all Woodfine-brand properties
@@ -83,6 +90,19 @@ disclaimers:
   homepage:
     # Abbreviated form — home.woodfinegroup.com only
     ref: "policies/HOMEPAGE-DISCLAIMER.md"
+
+website:
+  footer_trademark_en: >
+    Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™,
+    Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks of Woodfine Capital
+    Projects Inc., used in Canada, the United States, Latin America, and Europe.
+    All other trademarks are the property of their respective owners.
+  footer_trademark_es: >
+    Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™,
+    Totebox Orchestration™, Totebox Archive™ y Capability Geometry™ son marcas comerciales de Woodfine Capital
+    Projects Inc., utilizadas en Canadá, los Estados Unidos, América Latina y Europa.
+    Todas las demás marcas comerciales son propiedad de sus respectivos titulares.
+  disclaimer_page_ref: /page/disclaimer
 
 # ── Update procedure ──────────────────────────────────────────────────────────
 # copyright.year_current     — update at the start of each calendar year

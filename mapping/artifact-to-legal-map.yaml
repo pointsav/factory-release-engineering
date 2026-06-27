@@ -1,0 +1,61 @@
+schema: foundry-artifact-legal-map-v1
+# Maps every artifact type to: token source, footer templates, license.
+# Consuming tools read this file to validate footer compliance at commit time.
+# Updated whenever: new artifact type added, footer template created, license changes.
+artifacts:
+  TOPIC:
+    token: tokens/legal-tokens-woodfine.yaml
+    footer_en: readmes/footer-topic-en.md
+    footer_es: readmes/footer-topic-es.md
+    license: CC-BY-4.0
+    bilingual: true
+  GUIDE:
+    token: tokens/legal-tokens-woodfine.yaml
+    footer_en: readmes/footer-guide-en.md
+    footer_es: readmes/footer-guide-es.md
+    license: copyright-only
+    bilingual: true
+  TEXT:
+    token: tokens/legal-tokens-woodfine.yaml
+    footer_en: readmes/footer-text-en.md
+    footer_es: readmes/footer-text-es.md
+    license: copyright-only
+    bilingual: true
+  COMMS:
+    token: tokens/legal-tokens-woodfine.yaml
+    footer_en: readmes/footer-comms-en.md
+    footer_es: readmes/footer-comms-es.md
+    license: copyright-only
+    bilingual: true
+  LEGAL:
+    token: tokens/legal-tokens-woodfine.yaml
+    footer_en: readmes/footer-legal-en.md
+    footer_es: null
+    license: copyright-only
+    bilingual: false
+  RUNBOOK:
+    token: tokens/legal-tokens-woodfine.yaml
+    footer_en: readmes/footer-runbook-en.md
+    footer_es: null
+    license: copyright-only
+    bilingual: false
+  README:
+    token: per-LICENSE-MATRIX
+    footer_en: readmes/footer-readme-en.md
+    footer_es: readmes/footer-readme-es.md
+    license: per-LICENSE-MATRIX.md
+    bilingual: true
+  DESIGN:
+    token: tokens/legal-tokens-pointsav.yaml
+    footer_en: readmes/footer-design-en.md
+    footer_es: null
+    license: Apache-2.0
+    bilingual: false
+    note: project-design to validate scope before committing footer-design-en.md
+  ASSET:
+    token: tokens/legal-tokens-woodfine.yaml
+    footer_en: null
+    footer_es: null
+    license: PointSav-ARR
+    bilingual: false
+    note: binary assets carry no text footer
