@@ -135,13 +135,25 @@ Each `os-*/` directory is named explicitly.
 | Directory | License |
 |---|---|
 | `os-console/` | AGPL-3.0-or-later |
-| `os-privategit/` | AGPL-3.0-or-later |
-| `os-totebox/` | AGPL-3.0-or-later |
+| `os-privategit/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a |
+| `os-totebox/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a |
 | `os-workplace/` | AGPL-3.0-or-later |
 | `os-infrastructure/` | FSL-1.1-ALv2 |
-| `os-interface/` | FSL-1.1-ALv2 — renames to `os-orchestration/` per Rollout Phase 3 |
+| `os-interface/` | **Proprietary — corrected 2026-07-07** (was FSL-1.1-ALv2; renames to `os-orchestration/` per Rollout Phase 3). This assignment was a bug: it contradicted the product's own published positioning (Doctrine claim #23 — the aggregation layer is the company's permanent commercial moat, never open-sourced). Permanent, no conversion. See §4.1a. |
 | `os-mediakit/` | FSL-1.1-ALv2 |
 | `os-network-admin/` | FSL-1.1-ALv2 |
+
+### 4.1a Per-product tier decision record (2026-07-07)
+
+Full reasoning for the three corrections above (and the exact overrides in §4.2a) is recorded
+in `BRIEF-software-licensing-structure.md` (Command-scope Foundry workspace,
+`.agent/briefs/`) — operator-ratified, early-stage sole-decision-maker sign-off in lieu of a
+separate formal legal-counsel/MEMO pass (see that BRIEF's Work Log for the explicit
+authorization record). Summary: `os-orchestration` is the company's stated permanent
+commercial moat and must never open-source; `os-totebox` and `os-privategit` (the storefront
+engine) both move to FSL specifically because FSL guarantees day-one source/data readability
+(satisfying data-portability/no-lock-in commitments) while still giving a 2-year commercial
+protection window before full Apache-2.0 conversion.
 
 ### 4.2 Platform-wide prefix categories (all AGPL-3.0-or-later)
 
@@ -154,6 +166,23 @@ AGPL-3.0-or-later automatically.
 | `system-*` | 14 | AGPL-3.0-or-later |
 | `tool-*` | 8 | AGPL-3.0-or-later |
 | `moonshot-*` | 9 | AGPL-3.0-or-later |
+
+### 4.2a Exact overrides of prefix patterns (2026-07-07)
+
+Individual directories carved out of a blanket prefix category above via an exact
+override in `mapping/repo-license-map.yaml` (exact directory names override prefix
+patterns, per that file's own matching rule). Tracked here so §4.2's table doesn't
+silently go stale. Full reasoning: `BRIEF-software-licensing-structure.md`
+(Command-scope Foundry workspace).
+
+| Directory | Prefix category it overrides | License | Rationale |
+|---|---|---|---|
+| `tool-wallet/` | `tool-*` (AGPL-3.0-or-later) | **Apache-2.0** | No revenue role — never a catalog product under the binary-taxonomy rule. Relicensed 2026-07-07 to seed the Binary Library's Open Source/Community shelf (`BRIEF-binary-library-repositioning.md`, project-software). First directory in this monorepo distributed under a genuine, unconditional Apache-2.0 grant rather than the bespoke PointSav-Commercial per-Order-Form term used for the other AGPL binaries (§3.4). |
+| `moonshot-docengine/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Commodity document-engine infrastructure (replaces ProseMirror/Lexical/TipTap) — real outside-adoption potential, matching os-infrastructure/os-mediakit's FSL rationale rather than os-workplace's unproven consumer-app posture. |
+| `moonshot-editor/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale as `moonshot-docengine/` — editor/viewer/file-tree widget surface (replaces CodeMirror/Monaco/react-arborist). |
+| `moonshot-crdt/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale — collaborative state/version-lineage engine (replaces Loro/Yjs/Automerge). |
+| `moonshot-parser/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale — incremental syntax parser (replaces tree-sitter). |
+| `moonshot-bim-engine/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale — sovereign IFC/BIM engine (replaces web-ifc/xeokit). |
 
 ### 4.3 `app-*` inheritance rule
 
@@ -169,7 +198,7 @@ Each `app-*/` directory inherits the license of its parent domain:
 | `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 3 |
 | `app-mediakit-*` | `os-mediakit` | FSL-1.1-ALv2 | 4 |
 | `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 8 |
-| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | FSL-1.1-ALv2 | 1 |
+| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | **Proprietary** — corrected 2026-07-07 (was FSL-1.1-ALv2); inherits the permanent-moat classification, see §4.1a | 1 |
 
 New `app-*/` directories must match one of these inheritance patterns.
 A new `app-*/` directory that does not match an existing domain is a

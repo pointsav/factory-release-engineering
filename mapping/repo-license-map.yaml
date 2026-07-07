@@ -219,13 +219,22 @@ monorepo_directories:
 
   # ---- Exact os-* module directories ----
   "os-console/":         AGPL-3.0-or-later
-  "os-privategit/":      AGPL-3.0-or-later
-  "os-totebox/":         AGPL-3.0-or-later
+  "os-privategit/":      FSL-1.1-ALv2   # corrected 2026-07-07 (was AGPL-3.0-or-later) — storefront engine, see BRIEF-software-licensing-structure.md
+  "os-totebox/":         FSL-1.1-ALv2   # corrected 2026-07-07 (was AGPL-3.0-or-later) — see BRIEF-software-licensing-structure.md
   "os-workplace/":       AGPL-3.0-or-later
   "os-infrastructure/":  FSL-1.1-ALv2
-  "os-interface/":       FSL-1.1-ALv2   # renames to os-orchestration per Rollout Phase 3
+  "os-interface/":       PointSav-ARR   # corrected 2026-07-07 (was FSL-1.1-ALv2) — permanent proprietary commercial moat (Doctrine claim #23); renames to os-orchestration per Rollout Phase 3; see BRIEF-software-licensing-structure.md
   "os-mediakit/":        FSL-1.1-ALv2
   "os-network-admin/":   FSL-1.1-ALv2
+
+  # ---- Exact overrides of prefix patterns (longest-prefix match: exact wins) ----
+  # Added 2026-07-07 — see BRIEF-software-licensing-structure.md (Command-scope) for full reasoning.
+  "tool-wallet/":            Apache-2.0     # seeds Binary Library Open Source/Community shelf
+  "moonshot-docengine/":     FSL-1.1-ALv2   # commodity doc-engine, real outside-adoption potential
+  "moonshot-editor/":        FSL-1.1-ALv2   # same rationale as moonshot-docengine
+  "moonshot-crdt/":          FSL-1.1-ALv2   # same rationale
+  "moonshot-parser/":        FSL-1.1-ALv2   # same rationale
+  "moonshot-bim-engine/":    FSL-1.1-ALv2   # same rationale
 
   # ---- Platform-wide prefix patterns (all AGPL) ----
   "service-":            AGPL-3.0-or-later
@@ -242,7 +251,7 @@ monorepo_directories:
   "app-workplace-":      AGPL-3.0-or-later
   "app-mediakit-":       FSL-1.1-ALv2
   "app-network-":        FSL-1.1-ALv2
-  "app-orchestration-":  FSL-1.1-ALv2  # inherits os-interface → FSL-1.1-ALv2; DEF-001 closed 2026-05-20
+  "app-orchestration-":  PointSav-ARR  # corrected 2026-07-07 (was FSL-1.1-ALv2) — inherits os-interface's permanent-proprietary classification; see BRIEF-software-licensing-structure.md
 
   # ---- Workspace infrastructure (AGPL) ----
   "xtask/":              AGPL-3.0-or-later
