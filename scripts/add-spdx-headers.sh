@@ -226,19 +226,53 @@ is_excluded_path() {
   return 1
 }
 
-# Returns: match | other | none
+# Returns: match | stale | other | none
+#   match — SPDX id already correct, Woodfine-copyrighted. Leave alone.
+#   stale — Woodfine-copyrighted, but SPDX id does not match the currently
+#           expected license (a prior ratification's tag, e.g. a relicensing
+#           correction that hasn't been re-stamped yet). Needs re-stamping.
+#   other — SPDX id present but copyright holder is NOT Woodfine — genuinely
+#           vendored/third-party code. Leave alone.
+#   none  — no SPDX header at all. Needs first-time stamping.
 # Args: <file> <expected-spdx-id>
 existing_header_status() {
-  local file="$1" expected_spdx="$2" head20
+  local file="$1" expected_spdx="$2" head20 is_woodfine
   head20=$(head -20 "$file" 2>/dev/null || true)
   if ! echo "$head20" | grep -q 'SPDX-License-Identifier:'; then
     echo none; return
   fi
-  if echo "$head20" | grep -q "SPDX-License-Identifier:.*$expected_spdx" \
-     && echo "$head20" | grep -qi "Woodfine Capital Projects"; then
+  is_woodfine=no
+  echo "$head20" | grep -qi "Woodfine Capital Projects" && is_woodfine=yes
+
+  if [[ "$is_woodfine" == yes ]] && echo "$head20" | grep -q "SPDX-License-Identifier:.*$expected_spdx"; then
     echo match; return
   fi
+
+  if [[ "$is_woodfine" == yes ]]; then
+    # Our own file, but the SPDX id doesn't match what's currently expected —
+    # a stale tag left over from before a relicensing correction, not
+    # vendored code. Bug found 2026-07-08: this used to fall through to
+    # "other" and get silently skipped forever, right alongside genuinely
+    # vendored third-party files — which meant the 2026-07-07 licensing
+    # correction (os-totebox/os-privategit/os-interface/tool-wallet/5
+    # moonshot-* dirs) could never get re-stamped by this script.
+    echo stale; return
+  fi
+
   echo other
+}
+
+# Remove an existing (stale) SPDX-License-Identifier / SPDX-FileCopyrightText
+# line pair from the first 20 lines of a file, wherever they are (any comment
+# style). Leaves everything else — including any surrounding comment
+# delimiters — untouched; stamp_file() then prepends the fresh header.
+# Args: <file>
+strip_stale_spdx_lines() {
+  local file="$1" tmp
+  tmp=$(mktemp)
+  awk 'NR<=20 && (/SPDX-License-Identifier:/ || /SPDX-FileCopyrightText:/) { next } { print }' \
+    "$file" > "$tmp"
+  mv "$tmp" "$file"
 }
 
 # Args: <file> <style> <header-body>
@@ -270,7 +304,7 @@ stamp_file() {
 # ---- Walk ----
 
 CHANGED=no
-stamped=0 skipped_path=0 skipped_existing=0 skipped_vendored=0 skipped_ext=0 skipped_no_rule=0 skipped_content=0
+stamped=0 restamped=0 skipped_path=0 skipped_existing=0 skipped_vendored=0 skipped_ext=0 skipped_no_rule=0 skipped_content=0
 
 while IFS= read -r file; do
   rel="${file#$TARGET/}"
@@ -312,6 +346,14 @@ while IFS= read -r file; do
   case "$status" in
     match) skipped_existing=$((skipped_existing + 1)); continue ;;
     other) skipped_vendored=$((skipped_vendored + 1));  continue ;;
+    stale)
+      if [[ "$MODE" == "check" ]]; then
+        log "  would re-stamp (stale license): $file"
+      else
+        strip_stale_spdx_lines "$file"
+        stamp_file "$file" "$style" "$file_header_body"
+      fi
+      restamped=$((restamped + 1)) ;;
     none)  stamp_file "$file" "$style" "$file_header_body"; stamped=$((stamped + 1)) ;;
   esac
 done < <(find "$TARGET" -type f -not -path '*/.git/*')
@@ -321,6 +363,7 @@ done < <(find "$TARGET" -type f -not -path '*/.git/*')
 log ""
 log "Summary for $REPO_NAME:"
 log "  stamped:               $stamped"
+log "  re-stamped (stale):    $restamped"
 log "  already had header:    $skipped_existing"
 log "  vendored (other SPDX): $skipped_vendored"
 log "  excluded path:         $skipped_path"
