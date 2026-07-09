@@ -272,6 +272,7 @@ strip_stale_spdx_lines() {
   tmp=$(mktemp)
   awk 'NR<=20 && (/SPDX-License-Identifier:/ || /SPDX-FileCopyrightText:/) { next } { print }' \
     "$file" > "$tmp"
+  chmod --reference="$file" "$tmp"
   mv "$tmp" "$file"
 }
 
@@ -295,6 +296,7 @@ stamp_file() {
     log "  would stamp: $file"
     rm -f "$tmp"
   else
+    chmod --reference="$file" "$tmp"
     mv "$tmp" "$file"
     log "  stamped: $file"
     CHANGED=yes
@@ -337,9 +339,16 @@ while IFS= read -r file; do
       skipped_content=$((skipped_content + 1))
       continue
     fi
-    file_spdx_id="$file_license"
+    file_header_subs=$(yaml ".licenses.\"$file_license\".header_substitutions // {}")
+    file_prop_id=$(echo "$file_header_subs" | yq -r '."${proprietary-license-id}" // ""')
+    if [[ -n "$file_prop_id" ]]; then
+      file_spdx_id="$file_prop_id"
+    else
+      file_spdx_id="$file_license"
+    fi
     file_header_body=$(cat "$FRE_ROOT/$file_header_template")
     file_header_body="${file_header_body//\$\{year\}/$YEAR}"
+    file_header_body="${file_header_body//\$\{proprietary-license-id\}/$file_spdx_id}"
   fi
 
   status=$(existing_header_status "$file" "$file_spdx_id")
