@@ -281,7 +281,6 @@ Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™,
 Totebox Orchestration™, Totebox Archive™, and Capability Geometry™ are trademarks
 of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America,
 and Europe.
-Capability Geometry™ is an unregistered trademark of Woodfine Capital Projects Inc.
 All other trademarks are the property of their respective owners.
 ```
 
