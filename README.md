@@ -2,7 +2,7 @@
 
 **Purpose.** Canonical source for all licenses, policies, and institutional-maturity templates that propagate across every PointSav and Woodfine repository. One location, version-controlled, authoritative. When a license or policy needs to change, it changes here first and propagates outward — never edited in place across twenty repos.
 
-**Copyright holder.** Woodfine Capital Projects Inc. PointSav Digital Systems™ and Woodfine Management Corp™ operate under the intellectual property definitions of Woodfine Capital Projects Inc.
+**Copyright holder.** Woodfine Capital Projects Inc. PointSav Digital Systems™ and MCorp™ operate under the intellectual property definitions of Woodfine Capital Projects Inc.
 
 **Authority.** This directory is the release-engineering authority for the PointSav platform. It is referenced by — and supersedes — any individual repository's LICENSE, NOTICE, CONTRIBUTING, or policy file that diverges from its contents. When MEMO V8 is ratified, this directory's contents will reflect the licensing structure it formalizes.
 
@@ -131,6 +131,15 @@ Full mapping: see `LICENSE-MATRIX.md`.
 | Woodfine Management Corp. | Incorporated (BC); operating sub | Operations / shield-blocker; **does not generate IP-derived revenue using WCP IP** |
 | PointSav Digital Systems | **Yet to be incorporated** | Operated as a **trade name** of WCP Inc. pre-incorporation; eventual BC operating subsidiary |
 
+**Note on jurisdiction (added 2026-08-02):** the three entities above are
+incorporated in BC — that is their *incorporation situs*, a separate legal
+concept from *contractual governing law*. `SECURITY.md`, `TRADEMARK.md`, and
+both CLAs specify Ontario as governing law for disputes arising under those
+specific agreements. This is a deliberate, coexisting split (BC-incorporated
+entities choosing Ontario as their contracts' governing-law forum), not a
+drifted inconsistency — flagged here once so it isn't mistaken for one and
+"corrected" to a single jurisdiction without legal review.
+
 **Why this works without inter-company IP agreements.** The structure has **no inter-company IP flow** while it operates this way. WCP holds IP and (through its employees) creates and uses it directly; Woodfine Management Corp. is genuinely non-operating with respect to WCP IP; "PointSav Digital Systems" is a trade name of WCP, not a separate legal person. Canadian Copyright Act § 13(3) is sufficient for vesting; CRA § 247 transfer-pricing documentation requirements that attach to inter-company IP use do not attach when there is no inter-company use.
 
 **Operational disciplines that maintain the posture.** This structure depends on the following disciplines being kept:
@@ -164,4 +173,4 @@ This repository is licensed under **Multiple Licenses** — each file or directo
 
 Copyright © 2026 Woodfine Capital Projects Inc. — all rights not expressly granted by the license are reserved.
 
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

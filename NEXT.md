@@ -1,6 +1,6 @@
 # factory-release-engineering — NEXT
 
-Open defects and governance items. Resolved items move to CHANGELOG.md.
+Open defects and governance items. No CHANGELOG.md exists in this repo (corrected 2026-08-02, previously claimed items "move to CHANGELOG.md" — they don't; resolved items stay in place below, marked Closed with their resolution).
 
 ---
 
@@ -10,11 +10,15 @@ Open defects and governance items. Resolved items move to CHANGELOG.md.
 
 **Raised:** 2026-05-07 from project-bim session-close audit
 **Closed:** 2026-05-20 — operator ratified FSL-1.1-ALv2 (follow inheritance rule).
+**Superseded:** 2026-07-07 — `os-interface` (and therefore `app-orchestration-*` by
+inheritance) was reclassified from FSL-1.1-ALv2 to PointSav-ARR (proprietary,
+permanent commercial moat — Doctrine claim #23; `BRIEF-software-licensing-structure.md`).
+This entry was never updated to reflect that at the time; corrected 2026-08-02.
 
-`app-orchestration-*` follows the inheritance rule: `os-interface` → FSL-1.1-ALv2.
-The EUPL-1.2 exception row in repo-license-map.yaml and LICENSE-MATRIX.md §4.3
-has been corrected. `app-orchestration-bim` Cargo.toml must declare
-`license = "FSL-1.1-ALv2"` when the crate is written (project-bim scope).
+`app-orchestration-*` follows the inheritance rule: `os-interface` → PointSav-ARR.
+`app-orchestration-bim` Cargo.toml declares `license = "LicenseRef-PointSav-ARR"`
+— already correct, written when the crate was created. See DEF-003 below for the
+one remaining gap (the crate's `LICENSE` file itself has the wrong text).
 
 ---
 
@@ -27,20 +31,24 @@ but no propagation action is required.
 
 ---
 
-### DEF-003 — SPDX headers missing from `app-orchestration-bim/src/*.rs`
+### DEF-003 — `app-orchestration-bim/LICENSE` has unsubstituted FSL template text
 
 **Raised:** 2026-05-07 from project-bim session-close audit
-**Status:** open — project-bim cluster scope; blocks Stage 6 promotion.
+**Status:** open — project-bim cluster scope; corrected/narrowed 2026-08-02.
 
-`app-orchestration-bim` crate does not exist yet (Reserved-folder state as of 2026-05-20).
-When the crate is written, all `.rs` source files must carry SPDX headers.
+`app-orchestration-bim` crate now exists (confirmed 2026-08-02, no longer Reserved-folder).
+Verified this session: SPDX headers on `.rs` files and the `Cargo.toml` `license` field
+are already correct (`LicenseRef-PointSav-ARR`, matching the 2026-07-07 classification).
+The one remaining gap: `app-orchestration-bim/LICENSE` still contains the raw
+FSL-1.1-ALv2 template text with literal unsubstituted `${year}`/`${licensor name}`
+placeholders — leftover from before the 2026-07-07 PointSav-ARR correction, and never
+propagated correctly even for FSL (the placeholders were never filled either way).
 
-**Required actions (project-bim cluster session, when crate is written):**
-- [ ] Add `// SPDX-FileCopyrightText: 2026 Woodfine Capital Projects Inc.` and
-      `// SPDX-License-Identifier: FSL-1.1-ALv2` to every `.rs` file in
-      `app-orchestration-bim/src/`
-- [ ] Declare `license = "FSL-1.1-ALv2"` in `app-orchestration-bim/Cargo.toml`
-- [ ] Commit in cluster/project-bim before Stage 6 promotion
+**Required action (project-bim cluster session):**
+- [ ] Replace `app-orchestration-bim/LICENSE` with `licenses/PointSav-ARR.txt`'s text
+      (substituted: `${year}` → `2026`), matching what the Cargo.toml/SPDX headers
+      already correctly declare. Command Session relayed this via mailbox 2026-08-02
+      rather than editing another archive's crate content directly.
 
 ---
 
@@ -82,6 +90,32 @@ Until resolved: the single `license-file` failure in `verify-repo-compliance.sh`
 
 ---
 
+### DEF-006 — `github/` staging templates never propagated to downstream `.github/`
+
+**Raised:** 2026-08-02, GitHub public-presentation audit.
+**Status:** open — feature work, not part of the 2026-08-02 docs-remediation pass.
+
+`github/CODEOWNERS.template`, `github/ISSUE_TEMPLATE/`, and
+`github/PULL_REQUEST_TEMPLATE.md` are staged in this repo but
+`scripts/propagate-licenses.sh` has no logic to copy or substitute any of
+them into a target repo's real `.github/` directory (confirmed by grep —
+zero references to `.github`, `ISSUE_TEMPLATE`, `CODEOWNERS`, or
+`editorconfig` in the script). `CONTRIBUTING.md` previously claimed these
+were live in every repo; corrected 2026-08-02 to describe actual current
+state instead.
+
+**Required actions (future propagation-tooling session):**
+- [ ] Extend `propagate-licenses.sh` to copy `github/ISSUE_TEMPLATE/` and
+      `github/PULL_REQUEST_TEMPLATE.md` to each target repo's `.github/`
+- [ ] Add `${default_owners}`/`${release_eng_owners}`/`${infra_owners}`
+      substitution logic for `github/CODEOWNERS.template` → target repo's
+      `.github/CODEOWNERS`, sourced from a new per-repo owners field in
+      `mapping/repo-license-map.yaml`
+- [ ] Add a canonical `.editorconfig` source file to this repo and
+      propagate it the same way
+
+---
+
 *Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.*
 
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

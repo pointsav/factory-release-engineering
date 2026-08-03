@@ -48,8 +48,9 @@ yq -r '.repositories[].name' mapping/repo-license-map.yaml
 
 Confirm the list matches expectation. If any repos are missing, stop
 and resolve before running subsequent phases. See
-`LICENSE-MATRIX.md` §7 for the consolidated list of open enumeration
-questions.
+`LICENSE-MATRIX.md` §4.6 for the consolidated list of open enumeration
+questions (currently scoped to unmatched monorepo directories; there is
+no LICENSE-MATRIX.md §7 — this reference was broken until 2026-08-02).
 
 ---
 
@@ -316,4 +317,4 @@ of the incorporation event.
 
 *Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.*
 
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

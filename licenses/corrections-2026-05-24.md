@@ -1,6 +1,6 @@
 ---
 schema: foundry-draft-v1
-state: draft
+state: resolved
 language_protocol: LEGAL-corrections
 originating_cluster: project-knowledge
 target_repo: factory-release-engineering
@@ -17,9 +17,9 @@ references:
 notes_for_editor: >
   Three targeted corrections to custom license texts in factory-release-engineering.
   All corrections are line-level edits — no structural changes to any license.
-  Please verify each correction is legally sound before routing to ps-administrator
-  for commit. The MIT.txt correction (Issue 1) is the most time-sensitive — it names
-  the wrong legal entity as copyright holder in a deployed license text.
+  Verified 2026-08-02: all three corrections are applied and live in
+  licenses/MIT.txt (line 3) and licenses/PointSav-ARR.txt (§8 survival clause,
+  §3 security-researcher note). No further action required.
 ---
 
 # LEGAL corrections — factory-release-engineering license texts

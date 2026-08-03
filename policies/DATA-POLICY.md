@@ -42,16 +42,16 @@ The Platform runs on private infrastructure hosted within the Google Cloud Platf
 
 The Zero-Cookie and Zero-State Telemetry architecture described in this policy is consistent with the requirements of:
 
-- **EU GDPR (Regulation 2016/679)** — No personal data is processed; no consent is required.
+- **EU GDPR (Regulation 2016/679)** — Processing is limited to the transient IP-address logging described in §2 (Art. 6(1)(f) legitimate interest — abuse prevention), not retained beyond the session; no other personal data is processed and no consent-requiring processing occurs.
 - **EU ePrivacy Directive (2002/58/EC, as amended)** — No tracking cookies are deployed; strictly-necessary local storage is exempt from consent requirements.
-- **California CCPA/CPRA** — No personal information is collected or sold.
-- **Canada PIPEDA (S.C. 2000, c. 5)** — No personal information is collected, used, or disclosed.
+- **California CCPA/CPRA** — No personal information is collected or sold, other than the transient IP-address logging described in §2, which is not sold, shared, or retained beyond the session.
+- **Canada PIPEDA (S.C. 2000, c. 5)** — Collection is limited to the transient IP-address logging described in §2, for the reasonable purpose of abuse prevention, not retained beyond the session; no other personal information is collected, used, or disclosed.
 
 This policy does not constitute legal advice. Platform operators should consult qualified legal counsel regarding their specific obligations under applicable privacy legislation.
 
 ## 6. Contact
 
-Questions regarding this Data Policy may be directed to the System Administrator, PointSav Digital Systems: `open.source@pointsav.com`.
+Questions regarding this Data Policy, including GDPR Art. 13/15 inquiries, may be directed to the System Administrator, PointSav Digital Systems: `open.source@pointsav.com`. No separate Data Protection Officer is currently appointed — the Platform's processing does not meet the GDPR Art. 37 threshold (no large-scale or systematic monitoring, no large-scale special-category processing); this determination will be revisited if that scope changes.
 
 ---
 

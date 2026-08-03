@@ -105,21 +105,37 @@ a negotiated Order Form. Commercial use contexts:
   (b) FSL pre-DOSP — for customers using FSL-licensed code during
       the two-year window before automatic Apache-2.0 conversion.
 
-**Binary distribution (software.pointsav.com):** As copyright holder of all
-AGPL-3.0-or-later source code in `pointsav-monorepo` under Canadian Copyright
-Act § 13(3), Woodfine Capital Projects Inc. distributes pre-compiled binaries
-of AGPL-licensed modules (os-console, os-privategit, os-workplace, os-totebox,
-and the app-console-*, app-privategit-* family) under PointSav-Commercial terms
-that convey Apache-2.0-equivalent rights to the purchaser: no copyleft
-obligations; may fork, redistribute, and compete. This is not a source-level
-relicensing — the GitHub source remains AGPL-3.0-or-later. It is a separate
-commercial grant for the compiled binary artifact only.
+**Binary distribution (software.pointsav.com) — corrected 2026-08-02 to match
+the §4.1/§4.1a/§4.3 license corrections of 2026-07-07, which this paragraph was
+never updated to reflect:**
+
+As copyright holder of all AGPL-3.0-or-later source code in `pointsav-monorepo`
+under Canadian Copyright Act § 13(3), Woodfine Capital Projects Inc. distributes
+pre-compiled binaries of AGPL-licensed modules (os-console, os-workplace, and
+the app-console-* family) under PointSav-Commercial terms that convey
+Apache-2.0-equivalent rights to the purchaser: no copyleft obligations; may
+fork, redistribute, and compete. This is not a source-level relicensing — the
+GitHub source remains AGPL-3.0-or-later. It is a separate commercial grant for
+the compiled binary artifact only.
 
 This tier is called **PointSav Commercial (Apache-compatible)** in storefront
 copy and uses `license_tier: commercial` in the `foundry-soft-v1` sidecar.
-FSL-licensed modules (os-mediakit, os-infrastructure, os-interface, and the
-app-mediakit-*, app-network-*, app-orchestration-* family) are distributed under
-their source license (FSL-1.1-ALv2) at the $19 tier (`license_tier: fsl`).
+FSL-licensed modules (os-mediakit, os-infrastructure, os-privategit, os-totebox,
+and the app-mediakit-*, app-network-*, app-privategit-*, app-totebox-* family)
+are distributed under their source license (FSL-1.1-ALv2) at the $19 tier
+(`license_tier: fsl`). `os-privategit`/`os-totebox`/`app-privategit-*`/
+`app-totebox-*` moved into this FSL paragraph 2026-08-02 — they were
+incorrectly still listed under the AGPL paragraph above, left over from before
+their 2026-07-07 FSL correction (§4.1).
+
+**Not distributed under either tier above:** `os-interface`/`os-orchestration`
+and `app-orchestration-*` are PointSav-ARR (proprietary, permanent commercial
+moat — §4.1a, Doctrine claim #23) and are excluded from both the
+Apache-compatible commercial grant and the FSL $19 tier described here. Neither
+paragraph above named them prior to this correction, so no removal was needed
+for them specifically — this note exists only to make the exclusion explicit,
+since a reader could otherwise assume every AGPL/FSL directory eventually
+reaches the storefront.
 
 Specification: `conventions/software-distribution-substrate.md`.
 
@@ -139,7 +155,8 @@ Each `os-*/` directory is named explicitly.
 | `os-totebox/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a |
 | `os-workplace/` | AGPL-3.0-or-later |
 | `os-infrastructure/` | FSL-1.1-ALv2 |
-| `os-interface/` | **Proprietary — corrected 2026-07-07** (was FSL-1.1-ALv2; renames to `os-orchestration/` per Rollout Phase 3). This assignment was a bug: it contradicted the product's own published positioning (Doctrine claim #23 — the aggregation layer is the company's permanent commercial moat, never open-sourced). Permanent, no conversion. See §4.1a. |
+| `os-interface/` | **PointSav-ARR (proprietary) — corrected 2026-07-07** (was FSL-1.1-ALv2; renames to `os-orchestration/` per Rollout Phase 3). This assignment was a bug: it contradicted the product's own published positioning (Doctrine claim #23 — the aggregation layer is the company's permanent commercial moat, never open-sourced). Permanent, no conversion. See §4.1a. Identifier corrected 2026-08-02 — the license type is `PointSav-ARR` (matching `mapping/repo-license-map.yaml`'s `LicenseRef-PointSav-ARR`), not the bare word "Proprietary" used here previously, which was not a defined license identifier. |
+| `os-orchestration/` | **PointSav-ARR (proprietary) — added 2026-08-02.** Real, tracked directory that was entirely absent from this matrix. This is the Rollout Phase 3 rename target of `os-interface/` above; both currently exist on disk simultaneously mid-migration and carry the same permanent-proprietary classification. |
 | `os-mediakit/` | FSL-1.1-ALv2 |
 | `os-network-admin/` | FSL-1.1-ALv2 |
 
@@ -160,12 +177,12 @@ protection window before full Apache-2.0 conversion.
 Any directory beginning with one of these prefixes inherits
 AGPL-3.0-or-later automatically.
 
-| Prefix | Count (current) | License |
+| Prefix | Count (current, refreshed 2026-08-02) | License |
 |---|---|---|
-| `service-*` | 17 | AGPL-3.0-or-later |
-| `system-*` | 14 | AGPL-3.0-or-later |
-| `tool-*` | 8 | AGPL-3.0-or-later |
-| `moonshot-*` | 9 | AGPL-3.0-or-later |
+| `service-*` | 27 | AGPL-3.0-or-later |
+| `system-*` | 23 | AGPL-3.0-or-later |
+| `tool-*` | 10 (1 exact override — `tool-wallet/`, Apache-2.0, see §4.2a) | AGPL-3.0-or-later |
+| `moonshot-*` | 23 (5 exact overrides — FSL-1.1-ALv2, see §4.2a) | AGPL-3.0-or-later |
 
 ### 4.2a Exact overrides of prefix patterns (2026-07-07)
 
@@ -192,13 +209,15 @@ Each `app-*/` directory inherits the license of its parent domain:
 
 | Prefix | Inherits from | License | Count |
 |---|---|---|---|
-| `app-console-*` | `os-console` | AGPL-3.0-or-later | 10 |
-| `app-privategit-*` | `os-privategit` | AGPL-3.0-or-later | 2 |
-| `app-totebox-*` | `os-totebox` | AGPL-3.0-or-later | 2 |
-| `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 3 |
-| `app-mediakit-*` | `os-mediakit` | FSL-1.1-ALv2 | 4 |
-| `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 8 |
-| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | **Proprietary** — corrected 2026-07-07 (was FSL-1.1-ALv2); inherits the permanent-moat classification, see §4.1a | 1 |
+| `app-console-*` | `os-console` | AGPL-3.0-or-later | 16 |
+| `app-privategit-*` | `os-privategit` | **FSL-1.1-ALv2 — corrected 2026-08-02** (was stale AGPL-3.0-or-later; never updated when `os-privategit` moved to FSL 2026-07-07) | 7 |
+| `app-totebox-*` | `os-totebox` | **FSL-1.1-ALv2 — corrected 2026-08-02** (was stale AGPL-3.0-or-later; never updated when `os-totebox` moved to FSL 2026-07-07) | 2 |
+| `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 9 |
+| `app-mediakit-*` | `os-mediakit` | FSL-1.1-ALv2 | 7 |
+| `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 9 |
+| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | **PointSav-ARR (proprietary)** — corrected 2026-07-07 (was FSL-1.1-ALv2); inherits the permanent-moat classification, see §4.1a. Identifier corrected 2026-08-02 (was bare "Proprietary", not a defined identifier — see §4.1). | 7 |
+
+Counts refreshed 2026-08-02 against live `pointsav-monorepo`; §4.2's prefix-category counts below carry the same staleness pattern and are refreshed in the same pass.
 
 New `app-*/` directories must match one of these inheritance patterns.
 A new `app-*/` directory that does not match an existing domain is a
@@ -223,29 +242,72 @@ require explicit license assignment.
 
 ### 4.5 Gitignored local-only directories
 
-The following directories exist on operator machines but are excluded from
-git tracking via `.gitignore`. No license assignment is required; they are
-listed here to close §4.4 unmatched-directory defects surfaced in the
-2026-05-24 audit.
+**Corrected 2026-08-02:** a 2026-08-02 audit found this section's factual claim
+was wrong for 7 of its 9 original entries — `git ls-tree` confirms
+`vendor-azure-auth/`, `vendor-gpu-drivers/`, `vendor-linux-systemd/`,
+`vendor-microsoft-graph/`, `vendor-phi3-mini/`, `vendor-sel4-kernel/`, and
+`vendor-slm-engine/` are real, git-tracked directories, not gitignored. They
+have been moved to `mapping/repo-license-map.yaml`'s active `upstream` entries
+(vendored third-party code, same treatment as `vendor-virtio/`/
+`vendor-wireguard/` in §4.4) and removed from this table. `app-infrastructure-*/`
+is also git-tracked (as `app-infrastructure-cloud/`, `-leased/`, `-onprem/`) and
+has been moved to §4.6's pending-classification list instead, since — unlike
+the vendor-* directories — it is Woodfine-authored operational content with no
+established license precedent, not vendored upstream code.
+
+Only `discovery-queue/` was confirmed genuinely gitignored/local-only.
 
 | Directory | Notes |
 |---|---|
-| `app-infrastructure-*/` | Per-deployment infrastructure instances — provisioned at runtime |
 | `discovery-queue/` | Operator-local transaction queue — removed from tracking 2026-05-24 |
-| `vendor-azure-auth/` | Microsoft Azure authentication libraries — upstream license |
-| `vendor-gpu-drivers/` | GPU driver packages — upstream vendor license |
-| `vendor-linux-systemd/` | systemd library bindings — LGPL-2.1-or-later |
-| `vendor-microsoft-graph/` | Microsoft Graph SDK — upstream Microsoft license |
-| `vendor-phi3-mini/` | Phi-3 Mini model — MIT (Microsoft Research) |
-| `vendor-sel4-kernel/` | seL4 microkernel source — GPL-2.0-only (Data61/CSIRO) |
-| `vendor-slm-engine/` | Local language model engine — upstream vendor license |
 
 ### 4.6 Unmatched directories are defects
 
 Any directory in `pointsav-monorepo` that does not match an entry in
 §4.1–§4.5 is undefined under this matrix. Such directories
-are defects and must be resolved before propagation. The propagation
-and verification scripts surface unmatched directories as errors.
+are defects and must be resolved before propagation.
+
+**Note on enforcement (2026-08-02):** `scripts/verify-repo-compliance.sh`
+checks per-repository license compliance (LICENSE file, policies, SPDX headers)
+but does not currently walk `monorepo_directories` to flag unmatched
+directories — the "propagation and verification scripts surface unmatched
+directories as errors" claim above describes intended, not current, behavior.
+Building that check is separate follow-up work, not part of this pass.
+
+**Confirmed unmatched directories (2026-08-02 audit, verified via
+`git ls-tree -d --name-only HEAD` against every active rule in
+`mapping/repo-license-map.yaml`):** 21 directories remain unmatched after this
+pass resolved `os-orchestration/` (§4.1) and the 7 vendored-upstream
+directories (§4.4/§4.5). None of these have been assigned a license — this
+list exists so the gap is visible and trackable, not to imply resolution.
+Each requires content review before classification; several appear to be
+scratch/workspace clutter rather than shippable product code and may resolve
+via removal rather than a license assignment. See `NEXT.md` for the tracked
+follow-up item.
+
+| Directory | Notes |
+|---|---|
+| `app-infrastructure-cloud/` | Real, tracked (moved here 2026-08-02 from §4.5, which wrongly called it gitignored) |
+| `app-infrastructure-leased/` | Same as above |
+| `app-infrastructure-onprem/` | Same as above |
+| `bread/` | Unknown purpose — no near-miss rule; needs content review |
+| `briefs/` | Unknown purpose — no near-miss rule; needs content review |
+| `console-core/` | Unknown purpose — no near-miss rule; needs content review |
+| `data/` | Unknown purpose — no near-miss rule; needs content review |
+| `infrastructure/` | Unknown purpose — no near-miss rule; needs content review |
+| `JOURNAL/` | Unknown purpose — no near-miss rule; needs content review |
+| `proposed/` | Unknown purpose — no near-miss rule; needs content review |
+| `SUMMARY/` | Unknown purpose — no near-miss rule; needs content review |
+| `work/` | Unknown purpose — no near-miss rule; needs content review |
+| `workplace-shell-chrome/` | Unknown purpose — no near-miss rule; needs content review |
+| `vendor-libvmm/` | Not documented anywhere, unlike its vendor-* siblings in §4.4/§4.5 |
+| `vendor-sel4-project/` | Not documented anywhere |
+| `vendor-sel4-tools/` | Not documented anywhere |
+| `vendor-tantivy/` | Not documented anywhere |
+| `vendor-tantivy-columnar/` | Not documented anywhere |
+| `vendor-tantivy-common/` | Not documented anywhere |
+| `.cargo/` | Workspace/build config, not a licensable code module — likely out of scope for a license assignment rather than a defect; flagged for a scope decision, not silently excluded |
+| `.github/` | CI/workflow config, not a licensable code module — same flag as `.cargo/` above |
 
 ## 5. Propagation artifacts per license
 
@@ -270,6 +332,18 @@ propagation script writes `MIXED-MONOREPO-NOTICE.txt` at the repo root
 and relies on per-source-file SPDX headers (stamped by
 `add-spdx-headers.sh`) for actual licensing disambiguation.
 
+### 5.1 Website-content policies (not per-repo propagation)
+
+`policies/DISCLAIMER.md` and `policies/HOMEPAGE-DISCLAIMER.md` are securities
+disclaimers for the live `woodfinegroup.com`/`home.woodfinegroup.com` corporate
+site, not repo governance boilerplate — they do not belong in the §5 per-license
+propagation table above (stamping a securities disclaimer into, say,
+`pointsav-design-system`'s README would be wrong). They are already correctly
+routed via `tokens/legal-tokens-woodfine.yaml` and `tokens/legal-tokens-pointsav.yaml`
+(consumed by `app-mediakit-knowledge`'s `shell_chrome()` for live site rendering
+and CI footer validation). This section exists solely so this routing isn't
+mistaken for an orphaned gap.
+
 ## 6. Change control
 
 Changes to this matrix follow README §5:
@@ -290,4 +364,4 @@ Changes to this matrix follow README §5:
 
 *Copyright © 2026 Woodfine Capital Projects Inc. See LICENSE for terms.*
 
-*Woodfine Capital Projects™, Woodfine Management Corp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*
+*Woodfine Capital Projects™, MCorp™, PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™ are trademarks of Woodfine Capital Projects Inc., used in Canada, the United States, Latin America, and Europe. All other trademarks are the property of their respective owners.*

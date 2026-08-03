@@ -224,6 +224,7 @@ monorepo_directories:
   "os-workplace/":       AGPL-3.0-or-later
   "os-infrastructure/":  FSL-1.1-ALv2
   "os-interface/":       PointSav-ARR   # corrected 2026-07-07 (was FSL-1.1-ALv2) — permanent proprietary commercial moat (Doctrine claim #23); renames to os-orchestration per Rollout Phase 3; see BRIEF-software-licensing-structure.md
+  "os-orchestration/":   PointSav-ARR   # added 2026-08-02 — real tracked dir, was undefined; Rollout Phase 3 rename target of os-interface, both currently coexist mid-migration; same permanent-proprietary classification applies
   "os-mediakit/":        FSL-1.1-ALv2
   "os-network-admin/":   FSL-1.1-ALv2
 
@@ -246,8 +247,8 @@ monorepo_directories:
   # app-<domain>-<thing> inherits the license of os-<domain>.
   # Patterns match any directory beginning with the prefix.
   "app-console-":        AGPL-3.0-or-later
-  "app-privategit-":     AGPL-3.0-or-later
-  "app-totebox-":        AGPL-3.0-or-later
+  "app-privategit-":     FSL-1.1-ALv2   # corrected 2026-08-02 — inherits os-privategit's 2026-07-07 FSL correction; was stale AGPL
+  "app-totebox-":        FSL-1.1-ALv2   # corrected 2026-08-02 — inherits os-totebox's 2026-07-07 FSL correction; was stale AGPL
   "app-workplace-":      AGPL-3.0-or-later
   "app-mediakit-":       FSL-1.1-ALv2
   "app-network-":        FSL-1.1-ALv2
@@ -267,15 +268,27 @@ monorepo_directories:
   "vendor-virtio/":      upstream             # virtio stubs; README states upstream SPDX
   "vendor-wireguard/":   upstream             # WireGuard tooling; README states upstream SPDX
 
-  # ---- Gitignored local-only directories (not tracked; listed for completeness) ----
-  # These directories exist on operator machines but are excluded from git tracking.
-  # No license assignment is needed; they are documented here to close §4.4 defects.
-  # "app-infrastructure-*/": local-only — provisioned at runtime
-  # "vendor-azure-auth/":    local-only — upstream Microsoft license
-  # "vendor-gpu-drivers/":   local-only — upstream vendor license
-  # "vendor-linux-systemd/": local-only — LGPL-2.1-or-later
-  # "vendor-microsoft-graph/":local-only — upstream Microsoft license
-  # "vendor-phi3-mini/":     local-only — MIT (Phi-3 Mini model)
-  # "vendor-sel4-kernel/":   local-only — GPL-2.0-only (seL4)
-  # "vendor-slm-engine/":    local-only — upstream vendor license
+  # ---- Vendored upstream code (corrected 2026-08-02) ----
+  # These are git-tracked (confirmed via `git ls-tree`), NOT gitignored/local-only as
+  # previously claimed here — that claim was factually wrong per the 2026-08-02 audit.
+  # "upstream" = vendored third-party code under its own license; not propagated or
+  # relicensed by this repo's scripts. Matches the existing vendor-virtio/vendor-wireguard
+  # pattern above (§4.4).
+  "vendor-azure-auth/":     upstream   # upstream Microsoft license
+  "vendor-gpu-drivers/":    upstream   # upstream vendor license
+  "vendor-linux-systemd/":  upstream   # LGPL-2.1-or-later
+  "vendor-microsoft-graph/": upstream   # upstream Microsoft license
+  "vendor-phi3-mini/":      upstream   # MIT (Phi-3 Mini model, Microsoft Research)
+  "vendor-sel4-kernel/":    upstream   # GPL-2.0-only (Data61/CSIRO)
+  "vendor-slm-engine/":     upstream   # upstream vendor license
+
+  # ---- Genuinely unmatched — pending classification (2026-08-02 audit) ----
+  # Real, tracked directories with no license assignment yet. Do NOT propagate/stamp
+  # against these until each is classified. See LICENSE-MATRIX.md §4.6 for the full list
+  # and follow-up plan; NEXT.md tracks this as a defect.
+  # app-infrastructure-cloud/, app-infrastructure-leased/, app-infrastructure-onprem/,
+  # bread/, briefs/, console-core/, data/, discovery-queue/ (confirmed genuinely gitignored,
+  # unlike the vendor-* dirs above), infrastructure/, JOURNAL/, proposed/, SUMMARY/, work/,
+  # workplace-shell-chrome/, vendor-libvmm/, vendor-sel4-project/, vendor-sel4-tools/,
+  # vendor-tantivy/, vendor-tantivy-columnar/, vendor-tantivy-common/
   # "discovery-queue/":      local-only — operational data, gitignored 2026-05-24

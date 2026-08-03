@@ -2,13 +2,33 @@ schema: foundry-artifact-legal-map-v1
 # Maps every artifact type to: token source, footer templates, license.
 # Consuming tools read this file to validate footer compliance at commit time.
 # Updated whenever: new artifact type added, footer template created, license changes.
+#
+# Note (2026-08-02): confirmed unconsumed — no script in this repo or elsewhere
+# currently reads this file. "license" values here are descriptive labels for
+# a footer-validation tool that doesn't exist yet, not live inputs to
+# propagate-licenses.sh/verify-repo-compliance.sh (those read
+# mapping/repo-license-map.yaml instead, a separate catalog).
+#
+# "copyright-only" (used below by GUIDE/TEXT/COMMS/LEGAL/RUNBOOK) = no open
+# license grant; a bare copyright notice, all rights reserved. Deliberately
+# distinct from PointSav-ARR (mapping/repo-license-map.yaml), which carries
+# real license terms, restrictions, and a trademark carve-out — these artifact
+# types need only a copyright statement in the footer, not the full PointSav-ARR
+# license text. It is not, and is not meant to be, a key in
+# repo-license-map.yaml's `licenses:` catalog.
 artifacts:
   TOPIC:
     token: tokens/legal-tokens-woodfine.yaml
     footer_en: readmes/footer-topic-en.md
     footer_es: readmes/footer-topic-es.md
-    license: CC-BY-4.0
-    bilingual: true
+    license: CC-BY-4.0   # default — content-wiki-documentation / media-knowledge-documentation (pointsav org)
+    license_overrides:   # corrected 2026-08-02 — was unconditionally CC-BY-4.0, mismatched LICENSE-MATRIX.md §3.2
+      content-wiki-corporate: CC-BY-ND-4.0
+      media-knowledge-corporate: CC-BY-ND-4.0
+      content-wiki-projects: CC-BY-ND-4.0
+      media-knowledge-projects: CC-BY-ND-4.0
+    bilingual: true   # applies to the CC-BY-4.0 default only; CC-BY-ND-4.0 destinations
+                       # are English-only per LICENSE-MATRIX.md §3.3 (no translations permitted)
   GUIDE:
     token: tokens/legal-tokens-woodfine.yaml
     footer_en: readmes/footer-guide-en.md

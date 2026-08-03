@@ -36,8 +36,9 @@ product names associated with these word marks, whether identified
 here or adopted in the future. Any mark omitted from this enumeration
 is unprotected by this Policy until added by amendment.
 
-This Policy enumerates nine word marks (five canonical marks plus four
-bare-word forms without corporate suffix) for breadth of legal protection.
+This Policy enumerates ten word marks (the original five canonical marks
+plus four bare-word forms without corporate suffix, plus "Capability Geometry"
+added as an additional canonical mark by amendment) for breadth of legal protection.
 The canonical five-mark short-form notice used in document footers and
 README files — "Woodfine Capital Projects™, MCorp™,
 PointSav Digital Systems™, Totebox Orchestration™, and Totebox Archive™"

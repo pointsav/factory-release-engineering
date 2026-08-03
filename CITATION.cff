@@ -12,14 +12,16 @@ abstract: >-
   organisations. Implements Stage 5 of the vendor → customer → deployments
   commit flow defined by PointSav release-engineering governance (vendor → customer → deployments).
 authors:
-  - given-names: System Administrator
-    name-particle: PointSav
-    family-names: Digital Systems
+  - name: "PointSav Digital Systems"
     email: open.source@pointsav.com
-    affiliation: PointSav Digital Systems
 repository-code: "https://github.com/pointsav/factory-release-engineering"
 url: "https://github.com/pointsav/factory-release-engineering"
-license: LicenseRef-PointSav-ARR
+# No single SPDX identifier applies — this repo is MIXED (per-directory:
+# licenses/ upstream copyright, policies|headers|mapping CC-BY-4.0, scripts
+# AGPL-3.0-or-later, cla all-rights-reserved; see NEXT.md DEF-005). Corrected
+# 2026-08-02 — was LicenseRef-PointSav-ARR, contradicting this repo's own
+# MIXED classification in LICENSE-MATRIX.md §3.1 and repo-license-map.yaml.
+license-url: "https://github.com/pointsav/factory-release-engineering/blob/main/LICENSE-MATRIX.md"
 version: "0.1.132"
 date-released: "2026-05-12"
 keywords:
@@ -37,11 +39,8 @@ preferred-citation:
   type: software
   title: "Factory Release Engineering — PointSav Digital Systems"
   authors:
-    - given-names: System Administrator
-      name-particle: PointSav
-      family-names: Digital Systems
+    - name: "PointSav Digital Systems"
       email: open.source@pointsav.com
-      affiliation: PointSav Digital Systems
   version: "0.1.132"
   date-released: "2026-05-12"
   url: "https://github.com/pointsav/factory-release-engineering"

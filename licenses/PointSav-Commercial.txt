@@ -294,7 +294,7 @@ the Province of Ontario sitting in Toronto.
 
 Nothing in this License grants You any right to use any trademark,
 service mark, trade dress, logo, or name of Woodfine, PointSav
-Digital Systems™, or Woodfine Management Corp™, except as
+Digital Systems™, or MCorp™, except as
 required for attribution under Section 3 or as expressly permitted
 by TRADEMARK.md in the factory-release-engineering directory.
 
