@@ -83,7 +83,7 @@ factory-release-engineering/
 
 **English licenses, bilingual README sections.** License files are English-only — legal instruments are monolingual to avoid translation-drift ambiguity. Each target repo's README receives a bilingual English/Spanish section (from `readmes/`) that explains the license in both languages and points to the authoritative English text.
 
-**CLA before merge.** No contribution is merged to any AGPLv3 or FSL-licensed repo without a signed CLA on file. CLA Assistant (GitHub-native) enforces this.
+**CLA before merge.** No contribution is merged to any AGPLv3 or FSL-licensed repo without a signed CLA on file. CLA Assistant (GitHub-native) is the planned enforcement mechanism; activation is tracked in the rollout table below (currently pending) — until it activates, this policy is enforced manually.
 
 **SPDX headers on source files.** Every source file in an AGPLv3, FSL, or Apache-2.0 directory carries a machine-readable SPDX identifier header. This is the REUSE Software specification standard.
 
