@@ -5,7 +5,7 @@ type: reference
 ---
 
 <!-- TEMPLATE: footer-design-en — PENDING project-design sign-off before committing to any DESIGN-* artifact -->
-<!-- source: tokens/legal-tokens-pointsav.yaml § trademarks.statement -->
+<!-- source: tokens/legal-tokens-woodfine.yaml § trademarks.statement (corrected 2026-08-19 — the source comment previously named legal-tokens-pointsav.yaml, the wrong file) -->
 <!-- NOTE: Validate with project-design before committing — DESIGN-* artifacts are project-design scope -->
 
 ---
