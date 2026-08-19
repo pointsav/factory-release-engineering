@@ -357,8 +357,10 @@ Changes to this matrix follow README §5:
   - Changes to `mapping/repo-license-map.yaml` must be reflected
     here in the same PR. Divergence is a defect.
   - New directories added to `pointsav-monorepo` must be covered by
-    an entry in §4 before being merged. Unmatched new directories
-    are blocked at propagation time by `verify-repo-compliance.sh`.
+    an entry in §4 before being merged. **This is not yet automated** —
+    `verify-repo-compliance.sh` does not currently walk `monorepo_directories`
+    to flag unmatched ones (see §4.6's enforcement note); until that check is
+    built, this rule is enforced by manual review at merge time.
 
 ---
 

@@ -168,6 +168,11 @@ repositories:
     license: MIXED
     note: "This repository. Content is the canonical source; LICENSE-NOTICE explains per-file licensing."
 
+  - name: .github
+    organization: pointsav
+    license: CC-BY-4.0
+    note: "Org-level profile README only (profile/README.md + .es.md), no code."
+
   # ---- woodfine GitHub org ----
 
   - name: content-wiki-corporate
@@ -206,6 +211,11 @@ repositories:
   - name: woodfine.github.io
     organization: woodfine
     license: Apache-2.0
+
+  - name: .github
+    organization: woodfine
+    license: CC-BY-4.0
+    note: "Org-level profile README only (profile/README.md + .es.md), no code."
 
 # ============================================================================
 # Monorepo per-directory licensing.
