@@ -37,7 +37,8 @@ product names associated with these word marks, whether identified
 here or adopted in the future. Any mark omitted from this enumeration
 is unprotected by this Policy until added by amendment.
 
-This Policy enumerates ten word marks (six canonical marks plus four
+This Policy enumerates eleven word marks (seven canonical marks — the five
+full corporate/product marks, "MCorp," and "Capability Geometry" — plus four
 bare-word forms without corporate suffix) for breadth of legal protection.
 "MCorp" is the short-form mark adopted 2026-06-19 for use in the
 canonical short-form notice and public-facing attribution; "Woodfine
