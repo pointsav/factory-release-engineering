@@ -233,8 +233,9 @@ monorepo_directories:
   "os-totebox/":         FSL-1.1-ALv2   # corrected 2026-07-07 (was AGPL-3.0-or-later) — see BRIEF-software-licensing-structure.md
   "os-workplace/":       AGPL-3.0-or-later
   "os-infrastructure/":  FSL-1.1-ALv2
-  "os-interface/":       PointSav-ARR   # corrected 2026-07-07 (was FSL-1.1-ALv2) — permanent proprietary commercial moat (Doctrine claim #23); renames to os-orchestration per Rollout Phase 3; see BRIEF-software-licensing-structure.md
-  "os-orchestration/":   PointSav-ARR   # added 2026-08-02 — real tracked dir, was undefined; Rollout Phase 3 rename target of os-interface, both currently coexist mid-migration; same permanent-proprietary classification applies
+  # os-interface/ and os-orchestration/ removed 2026-09-01 — extracted to
+  # pointsav/pointsav-orchestration-private (private repo) after ~3 months of public
+  # exposure of the real license-enforcement source; see LICENSE-MATRIX.md §4.1b.
   "os-mediakit/":        FSL-1.1-ALv2
   "os-network-admin/":   FSL-1.1-ALv2
 
@@ -262,7 +263,7 @@ monorepo_directories:
   "app-workplace-":      AGPL-3.0-or-later
   "app-mediakit-":       FSL-1.1-ALv2
   "app-network-":        FSL-1.1-ALv2
-  "app-orchestration-":  PointSav-ARR  # corrected 2026-07-07 (was FSL-1.1-ALv2) — inherits os-interface's permanent-proprietary classification; see BRIEF-software-licensing-structure.md
+  # app-orchestration-* removed 2026-09-01 — see os-interface/os-orchestration note above.
 
   # ---- Workspace infrastructure (AGPL) ----
   "xtask/":              AGPL-3.0-or-later

@@ -155,8 +155,8 @@ Each `os-*/` directory is named explicitly.
 | `os-totebox/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a |
 | `os-workplace/` | AGPL-3.0-or-later |
 | `os-infrastructure/` | FSL-1.1-ALv2 |
-| `os-interface/` | **PointSav-ARR (proprietary) — corrected 2026-07-07** (was FSL-1.1-ALv2; renames to `os-orchestration/` per Rollout Phase 3). This assignment was a bug: it contradicted the product's own published positioning (Doctrine claim #23 — the aggregation layer is the company's permanent commercial moat, never open-sourced). Permanent, no conversion. See §4.1a. Identifier corrected 2026-08-02 — the license type is `PointSav-ARR` (matching `mapping/repo-license-map.yaml`'s `LicenseRef-PointSav-ARR`), not the bare word "Proprietary" used here previously, which was not a defined license identifier. |
-| `os-orchestration/` | **PointSav-ARR (proprietary) — added 2026-08-02.** Real, tracked directory that was entirely absent from this matrix. This is the Rollout Phase 3 rename target of `os-interface/` above; both currently exist on disk simultaneously mid-migration and carry the same permanent-proprietary classification. |
+| `os-interface/` | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), corrected 2026-07-07 (was FSL-1.1-ALv2; renamed to `os-orchestration/` per Rollout Phase 3). |
+| `os-orchestration/` | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), added to this matrix 2026-08-02. |
 | `os-mediakit/` | FSL-1.1-ALv2 |
 | `os-network-admin/` | FSL-1.1-ALv2 |
 
@@ -171,6 +171,21 @@ commercial moat and must never open-source; `os-totebox` and `os-privategit` (th
 engine) both move to FSL specifically because FSL guarantees day-one source/data readability
 (satisfying data-portability/no-lock-in commitments) while still giving a 2-year commercial
 protection window before full Apache-2.0 conversion.
+
+### 4.1b Orchestration layer relocated to a private repo (2026-09-01)
+
+`os-interface/`, `os-orchestration/`, and all `app-orchestration-*/` directories (bim,
+command, exchange, gis, graph, market, slm — 9 directories total) were extracted, with full
+history, to a new private repository: `pointsav/pointsav-orchestration-private`. This is not
+a licensing change — these directories were already PointSav-ARR (proprietary), unchanged —
+it is a correction of where genuinely non-public code was living. The real license-enforcement
+source (Ed25519 license gate, metering, fleet allocation) had been publicly readable on
+`pointsav-monorepo` and both `jwoodfine`/`pwoodfine` public staging forks for approximately 3
+months (first committed 2026-06-05) before discovery and remediation. Full-history purge
+(`git filter-repo --invert-paths`) applied to canonical and both forks; see NOTAM for the
+incident record. `app-orchestration-bim`/`app-orchestration-graph` were also removed from
+`pointsav-monorepo`'s root `Cargo.toml` workspace members as part of this change (they were
+the only two of the 9 registered there — the rest are self-contained nested workspaces).
 
 ### 4.2 Platform-wide prefix categories (all AGPL-3.0-or-later)
 
@@ -215,7 +230,7 @@ Each `app-*/` directory inherits the license of its parent domain:
 | `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 9 |
 | `app-mediakit-*` | `os-mediakit` | FSL-1.1-ALv2 | 7 |
 | `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 9 |
-| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | **PointSav-ARR (proprietary)** — corrected 2026-07-07 (was FSL-1.1-ALv2); inherits the permanent-moat classification, see §4.1a. Identifier corrected 2026-08-02 (was bare "Proprietary", not a defined identifier — see §4.1). | 7 |
+| `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), corrected 2026-07-07. | 0 (was 7) |
 
 Counts refreshed 2026-08-02 against live `pointsav-monorepo`; §4.2's prefix-category counts below carry the same staleness pattern and are refreshed in the same pass.
 
