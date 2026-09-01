@@ -120,13 +120,18 @@ the compiled binary artifact only.
 
 This tier is called **PointSav Commercial (Apache-compatible)** in storefront
 copy and uses `license_tier: commercial` in the `foundry-soft-v1` sidecar.
-FSL-licensed modules (os-mediakit, os-infrastructure, os-privategit, os-totebox,
-and the app-mediakit-*, app-network-*, app-privategit-*, app-totebox-* family)
-are distributed under their source license (FSL-1.1-ALv2) at the $19 tier
-(`license_tier: fsl`). `os-privategit`/`os-totebox`/`app-privategit-*`/
-`app-totebox-*` moved into this FSL paragraph 2026-08-02 — they were
-incorrectly still listed under the AGPL paragraph above, left over from before
-their 2026-07-07 FSL correction (§4.1).
+FSL-licensed modules (os-infrastructure, os-privategit, os-totebox, and the
+app-network-*, app-privategit-*, app-totebox-* family) are distributed under
+their source license (FSL-1.1-ALv2) at the $19 tier (`license_tier: fsl`).
+`os-privategit`/`os-totebox`/`app-privategit-*`/`app-totebox-*` moved into
+this FSL paragraph 2026-08-02 — they were incorrectly still listed under the
+AGPL paragraph above, left over from before their 2026-07-07 FSL correction
+(§4.1). **`os-mediakit`/`app-mediakit-*` removed from this paragraph
+2026-09-01** — relicensed to Apache-2.0 (see §4.1, §4.2); the
+`foundry-soft-v1` sidecar's `license_tier` enum needs a new `open` value
+(`price_usdc: "0.00"`) to represent this, not yet implemented — tracked in
+NEXT.md, not executed this pass. `os-totebox` was also proposed for this
+Apache move but is currently blocked — see §4.1c.
 
 **Not distributed under either tier above:** `os-interface`/`os-orchestration`
 and `app-orchestration-*` are PointSav-ARR (proprietary, permanent commercial
@@ -150,14 +155,14 @@ Each `os-*/` directory is named explicitly.
 
 | Directory | License |
 |---|---|
-| `os-console/` | AGPL-3.0-or-later |
+| `os-console/` | AGPL-3.0-or-later — **relicense to Apache-2.0 proposed 2026-09-01, BLOCKED, see §4.1c.** |
 | `os-privategit/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a |
-| `os-totebox/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a |
+| `os-totebox/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a. **Relicense to Apache-2.0 proposed 2026-09-01, BLOCKED, see §4.1c.** |
 | `os-workplace/` | AGPL-3.0-or-later |
 | `os-infrastructure/` | FSL-1.1-ALv2 |
 | `os-interface/` | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), corrected 2026-07-07 (was FSL-1.1-ALv2; renamed to `os-orchestration/` per Rollout Phase 3). |
 | `os-orchestration/` | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), added to this matrix 2026-08-02. |
-| `os-mediakit/` | FSL-1.1-ALv2 |
+| `os-mediakit/` | **Apache-2.0 — relicensed 2026-09-01** (was FSL-1.1-ALv2). Linking-boundary audit clean (zero cross-tier path dependencies). See §4.1c. |
 | `os-network-admin/` | FSL-1.1-ALv2 |
 
 ### 4.1a Per-product tier decision record (2026-07-07)
@@ -187,6 +192,39 @@ incident record. `app-orchestration-bim`/`app-orchestration-graph` were also rem
 `pointsav-monorepo`'s root `Cargo.toml` workspace members as part of this change (they were
 the only two of the 9 registered there — the rest are self-contained nested workspaces).
 
+### 4.1c Apache-2.0 convergence attempt (2026-09-01) — partial, real blockers found
+
+`BRIEF-pointsav-licensing-architecture.md` (project-editorial) proposed converging
+`os-console`/`app-console-*`, `os-totebox`/`app-totebox-*`, and `os-mediakit`/`app-mediakit-*`
+to Apache-2.0. Ratified as design direction, but execution required a linking-boundary audit
+first (Apache-tier crates cannot safely path-depend, in-process, on AGPL+Commercial-tier
+crates — the dependency would functionally infect the "Apache" label with copyleft
+obligations). Audit result: **not uniformly safe to execute.**
+
+**Executed (audit clean):** `os-mediakit`/`app-mediakit-*` — zero cross-tier dependencies,
+relicensed to Apache-2.0 above and in §4.2.
+
+**Blocked, NOT executed — stays at current tier:**
+- `os-console` path-depends on `system-gateway-mba` (AGPL+Commercial tier).
+- `app-console-content` path-depends on `system-gateway-mba`.
+- `app-console-system` path-depends on `system-core` and `system-ledger` (both AGPL+Commercial tier).
+- `os-totebox` path-depends on `service-content` and `slm-doorman-server` (both AGPL+Commercial tier).
+
+Must be resolved (dependency removed/refactored out, or the dependent crate kept out of the
+Apache tier) before any of these four can be relicensed. Tracked in NEXT.md.
+
+**Separately found, not a cross-tier violation but blocks a clean relicense:** `console-core`
+(real, git-tracked source, depended on by `app-console-keys`) is currently mismarked as
+gitignored/local-only in `mapping/repo-license-map.yaml` — needs an explicit map entry before
+any relicense commit references it. Note: `BRIEF-pointsav-licensing-architecture.md`
+(project-editorial) separately flagged a broader "~2,650-file, 7+ `vendor-*` dirs" version of
+this defect class — checked directly this pass, that specific claim appears **stale**: all 7
+named `vendor-*` directories are already correctly classified `upstream` in
+`mapping/repo-license-map.yaml` (fixed 2026-08-02, per §4.5's own history). `console-core` looks
+like a genuinely new, separate instance, not evidence the older defect is still open — but the
+full ~2,650-file count wasn't independently re-audited this pass, so treat "is the broader claim
+still accurate at all" as an open question, not resolved either way.
+
 ### 4.2 Platform-wide prefix categories (all AGPL-3.0-or-later)
 
 Any directory beginning with one of these prefixes inherits
@@ -196,8 +234,8 @@ AGPL-3.0-or-later automatically.
 |---|---|---|
 | `service-*` | 27 | AGPL-3.0-or-later |
 | `system-*` | 23 | AGPL-3.0-or-later |
-| `tool-*` | 10 (1 exact override — `tool-wallet/`, Apache-2.0, see §4.2a) | AGPL-3.0-or-later |
-| `moonshot-*` | 23 (5 exact overrides — FSL-1.1-ALv2, see §4.2a) | AGPL-3.0-or-later |
+| `tool-*` | 10 (0 exact overrides — `tool-wallet/`'s Apache-2.0 exception reversed 2026-09-01, see §4.2a) | AGPL-3.0-or-later |
+| `moonshot-*` | 23 (1 exact override — `moonshot-sel4-vmm/`, stays AGPL-3.0-or-later, see §4.2a) | **Apache-2.0 — relicensed 2026-09-01** (was AGPL-3.0-or-later; the 5 crates previously overridden to FSL-1.1-ALv2 now match this default and no longer need an override) |
 
 ### 4.2a Exact overrides of prefix patterns (2026-07-07)
 
@@ -209,12 +247,23 @@ silently go stale. Full reasoning: `BRIEF-software-licensing-structure.md`
 
 | Directory | Prefix category it overrides | License | Rationale |
 |---|---|---|---|
-| `tool-wallet/` | `tool-*` (AGPL-3.0-or-later) | **Apache-2.0** | No revenue role — never a catalog product under the binary-taxonomy rule. Relicensed 2026-07-07 to seed the Binary Library's Open Source/Community shelf (`BRIEF-binary-library-repositioning.md`, project-software). First directory in this monorepo distributed under a genuine, unconditional Apache-2.0 grant rather than the bespoke PointSav-Commercial per-Order-Form term used for the other AGPL binaries (§3.4). |
-| `moonshot-docengine/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Commodity document-engine infrastructure (replaces ProseMirror/Lexical/TipTap) — real outside-adoption potential, matching os-infrastructure/os-mediakit's FSL rationale rather than os-workplace's unproven consumer-app posture. |
-| `moonshot-editor/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale as `moonshot-docengine/` — editor/viewer/file-tree widget surface (replaces CodeMirror/Monaco/react-arborist). |
-| `moonshot-crdt/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale — collaborative state/version-lineage engine (replaces Loro/Yjs/Automerge). |
-| `moonshot-parser/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale — incremental syntax parser (replaces tree-sitter). |
-| `moonshot-bim-engine/` | `moonshot-*` (AGPL-3.0-or-later) | **FSL-1.1-ALv2** | Same rationale — sovereign IFC/BIM engine (replaces web-ifc/xeokit). |
+| `tool-wallet/` | `tool-*` (AGPL-3.0-or-later) | ~~Apache-2.0~~ **Reversed 2026-09-01, back to AGPL-3.0-or-later (no override — matches default)** | Relicensed to Apache-2.0 2026-07-07 (no revenue role, seeds the Binary Library's Open Source/Community shelf) — reversed as part of tonight's 3-tier licensing convergence (`BRIEF-pointsav-licensing-architecture.md`, project-editorial); `tool-*` stays uniformly AGPL+Commercial, no exceptions. |
+| `moonshot-sel4-vmm/` | `moonshot-*` (now Apache-2.0, see §4.2) | **AGPL-3.0-or-later (unchanged — exact override, excluded from the 2026-09-01 moonshot-* Apache move)** | Investigated specifically, not swept in blanket — this crate is a `#![no_std]` seL4 Protection Domain that boots under seL4's rootserver and talks to the GPL-2.0-only `vendor-sel4-kernel` via its syscall ABI (no Cargo-level path dependency today, but real ABI-level coupling a dependency-graph check doesn't catch). Its current AGPL license was never a deliberate crate-specific choice either (set by a mechanical 2026-07-03 policy-propagation commit) — but absent legal review of the GPL-2.0 ABI-coupling question, and since it doesn't fit the "external adoption race" rationale justifying the rest of `moonshot-*`'s move (no incumbent OSS seL4 VMM it competes with), kept at AGPL-3.0-or-later pending that review. |
+| ~~`moonshot-docengine/`~~ | ~~`moonshot-*` (AGPL-3.0-or-later)~~ | ~~FSL-1.1-ALv2~~ **Override removed 2026-09-01 — see §4.2, now matches the moonshot-* Apache-2.0 default directly, no override needed.** | Was: commodity document-engine infrastructure (replaces ProseMirror/Lexical/TipTap) — real outside-adoption potential. |
+| ~~`moonshot-editor/`~~ | ~~`moonshot-*` (AGPL-3.0-or-later)~~ | ~~FSL-1.1-ALv2~~ **Override removed 2026-09-01 — matches new default.** | Was: editor/viewer/file-tree widget surface (replaces CodeMirror/Monaco/react-arborist). |
+| ~~`moonshot-crdt/`~~ | ~~`moonshot-*` (AGPL-3.0-or-later)~~ | ~~FSL-1.1-ALv2~~ **Override removed 2026-09-01 — matches new default.** | Was: collaborative state/version-lineage engine (replaces Loro/Yjs/Automerge). |
+| ~~`moonshot-parser/`~~ | ~~`moonshot-*` (AGPL-3.0-or-later)~~ | ~~FSL-1.1-ALv2~~ **Override removed 2026-09-01 — matches new default.** | Was: incremental syntax parser (replaces tree-sitter). |
+| ~~`moonshot-bim-engine/`~~ | ~~`moonshot-*` (AGPL-3.0-or-later)~~ | ~~FSL-1.1-ALv2~~ **Override removed 2026-09-01 — matches new default.** | Was: sovereign IFC/BIM engine (replaces web-ifc/xeokit). |
+
+**Note on the 5 crossed-out `moonshot-*` rows above:** kept visible (struck through, not deleted)
+for audit-trail continuity rather than silently removed — they document that these 5 crates went
+FSL → Apache in one step, not AGPL → Apache like their 17 `moonshot-*` siblings. This is a real,
+already-published relicensing event (the FSL assignment was live; see `moonshot-docengine`'s
+commit history) — needs its own public relicensing notice from Command when the actual `Cargo.toml`
+license fields + this table's history are executed together, not a silent table update. **Not yet
+executed against the actual `Cargo.toml` `license` fields in `pointsav-monorepo` this pass** — this
+table update is the ratification record; the corresponding source-file SPDX/Cargo.toml edits and
+public notice are tracked in NEXT.md as separate follow-up work.
 
 ### 4.3 `app-*` inheritance rule
 
@@ -228,7 +277,7 @@ Each `app-*/` directory inherits the license of its parent domain:
 | `app-privategit-*` | `os-privategit` | **FSL-1.1-ALv2 — corrected 2026-08-02** (was stale AGPL-3.0-or-later; never updated when `os-privategit` moved to FSL 2026-07-07) | 7 |
 | `app-totebox-*` | `os-totebox` | **FSL-1.1-ALv2 — corrected 2026-08-02** (was stale AGPL-3.0-or-later; never updated when `os-totebox` moved to FSL 2026-07-07) | 2 |
 | `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 9 |
-| `app-mediakit-*` | `os-mediakit` | FSL-1.1-ALv2 | 7 |
+| `app-mediakit-*` | `os-mediakit` | **Apache-2.0 — relicensed 2026-09-01** (was FSL-1.1-ALv2) | 7 |
 | `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 9 |
 | `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), corrected 2026-07-07. | 0 (was 7) |
 
@@ -291,10 +340,11 @@ Building that check is separate follow-up work, not part of this pass.
 
 **Confirmed unmatched directories (2026-08-02 audit, verified via
 `git ls-tree -d --name-only HEAD` against every active rule in
-`mapping/repo-license-map.yaml`):** 21 directories remain unmatched after this
+`mapping/repo-license-map.yaml`):** originally 21 directories remained unmatched after that
 pass resolved `os-orchestration/` (§4.1) and the 7 vendored-upstream
-directories (§4.4/§4.5). None of these have been assigned a license — this
-list exists so the gap is visible and trackable, not to imply resolution.
+directories (§4.4/§4.5); 20 remain as of 2026-09-01 (`console-core/` classified above, found
+during tonight's licensing linking-boundary audit). None of the rest have been assigned a
+license — this list exists so the gap is visible and trackable, not to imply resolution.
 Each requires content review before classification; several appear to be
 scratch/workspace clutter rather than shippable product code and may resolve
 via removal rather than a license assignment. See `NEXT.md` for the tracked
@@ -307,7 +357,7 @@ follow-up item.
 | `app-infrastructure-onprem/` | Same as above |
 | `bread/` | Unknown purpose — no near-miss rule; needs content review |
 | `briefs/` | Unknown purpose — no near-miss rule; needs content review |
-| `console-core/` | Unknown purpose — no near-miss rule; needs content review |
+| ~~`console-core/`~~ | **Classified 2026-09-01, moved to §4.1 — AGPL-3.0-or-later, inherits `os-console`'s tier.** Found real and depended on (path dep, `app-console-keys`) during the linking-boundary audit for tonight's Apache-2.0 convergence attempt (§4.1c). |
 | `data/` | Unknown purpose — no near-miss rule; needs content review |
 | `infrastructure/` | Unknown purpose — no near-miss rule; needs content review |
 | `JOURNAL/` | Unknown purpose — no near-miss rule; needs content review |

@@ -236,32 +236,44 @@ monorepo_directories:
   # os-interface/ and os-orchestration/ removed 2026-09-01 — extracted to
   # pointsav/pointsav-orchestration-private (private repo) after ~3 months of public
   # exposure of the real license-enforcement source; see LICENSE-MATRIX.md §4.1b.
-  "os-mediakit/":        FSL-1.1-ALv2
+  # os-mediakit/: relicensed to Apache-2.0 2026-09-01 (was FSL-1.1-ALv2) -- linking-boundary
+  # audit clean. os-console/ and os-totebox/ were also proposed for this move but are BLOCKED
+  # (real AGPL-tier path dependencies found) -- stay at their existing tier above. See
+  # LICENSE-MATRIX.md §4.1c.
+  "os-mediakit/":        Apache-2.0
   "os-network-admin/":   FSL-1.1-ALv2
 
   # ---- Exact overrides of prefix patterns (longest-prefix match: exact wins) ----
   # Added 2026-07-07 — see BRIEF-software-licensing-structure.md (Command-scope) for full reasoning.
-  "tool-wallet/":            Apache-2.0     # seeds Binary Library Open Source/Community shelf
-  "moonshot-docengine/":     FSL-1.1-ALv2   # commodity doc-engine, real outside-adoption potential
-  "moonshot-editor/":        FSL-1.1-ALv2   # same rationale as moonshot-docengine
-  "moonshot-crdt/":          FSL-1.1-ALv2   # same rationale
-  "moonshot-parser/":        FSL-1.1-ALv2   # same rationale
-  "moonshot-bim-engine/":    FSL-1.1-ALv2   # same rationale
+  # tool-wallet/'s Apache-2.0 exception reversed 2026-09-01 -- no longer an override, matches
+  # the tool-* default (AGPL-3.0-or-later) directly. moonshot-docengine/editor/crdt/parser/
+  # bim-engine's FSL-1.1-ALv2 overrides removed 2026-09-01 -- moonshot-* default itself moved
+  # to Apache-2.0 below, so these 5 now match the default and no longer need an override.
+  # moonshot-sel4-vmm/ is a NEW override added 2026-09-01, in the opposite direction -- excluded
+  # from the moonshot-* Apache move, stays AGPL-3.0-or-later pending legal review of its GPL-2.0
+  # ABI-coupling to vendor-sel4-kernel (seL4 Protection Domain, syscall-level integration, not
+  # caught by a Cargo path-dependency check). See LICENSE-MATRIX.md §4.2a for full reasoning.
+  "moonshot-sel4-vmm/":      AGPL-3.0-or-later
 
-  # ---- Platform-wide prefix patterns (all AGPL) ----
+  # ---- Platform-wide prefix patterns (all AGPL except moonshot-*, see above) ----
   "service-":            AGPL-3.0-or-later
   "system-":             AGPL-3.0-or-later
   "tool-":               AGPL-3.0-or-later
-  "moonshot-":           AGPL-3.0-or-later
+  "moonshot-":           Apache-2.0   # was AGPL-3.0-or-later; relicensed 2026-09-01, moonshot-sel4-vmm/ excluded above
 
   # ---- app-* inheritance rule ----
   # app-<domain>-<thing> inherits the license of os-<domain>.
   # Patterns match any directory beginning with the prefix.
+  # app-console-*: os-console relicense to Apache-2.0 proposed 2026-09-01 but BLOCKED (real
+  # AGPL-tier path deps in app-console-content/app-console-system) -- stays AGPL. See
+  # LICENSE-MATRIX.md §4.1c.
   "app-console-":        AGPL-3.0-or-later
   "app-privategit-":     FSL-1.1-ALv2   # corrected 2026-08-02 — inherits os-privategit's 2026-07-07 FSL correction; was stale AGPL
+  # app-totebox-*: os-totebox relicense to Apache-2.0 proposed 2026-09-01 but BLOCKED (real
+  # AGPL-tier path deps in os-totebox itself) -- stays FSL. See LICENSE-MATRIX.md §4.1c.
   "app-totebox-":        FSL-1.1-ALv2   # corrected 2026-08-02 — inherits os-totebox's 2026-07-07 FSL correction; was stale AGPL
   "app-workplace-":      AGPL-3.0-or-later
-  "app-mediakit-":       FSL-1.1-ALv2
+  "app-mediakit-":       Apache-2.0   # was FSL-1.1-ALv2; relicensed 2026-09-01, inherits os-mediakit's move
   "app-network-":        FSL-1.1-ALv2
   # app-orchestration-* removed 2026-09-01 — see os-interface/os-orchestration note above.
 
@@ -293,12 +305,17 @@ monorepo_directories:
   "vendor-sel4-kernel/":    upstream   # GPL-2.0-only (Data61/CSIRO)
   "vendor-slm-engine/":     upstream   # upstream vendor license
 
+  # console-core/: classified 2026-09-01 -- found real, git-tracked, depended on (path dep)
+  # by app-console-keys during tonight's licensing linking-boundary audit. Pure-std "os-console
+  # interaction core," no external deps of its own -- inherits os-console's tier directly.
+  "console-core/":       AGPL-3.0-or-later
+
   # ---- Genuinely unmatched — pending classification (2026-08-02 audit) ----
   # Real, tracked directories with no license assignment yet. Do NOT propagate/stamp
   # against these until each is classified. See LICENSE-MATRIX.md §4.6 for the full list
   # and follow-up plan; NEXT.md tracks this as a defect.
   # app-infrastructure-cloud/, app-infrastructure-leased/, app-infrastructure-onprem/,
-  # bread/, briefs/, console-core/, data/, discovery-queue/ (confirmed genuinely gitignored,
+  # bread/, briefs/, data/, discovery-queue/ (confirmed genuinely gitignored,
   # unlike the vendor-* dirs above), infrastructure/, JOURNAL/, proposed/, SUMMARY/, work/,
   # workplace-shell-chrome/, vendor-libvmm/, vendor-sel4-project/, vendor-sel4-tools/,
   # vendor-tantivy/, vendor-tantivy-columnar/, vendor-tantivy-common/
