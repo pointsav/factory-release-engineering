@@ -1,0 +1,47 @@
+# notice-text-journal.yaml
+# Canonical JOURNAL notice-banner text — consumed verbatim by every conforming renderer
+# (app-mediakit-knowledge wiki surfaces, app-orchestration-gis /research) per
+# SPEC-journal-wiki-render-contract.md §0.3 and §4. Editorial authors this text; Command
+# owns this file's physical location; each renderer is responsible for its own placement
+# and styling (role="note" banner, not blockquote styling — see SPEC §4).
+#
+# Placeholders in {curly braces} are filled from the paper's own frontmatter fields at
+# render time. Text outside placeholders is verbatim and must not be paraphrased per-site.
+
+schema: foundry-journal-notice-text-v1
+
+working_paper_notice:
+  # Shown when state: draft or under-review. Fed by: version, preprint_posted_date,
+  # license, corresponding_author, cite_as (per SPEC §4's banner table).
+  template: >
+    This is a working paper (v{version}) and has not been peer-reviewed. It was first
+    posted as a preprint on {preprint_posted_date} and may be revised. It is made
+    available under the {license} license. Correspondence: {corresponding_author}.
+    Cite as: {cite_as}.
+
+forward_looking_statements:
+  # Shown when state: draft or under-review. Static text — not per-paper interpolated.
+  # Reused verbatim from factory-release-engineering/tokens/legal-tokens-woodfine.yaml
+  # disclaimers.forward_looking.short, rather than drafting a second FLS statement that
+  # could diverge from the corporate-wide ratified language over time.
+  template: >
+    This document contains forward-looking information within the meaning of applicable
+    Canadian securities legislation. Forward-looking information involves known and
+    unknown risks and uncertainties. Actual results may differ materially from those
+    anticipated. The Company disclaims any obligation to update forward-looking
+    statements except as required by applicable securities legislation.
+
+citation_banner:
+  # Shown when state: published. Fed by: cite_as, doi. Not yet needed -- no JOURNAL
+  # paper has reached state: published as of this draft (2026-07-10) -- included for
+  # SPEC §4 completeness so the gate is fully closed, not half-closed.
+  template: >
+    Published version: {cite_as} DOI: {doi}
+
+superseded_notice:
+  # Shown when state: archived. Fed by: latest revision_history entry. Not yet needed --
+  # no JOURNAL paper has reached state: archived as of this draft (2026-07-10).
+  template: >
+    This paper has been superseded. The most recent version was v{revision_history.
+    latest.version}, dated {revision_history.latest.date}: {revision_history.latest.
+    changes}.
