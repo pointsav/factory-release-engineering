@@ -24,7 +24,15 @@ copyright:
   holder: "Woodfine Capital Projects Inc."
   trade_name: "PointSav Digital Systems"
   year_current: 2026
+  # Real, verified policy (app-mediakit-knowledge/src/ui/layout.rs's own comment):
+  # marks are reserved independently of content licensing, so "All rights reserved"
+  # (ARR) appears on proprietary surfaces but is deliberately withheld on the 3
+  # CC BY 4.0-licensed wikis -- omitting it there is not an oversight to "fix".
+  # Only `holder` is actually consumed by app-mediakit-knowledge/src/legal.rs today;
+  # `statement` below is a reference template for admin-tier surfaces that assemble
+  # their own copyright line (not auto-consumed by any known engine).
   statement: "© {year_current} {holder}. All rights reserved."
+  statement_open_licensed: "© {year_current} {holder}."
 
 trademarks:
   # PointSav-surface mark order — lead with PointSav marks
@@ -54,6 +62,10 @@ trademarks:
     Todas las demás marcas comerciales son propiedad de sus respectivos titulares.
 
 footer:
+  # NOTE: not consumed by app-mediakit-knowledge -- that engine assembles its own
+  # footer from copyright.holder + trademarks.statement directly (see
+  # ui/layout.rs), applying the ARR-vs-CC-licensed distinction documented above.
+  # These templates are reference text for other admin-tier surfaces only.
   # Standard footer — all PointSav-brand properties
   standard: |
     © {copyright.year_current} {copyright.holder}. All rights reserved.
