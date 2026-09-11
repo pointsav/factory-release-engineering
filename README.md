@@ -92,8 +92,8 @@ factory-release-engineering/
 | License | Used for | Where |
 |---|---|---|
 | AGPL-3.0 | Open-source platform core | `os-totebox`, `os-console`, `os-workplace`, `os-privategit`, all `service-*`, `system-*`, `tool-*`, `moonshot-*`, dependent `app-*` classes |
-| Apache-2.0 | Permissive-licensed code | Marketing site code (`*.github.io`), generic build tooling, `pointsav-design-system` |
-| FSL-1.1-ALv2 | Paid commercial tier with 2-year DOSP | `os-orchestration`, `os-infrastructure`, `os-network-admin`, `os-mediakit`, dependent `app-*` classes |
+| Apache-2.0 | Permissive-licensed code | Marketing site code (`*.github.io`), generic build tooling, `pointsav-design-system`, `os-mediakit` + `app-mediakit-*` (relicensed 2026-09-01) |
+| FSL-1.1-ALv2 | Paid commercial tier with 2-year DOSP | `os-orchestration`, `os-infrastructure`, `os-network-admin`, dependent `app-*` classes |
 | CC BY 4.0 | Open documentation content | `content-wiki-documentation` |
 | CC BY-ND 4.0 | Corporate content, attribution required, no derivatives | `content-wiki-corporate`, `content-wiki-projects` |
 | PointSav-ARR (public showcase) | Public operational reference | `*-fleet-deployment` repos, `*-media-assets` |
