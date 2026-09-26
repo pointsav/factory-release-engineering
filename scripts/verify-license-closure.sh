@@ -69,11 +69,21 @@ for k, v in md.items():
 # longest-prefix-first so matching picks the most specific pattern
 prefixes.sort(key=lambda t: -len(t[0]))
 
-def tier_of(dirname):
-    if dirname in exact:
-        return exact[dirname]
+def tier_of(relpath):
+    # relpath may be a bare top-level dir name ("os-totebox") or a deeper
+    # relative path ("service-slm/crates/slm-doorman-server") -- resolve
+    # against the FULL path first (matches add-spdx-headers.sh's
+    # resolve_file_license() convention: nested exact/prefix keys like
+    # "service-slm/crates/slm-doorman/" must win over the shorter "service-"
+    # prefix). Falls back to prefix matching against the full path, longest
+    # first. Fixed 2026-09-25 -- previously truncated to the top-level
+    # segment only, which could never see a nested override and produced
+    # false cross-tier violations for exactly the kind of sub-crate split
+    # the 2026-09-25 linkage-surface-boundary ratification introduced.
+    if relpath in exact:
+        return exact[relpath]
     for pfx, lic in prefixes:
-        if dirname.startswith(pfx):
+        if relpath.startswith(pfx):
             return lic
     return None
 
@@ -97,18 +107,20 @@ def path_deps(cargo_toml_path):
         deps.append(m2.group(1))
     return deps
 
-def top_level_dir_from_path(crate_dir, rel_path):
-    # Resolve a path dependency relative to the crate, then find which
-    # top-level monorepo directory it lands in (handles ../other-crate and
-    # nested crates/foo forms alike).
-    abs_path = os.path.normpath(os.path.join(target, crate_dir, rel_path))
+def resolve_dep_path(base_dir, rel_path):
+    # Resolve a path dependency relative to its crate, as a full path
+    # relative to the monorepo root (NOT truncated to the top-level segment
+    # -- a nested monorepo_directories key like "service-slm/crates/
+    # slm-doorman-server/" must be resolvable, see tier_of() above). Fixed
+    # 2026-09-25 alongside tier_of().
+    abs_path = os.path.normpath(os.path.join(target, base_dir, rel_path))
     try:
         rel_to_target = os.path.relpath(abs_path, target)
     except ValueError:
         return None
     if rel_to_target.startswith(".."):
         return None  # escapes the monorepo entirely -- not this check's concern
-    return rel_to_target.split(os.sep)[0]
+    return rel_to_target.replace(os.sep, "/")
 
 violations = []
 checked = 0
@@ -119,15 +131,15 @@ for crate_dir in crate_dirs:
     checked += 1
     cargo_toml = os.path.join(target, crate_dir, "Cargo.toml")
     for rel_path in path_deps(cargo_toml):
-        dep_top = top_level_dir_from_path(crate_dir, rel_path)
-        if dep_top is None or dep_top == crate_dir:
+        dep_full = resolve_dep_path(crate_dir, rel_path)
+        if dep_full is None or dep_full == crate_dir or dep_full.split("/")[0] == crate_dir:
             continue
-        dep_tier = tier_of(dep_top)
+        dep_tier = tier_of(dep_full)
         if dep_tier is not None and dep_tier != "Apache-2.0":
             violations.append({
                 "apache_crate": crate_dir,
                 "path_dependency": rel_path,
-                "resolves_to": dep_top,
+                "resolves_to": dep_full,
                 "resolves_to_tier": dep_tier,
             })
     # Also check nested crates (e.g. app-orchestration-slm/crates/*) for
@@ -135,24 +147,17 @@ for crate_dir in crate_dirs:
     for nested in glob.glob(os.path.join(target, crate_dir, "**", "Cargo.toml"), recursive=True):
         if nested == cargo_toml:
             continue
-        nested_rel_dir = os.path.dirname(os.path.relpath(nested, target))
+        nested_rel_dir = os.path.dirname(os.path.relpath(nested, target)).replace(os.sep, "/")
         for rel_path in path_deps(nested):
-            abs_path = os.path.normpath(os.path.join(target, nested_rel_dir, rel_path))
-            try:
-                rel_to_target = os.path.relpath(abs_path, target)
-            except ValueError:
+            dep_full = resolve_dep_path(nested_rel_dir, rel_path)
+            if dep_full is None or dep_full.split("/")[0] == crate_dir:
                 continue
-            if rel_to_target.startswith(".."):
-                continue
-            dep_top = rel_to_target.split(os.sep)[0]
-            if dep_top == crate_dir:
-                continue
-            dep_tier = tier_of(dep_top)
+            dep_tier = tier_of(dep_full)
             if dep_tier is not None and dep_tier != "Apache-2.0":
                 violations.append({
                     "apache_crate": f"{crate_dir} (via {nested_rel_dir})",
                     "path_dependency": rel_path,
-                    "resolves_to": dep_top,
+                    "resolves_to": dep_full,
                     "resolves_to_tier": dep_tier,
                 })
 

@@ -49,6 +49,10 @@ licenses:
     requires_cla: false
 
   FSL-1.1-ALv2:
+    # RETIRED 2026-09-25 (LICENSE-MATRIX.md §4.7) -- no new assignments.
+    # Kept in the catalog (not deleted) because propagation/verify scripts
+    # still need to recognize it on existing source until each owning
+    # archive executes its own Cargo.toml/SPDX flip.
     license_file: licenses/FSL-1.1-Apache-2.0.txt
     header_template: headers/fsl-1.1-header.txt
     policies: [CODE_OF_CONDUCT, CONTRIBUTING, SECURITY]
@@ -228,20 +232,26 @@ repositories:
 monorepo_directories:
 
   # ---- Exact os-* module directories ----
-  "os-console/":         AGPL-3.0-or-later
-  "os-privategit/":      FSL-1.1-ALv2   # corrected 2026-07-07 (was AGPL-3.0-or-later) — storefront engine, see BRIEF-software-licensing-structure.md
-  "os-totebox/":         FSL-1.1-ALv2   # corrected 2026-07-07 (was AGPL-3.0-or-later) — see BRIEF-software-licensing-structure.md
-  "os-workplace/":       AGPL-3.0-or-later
-  "os-infrastructure/":  FSL-1.1-ALv2
+  # 2026-09-25 (LICENSE-MATRIX.md §4.7): FSL-1.1-ALv2 retired as policy; the
+  # os-console/os-totebox Apache-2.0 relicense (proposed+BLOCKED 2026-09-01,
+  # §4.1c) is unblocked via dependency relicense (system-core/-ledger/
+  # -gateway-mba, service-content, os-totebox's own daemon set -- see the
+  # exact-override block below). RATIFIED, PENDING each owning archive's own
+  # Cargo.toml/SPDX execution -- this file records the new source of truth;
+  # it does not itself stamp source files.
+  "os-console/":         Apache-2.0     # was AGPL-3.0-or-later; unblocked 2026-09-25, pending project-console execution
+  "os-privategit/":      Apache-2.0     # was FSL-1.1-ALv2 (corrected 2026-07-07); FSL retired 2026-09-25, zero AGPL-tier deps, pending project-software execution
+  "os-totebox/":         Apache-2.0     # was FSL-1.1-ALv2 (corrected 2026-07-07); FSL retired + unblocked 2026-09-25, pending project-totebox execution
+  "os-workplace/":       Apache-2.0     # was AGPL-3.0-or-later; whole os-workplace/app-workplace-* family moves 2026-09-25, pending project-workplace execution
+  "os-infrastructure/":  AGPL-3.0-or-later   # was FSL-1.1-ALv2; FSL retired 2026-09-25, resolves to AGPL (explicitly named staying-AGPL), pending project-infrastructure execution
   # os-interface/ and os-orchestration/ removed 2026-09-01 — extracted to
   # pointsav/pointsav-orchestration-private (private repo) after ~3 months of public
   # exposure of the real license-enforcement source; see LICENSE-MATRIX.md §4.1b.
   # os-mediakit/: relicensed to Apache-2.0 2026-09-01 (was FSL-1.1-ALv2) -- linking-boundary
-  # audit clean. os-console/ and os-totebox/ were also proposed for this move but are BLOCKED
-  # (real AGPL-tier path dependencies found) -- stay at their existing tier above. See
-  # LICENSE-MATRIX.md §4.1c.
+  # audit clean; reconfirmed correct 2026-09-25 against an independent unaudited later
+  # conclusion that had argued AGPL. See LICENSE-MATRIX.md §4.1c, §4.7.
   "os-mediakit/":        Apache-2.0
-  "os-network-admin/":   FSL-1.1-ALv2
+  "os-network-admin/":   AGPL-3.0-or-later   # was FSL-1.1-ALv2; FSL retired 2026-09-25, resolves to AGPL (same reasoning as os-infrastructure), pending project-infrastructure execution
 
   # ---- Exact overrides of prefix patterns (longest-prefix match: exact wins) ----
   # Added 2026-07-07 — see BRIEF-software-licensing-structure.md (Command-scope) for full reasoning.
@@ -255,6 +265,33 @@ monorepo_directories:
   # caught by a Cargo path-dependency check). See LICENSE-MATRIX.md §4.2a for full reasoning.
   "moonshot-sel4-vmm/":      AGPL-3.0-or-later
 
+  # ---- New exact overrides, 2026-09-25 linkage-surface boundary rule ----
+  # See LICENSE-MATRIX.md §4.2a (continued), §4.7. RATIFIED, PENDING each
+  # owning archive's own Cargo.toml/SPDX execution.
+  "system-core/":              Apache-2.0   # was AGPL (system-* default); only 3 of 22 system-* move, verified via direct dependency check
+  "system-ledger/":            Apache-2.0   # was AGPL (system-* default); same verification as system-core/
+  "system-gateway-mba/":       Apache-2.0   # was AGPL (system-* default); whole crate (single Cargo.toml, [[bin]] targets only, no lib/bin license split possible)
+  "service-content/":          Apache-2.0   # was AGPL (service-* default); named explicitly, also unblocks os-totebox (§4.1c)
+  "service-fs/":                Apache-2.0   # was AGPL (service-* default); os-totebox's own declared bundled-daemon binary set
+  "service-input/":             Apache-2.0   # was AGPL (service-* default); os-totebox's own declared bundled-daemon binary set
+  "service-people/":            Apache-2.0   # was AGPL (service-* default); os-totebox's own declared bundled-daemon binary set
+  "service-email/":              Apache-2.0   # was AGPL (service-* default); os-totebox's own declared bundled-daemon binary set
+  "service-extraction/":        Apache-2.0   # was AGPL (service-* default); os-totebox's own declared bundled-daemon binary set
+  "service-http/":               Apache-2.0   # was AGPL (service-* default); os-totebox's own declared bundled-daemon binary set
+  "service-ingress/":            Apache-2.0   # was AGPL (service-* default); os-totebox's own declared bundled-daemon binary set
+  # service-slm's Doorman-side sub-crates -- nested-path exact override (longest-prefix
+  # match works against the full relative path, confirmed by reading add-spdx-headers.sh's
+  # resolve_file_license() directly -- plain string-prefix match, not top-level-only).
+  # service-slm/router/, crates/slm-core/, crates/adapter-hub/ are NOT named and stay AGPL
+  # under the service- default -- do not assume the whole service-slm/ family moved.
+  "service-slm/crates/slm-doorman/":         Apache-2.0
+  "service-slm/crates/slm-doorman-server/":  Apache-2.0
+  "service-slm/crates/slm-mcp-server/":      Apache-2.0
+  "tool-typeset/":              Apache-2.0   # was AGPL (tool-* default); reverses the 2026-07-07 round-11 decision
+  "tool-wiki-core/":             Apache-2.0   # was AGPL (tool-* default); same reversal as tool-typeset/
+  # console-core/ moved 2026-09-25 -- see its own entry below (kept at its original
+  # place in the file rather than duplicated here, to avoid a duplicate-YAML-key defect).
+
   # ---- Platform-wide prefix patterns (all AGPL except moonshot-*, see above) ----
   "service-":            AGPL-3.0-or-later
   "system-":             AGPL-3.0-or-later
@@ -267,14 +304,12 @@ monorepo_directories:
   # app-console-*: os-console relicense to Apache-2.0 proposed 2026-09-01 but BLOCKED (real
   # AGPL-tier path deps in app-console-content/app-console-system) -- stays AGPL. See
   # LICENSE-MATRIX.md §4.1c.
-  "app-console-":        AGPL-3.0-or-later
-  "app-privategit-":     FSL-1.1-ALv2   # corrected 2026-08-02 — inherits os-privategit's 2026-07-07 FSL correction; was stale AGPL
-  # app-totebox-*: os-totebox relicense to Apache-2.0 proposed 2026-09-01 but BLOCKED (real
-  # AGPL-tier path deps in os-totebox itself) -- stays FSL. See LICENSE-MATRIX.md §4.1c.
-  "app-totebox-":        FSL-1.1-ALv2   # corrected 2026-08-02 — inherits os-totebox's 2026-07-07 FSL correction; was stale AGPL
-  "app-workplace-":      AGPL-3.0-or-later
+  "app-console-":        Apache-2.0   # was AGPL; unblocked+ratified 2026-09-25, moves with os-console, pending project-console execution
+  "app-privategit-":     Apache-2.0   # was FSL-1.1-ALv2 (corrected 2026-08-02); FSL retired 2026-09-25, moves with os-privategit, pending project-software/project-design execution
+  "app-totebox-":        Apache-2.0   # was FSL-1.1-ALv2 (corrected 2026-08-02); FSL retired+unblocked 2026-09-25, moves with os-totebox, pending project-totebox execution
+  "app-workplace-":      Apache-2.0   # was AGPL; whole os-workplace/app-workplace-* family moves 2026-09-25, pending project-workplace execution
   "app-mediakit-":       Apache-2.0   # was FSL-1.1-ALv2; relicensed 2026-09-01, inherits os-mediakit's move
-  "app-network-":        FSL-1.1-ALv2
+  "app-network-":        AGPL-3.0-or-later   # was FSL-1.1-ALv2; FSL retired 2026-09-25, resolves to AGPL, pending project-infrastructure execution
   # app-orchestration-* removed 2026-09-01 — see os-interface/os-orchestration note above.
 
   # ---- Workspace infrastructure (AGPL) ----
@@ -287,7 +322,7 @@ monorepo_directories:
   "scripts/":            AGPL-3.0-or-later   # build and automation scripts
   "slm/":                AGPL-3.0-or-later   # language model module configuration
   "docs/":               AGPL-3.0-or-later   # internal technical documentation
-  "templates/":          FSL-1.1-ALv2        # HTML/CSS shell templates (app-mediakit surface)
+  "templates/":          Apache-2.0          # was FSL-1.1-ALv2; FSL retired 2026-09-25, matches app-mediakit-* (its own surface), pending project-editorial/project-software execution
   "vendor-virtio/":      upstream             # virtio stubs; README states upstream SPDX
   "vendor-wireguard/":   upstream             # WireGuard tooling; README states upstream SPDX
 
@@ -308,7 +343,10 @@ monorepo_directories:
   # console-core/: classified 2026-09-01 -- found real, git-tracked, depended on (path dep)
   # by app-console-keys during tonight's licensing linking-boundary audit. Pure-std "os-console
   # interaction core," no external deps of its own -- inherits os-console's tier directly.
-  "console-core/":       AGPL-3.0-or-later
+  # 2026-09-25: moves to Apache-2.0 alongside os-console (LICENSE-MATRIX.md §4.2a, §4.7);
+  # explicitly named in the ratification rather than left pinned to os-console's pre-relicense
+  # tier. RATIFIED, PENDING project-console's own Cargo.toml/SPDX execution.
+  "console-core/":       Apache-2.0
 
   # ---- Genuinely unmatched — pending classification (2026-08-02 audit) ----
   # Real, tracked directories with no license assignment yet. Do NOT propagate/stamp

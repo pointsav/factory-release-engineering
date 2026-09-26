@@ -98,49 +98,67 @@ English-only in public distribution.
 PointSav-Commercial is governed by the bespoke
 `licenses/PointSav-Commercial.txt`. It is not applied as a LICENSE
 file in any public repository — it is distributed per-customer under
-a negotiated Order Form. Commercial use contexts:
+a negotiated Order Form. Commercial use context:
 
   (a) AGPLv3-alternative — for customers using AGPLv3 code without
       accepting AGPLv3 Section 13 copyleft obligations.
-  (b) FSL pre-DOSP — for customers using FSL-licensed code during
-      the two-year window before automatic Apache-2.0 conversion.
+
+  ~~(b) FSL pre-DOSP...~~ **Removed 2026-09-25 — FSL-1.1-ALv2 retired as
+  policy, see §4.7.** No PointSav repository or module carries FSL going
+  forward; this commercial-use context no longer applies to anything live.
 
 **Binary distribution (software.pointsav.com) — corrected 2026-08-02 to match
-the §4.1/§4.1a/§4.3 license corrections of 2026-07-07, which this paragraph was
-never updated to reflect:**
+the §4.1/§4.1a/§4.3 license corrections of 2026-07-07; superseded again
+2026-09-25 by the FSL retirement and linkage-surface boundary rule (§4.7):**
 
 As copyright holder of all AGPL-3.0-or-later source code in `pointsav-monorepo`
 under Canadian Copyright Act § 13(3), Woodfine Capital Projects Inc. distributes
-pre-compiled binaries of AGPL-licensed modules (os-console, os-workplace, and
-the app-console-* family) under PointSav-Commercial terms that convey
-Apache-2.0-equivalent rights to the purchaser: no copyleft obligations; may
-fork, redistribute, and compete. This is not a source-level relicensing — the
-GitHub source remains AGPL-3.0-or-later. It is a separate commercial grant for
-the compiled binary artifact only.
+pre-compiled binaries of AGPL-licensed modules under PointSav-Commercial terms
+that convey Apache-2.0-equivalent rights to the purchaser: no copyleft
+obligations; may fork, redistribute, and compete. This is not a source-level
+relicensing — the GitHub source remains AGPL-3.0-or-later. It is a separate
+commercial grant for the compiled binary artifact only. This tier is called
+**PointSav Commercial (Apache-compatible)** in storefront copy and uses
+`license_tier: commercial` in the `foundry-soft-v1` sidecar. As of 2026-09-25
+this covers the modules still AGPL after §4.7's reconciliation:
+`os-infrastructure`, `os-network-admin`, and their `app-network-*`/
+`app-infrastructure-*` surfaces, plus any `os-console`/`os-totebox`/
+`os-workplace` module pending its own archive's Apache-2.0 execution (§4.1c) —
+this commercial grant remains the correct interim distribution vehicle for
+each such module until its Cargo.toml/SPDX headers actually flip.
 
-This tier is called **PointSav Commercial (Apache-compatible)** in storefront
-copy and uses `license_tier: commercial` in the `foundry-soft-v1` sidecar.
-FSL-licensed modules (os-infrastructure, os-privategit, os-totebox, and the
-app-network-*, app-privategit-*, app-totebox-* family) are distributed under
-their source license (FSL-1.1-ALv2) at the $19 tier (`license_tier: fsl`).
-`os-privategit`/`os-totebox`/`app-privategit-*`/`app-totebox-*` moved into
-this FSL paragraph 2026-08-02 — they were incorrectly still listed under the
-AGPL paragraph above, left over from before their 2026-07-07 FSL correction
-(§4.1). **`os-mediakit`/`app-mediakit-*` removed from this paragraph
-2026-09-01** — relicensed to Apache-2.0 (see §4.1, §4.2); the
+**FSL retired 2026-09-25 (§4.7) — the FSL $19 tier described in earlier
+revisions of this paragraph no longer exists.** `os-privategit`, `os-totebox`,
+and the `app-privategit-*`/`app-totebox-*` families resolve to Apache-2.0
+(§4.1, §4.7) and are distributed **free** (`price_usdc: 0`, per the existing
+"Apache entries must always be `price_usdc: 0`" invariant already enforced in
+`app-privategit-software/src/main.rs`) — not the old $19 FSL price point.
+`os-infrastructure`/`os-network-admin` resolve to AGPL-3.0-or-later (§4.1,
+§4.7) and fall under the AGPL Commercial-grant paragraph above, same as any
+other AGPL module. **`os-mediakit`/`app-mediakit-*` removed from the old FSL
+paragraph 2026-09-01** — relicensed to Apache-2.0 (see §4.1, §4.2); the
 `foundry-soft-v1` sidecar's `license_tier` enum needs a new `open` value
-(`price_usdc: "0.00"`) to represent this, not yet implemented — tracked in
-NEXT.md, not executed this pass. `os-totebox` was also proposed for this
-Apache move but is currently blocked — see §4.1c.
+(`price_usdc: "0.00"`) to represent free Apache-tier distribution — not yet
+implemented, tracked in NEXT.md.
 
-**Not distributed under either tier above:** `os-interface`/`os-orchestration`
-and `app-orchestration-*` are PointSav-ARR (proprietary, permanent commercial
-moat — §4.1a, Doctrine claim #23) and are excluded from both the
-Apache-compatible commercial grant and the FSL $19 tier described here. Neither
-paragraph above named them prior to this correction, so no removal was needed
-for them specifically — this note exists only to make the exclusion explicit,
-since a reader could otherwise assume every AGPL/FSL directory eventually
-reaches the storefront.
+**Not distributed under either tier above:** `os-orchestration` and
+`app-orchestration-*` (in the private `pointsav-orchestration-private` repo,
+§4.1b) are PointSav-ARR (proprietary, permanent commercial moat — §4.1a,
+Doctrine claim #23) and are excluded from both the Apache-compatible
+commercial grant and the (now-retired) FSL tier described here. This note
+exists only to make the exclusion explicit, since a reader could otherwise
+assume every AGPL directory eventually reaches the storefront under the
+Commercial grant.
+
+**Storefront layout, recommended 2026-09-25 (`BRIEF-dogfood-licensing-
+handoff-2026-09-25.md`, project-dogfood):** three groups, not the prior
+generic "Delivery/Platform/Infrastructure" tiering — **Appliances** (`os-*`,
+free/open substrate, `$0 USDC`, grouped by function not alphabetically);
+**Fleet Orchestration** (`os-orchestration` alone — the actual paid product,
+buy-once/all-features per §4.1a); **Tools** (`tool-*`, all individually
+downloadable per §4.7 item 5). Show the full intended catalog now, including
+unbuilt slots greyed out as visible placeholders, filling in automatically as
+each binary ships. Owner: project-software.
 
 Specification: `conventions/software-distribution-substrate.md`.
 
@@ -155,15 +173,15 @@ Each `os-*/` directory is named explicitly.
 
 | Directory | License |
 |---|---|
-| `os-console/` | AGPL-3.0-or-later — **relicense to Apache-2.0 proposed 2026-09-01, BLOCKED, see §4.1c.** |
-| `os-privategit/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a |
-| `os-totebox/` | FSL-1.1-ALv2 — corrected 2026-07-07 (was AGPL-3.0-or-later); see §4.1a. **Relicense to Apache-2.0 proposed 2026-09-01, BLOCKED, see §4.1c.** |
-| `os-workplace/` | AGPL-3.0-or-later |
-| `os-infrastructure/` | FSL-1.1-ALv2 |
+| `os-console/` | AGPL-3.0-or-later — relicense to Apache-2.0 proposed 2026-09-01, was BLOCKED; **unblocked 2026-09-25 (§4.7), ratified, pending Cargo.toml/SPDX execution by project-console. See §4.1c.** |
+| `os-privategit/` | FSL-1.1-ALv2, corrected 2026-07-07 (was AGPL-3.0-or-later); **FSL retired 2026-09-25 — resolves to Apache-2.0** (zero AGPL-tier path dependencies, same clean pattern as `os-mediakit`'s audit; `Cargo.toml` carries no `[dependencies]` at all). Ratified, pending Cargo.toml/SPDX execution by project-software. See §4.7. |
+| `os-totebox/` | FSL-1.1-ALv2, corrected 2026-07-07 (was AGPL-3.0-or-later); relicense to Apache-2.0 proposed 2026-09-01, was BLOCKED; **FSL retired + unblocked 2026-09-25 (§4.7) — resolves to Apache-2.0**, its own bundled daemon set (`service-fs`/`-input`/`-people`/`-email`/`-extraction`/`-http`/`-ingress`, `slm-doorman-server`/`-mcp-server`, §4.2a) having cleared the blocking dependency. Ratified, pending Cargo.toml/SPDX execution by project-totebox. See §4.1c, §4.7. |
+| `os-workplace/` | AGPL-3.0-or-later — **relicense to Apache-2.0 ratified 2026-09-25** (whole `os-workplace`/`app-workplace-*` family, §4.7). Pending Cargo.toml/SPDX execution by project-workplace. |
+| `os-infrastructure/` | FSL-1.1-ALv2; **FSL retired 2026-09-25 — resolves to AGPL-3.0-or-later** (explicitly named staying-AGPL in the §4.7 ratification — not a Product with a clean Apache-tier dependency graph). Pending Cargo.toml/SPDX execution by project-infrastructure. See §4.7. |
 | `os-interface/` | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), corrected 2026-07-07 (was FSL-1.1-ALv2; renamed to `os-orchestration/` per Rollout Phase 3). |
-| `os-orchestration/` | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), added to this matrix 2026-08-02. |
-| `os-mediakit/` | **Apache-2.0 — relicensed 2026-09-01** (was FSL-1.1-ALv2). Linking-boundary audit clean (zero cross-tier path dependencies). See §4.1c. |
-| `os-network-admin/` | FSL-1.1-ALv2 |
+| `os-orchestration/` | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), added to this matrix 2026-08-02. Pricing/tier confirmed unchanged 2026-09-25: Proprietary, buy-once/all-features, no modular tiering. See §4.7 item 6. |
+| `os-mediakit/` | **Apache-2.0 — relicensed 2026-09-01** (was FSL-1.1-ALv2). Linking-boundary audit clean (zero cross-tier path dependencies). Reconfirmed correct 2026-09-25 against an independent, unaudited later conclusion that had argued for AGPL — see §4.7 item 3. See §4.1c. |
+| `os-network-admin/` | FSL-1.1-ALv2; **FSL retired 2026-09-25 — resolves to AGPL-3.0-or-later** (explicitly named staying-AGPL in the §4.7 ratification, same reasoning as `os-infrastructure`). Pending Cargo.toml/SPDX execution. See §4.7. |
 
 ### 4.1a Per-product tier decision record (2026-07-07)
 
@@ -204,14 +222,23 @@ obligations). Audit result: **not uniformly safe to execute.**
 **Executed (audit clean):** `os-mediakit`/`app-mediakit-*` — zero cross-tier dependencies,
 relicensed to Apache-2.0 above and in §4.2.
 
-**Blocked, NOT executed — stays at current tier:**
+**Was blocked as of 2026-09-01 — unblocked 2026-09-25 via dependency relicense, not refactor:**
 - `os-console` path-depends on `system-gateway-mba` (AGPL+Commercial tier).
 - `app-console-content` path-depends on `system-gateway-mba`.
 - `app-console-system` path-depends on `system-core` and `system-ledger` (both AGPL+Commercial tier).
 - `os-totebox` path-depends on `service-content` and `slm-doorman-server` (both AGPL+Commercial tier).
 
-Must be resolved (dependency removed/refactored out, or the dependent crate kept out of the
-Apache tier) before any of these four can be relicensed. Tracked in NEXT.md.
+**Resolution, 2026-09-25 (`BRIEF-dogfood-licensing-handoff-2026-09-25.md`, §4.7 below):** rather
+than removing or refactoring out these dependencies, the linkage-surface boundary rule ratified
+this session moves the *dependencies themselves* to Apache-2.0 — `system-core`, `system-ledger`,
+and `system-gateway-mba` (§4.2a), and `service-content`/`slm-doorman-server` as part of the
+`os-totebox` bundled-daemon-set move (§4.2a). This clears every blocker listed above without a
+refactor. `os-console`, `app-console-content`, `app-console-system`, and `os-totebox` are
+therefore **ratified for Apache-2.0, pending each owning archive's own Cargo.toml/SPDX
+execution** (project-console for the `os-console`/`app-console-*` family; project-totebox for
+`os-totebox`) — see §4.1 above and §4.7. Re-verify the dependency graph at execution time before
+treating this as fully closed; this table update is the ratification record, not confirmation
+that every path dependency has been re-walked post-relicense.
 
 **Separately found, not a cross-tier violation but blocks a clean relicense:** `console-core`
 (real, git-tracked source, depended on by `app-console-keys`) is currently mismarked as
@@ -255,6 +282,32 @@ silently go stale. Full reasoning: `BRIEF-software-licensing-structure.md`
 | ~~`moonshot-parser/`~~ | ~~`moonshot-*` (AGPL-3.0-or-later)~~ | ~~FSL-1.1-ALv2~~ **Override removed 2026-09-01 — matches new default.** | Was: incremental syntax parser (replaces tree-sitter). |
 | ~~`moonshot-bim-engine/`~~ | ~~`moonshot-*` (AGPL-3.0-or-later)~~ | ~~FSL-1.1-ALv2~~ **Override removed 2026-09-01 — matches new default.** | Was: sovereign IFC/BIM engine (replaces web-ifc/xeokit). |
 
+### 4.2a (continued) — new exact overrides, 2026-09-25 linkage-surface boundary rule
+
+Ratified via `BRIEF-dogfood-licensing-handoff-2026-09-25.md` (§4.7 below), superseding
+DOCTRINE §3.1's "Platform (`system-*`) → AGPL like the Linux kernel" analogy — Rust's static
+linking has no process boundary the way a kernel/userspace syscall boundary does, so that
+analogy never actually applied. New rule: Apache-2.0 for anything linked into, or shipped as
+part of, a Product's own declared binary set; AGPL-3.0-or-later reserved for daemons that are
+genuinely PointSav's own separate infrastructure layer. **Ratified, pending each owning
+archive's own Cargo.toml/SPDX execution — not yet applied to source.**
+
+| Directory | Prefix category it overrides | License | Rationale |
+|---|---|---|---|
+| `system-core/` | `system-*` (AGPL-3.0-or-later) | **Apache-2.0** | Only 3 of 22 `system-*` crates move (verified via direct `Cargo.toml` dependency check against the live monorepo, not a design-pass guess) — linked into multiple Products' own binary sets, no remaining AGPL-tier dependents that would be orphaned. |
+| `system-ledger/` | `system-*` (AGPL-3.0-or-later) | **Apache-2.0** | Same verification as `system-core/`. |
+| `system-gateway-mba/` | `system-*` (AGPL-3.0-or-later) | **Apache-2.0** | Same verification. Single crate (`[[bin]]` targets `proofctl`/`pairing-server` inside one `Cargo.toml`) — the whole crate moves, not a lib/bin split (Cargo has no mechanism to license a lib target differently from bin targets in the same crate). |
+| `service-content/` | `service-*` (AGPL-3.0-or-later) | **Apache-2.0** | Named explicitly in the §4.7 ratification; also the dependency that was blocking `os-totebox`'s Apache convergence, see §4.1c. |
+| `service-fs/`, `service-input/`, `service-people/`, `service-email/`, `service-extraction/`, `service-http/`, `service-ingress/` | `service-*` (AGPL-3.0-or-later) | **Apache-2.0** | `os-totebox`'s own declared bundled-daemon binary set per project-totebox's own BRIEF — not standalone infrastructure. Refinement found during this session specifically because treating them as standalone-infra AGPL daemons would have re-introduced the exact `os-totebox` blocker §4.1c had just cleared. |
+| `service-slm/crates/slm-doorman/`, `service-slm/crates/slm-doorman-server/`, `service-slm/crates/slm-mcp-server/` | `service-*` (AGPL-3.0-or-later) | **Apache-2.0** | `service-slm`'s Doorman-side crates — part of `os-totebox`'s bundled daemon set (`slm-doorman-server`/`-mcp-server` explicitly named). Sub-crate-level override: `service-slm/router/`, `service-slm/crates/slm-core/`, and `service-slm/crates/adapter-hub/` are **not** named in the ratification and stay under the `service-` AGPL default — do not assume the whole `service-slm/` family moved. **Schema note:** `mapping/repo-license-map.yaml`'s matching rule (`propagate-licenses.sh`/`add-spdx-headers.sh`) does plain longest-string-prefix matching against a file's full relative path, so a nested key like `service-slm/crates/slm-doorman/` works correctly and takes precedence over the shorter `service-` prefix — confirmed by reading the matching function directly, not assumed. |
+| `tool-typeset/` | `tool-*` (AGPL-3.0-or-later) | **Apache-2.0** | Named explicitly (§4.7 item 4) — **reverses the 2026-07-07 round-11 decision** that put it under the uniform `tool-*` AGPL default. |
+| `tool-wiki-core/` | `tool-*` (AGPL-3.0-or-later) | **Apache-2.0** | Same reversal as `tool-typeset/`. |
+| `console-core/` | (currently classified `AGPL-3.0-or-later`, §4.1c/§4.6, inherits `os-console`'s tier) | **Apache-2.0** | Explicitly named in §4.7 item 4's Apache-move list; moves with `os-console` once that relicense executes (§4.1c) rather than staying pinned to `os-console`'s pre-relicense tier. |
+
+**Note on `tool-wallet/`'s continued AGPL status:** unaffected by this pass — the §4.2 table
+above already reflects its 2026-09-01 reversal back to the `tool-*` default; nothing in the
+2026-09-25 ratification revisits it.
+
 **Note on the 5 crossed-out `moonshot-*` rows above:** kept visible (struck through, not deleted)
 for audit-trail continuity rather than silently removed — they document that these 5 crates went
 FSL → Apache in one step, not AGPL → Apache like their 17 `moonshot-*` siblings. This is a real,
@@ -273,12 +326,12 @@ Each `app-*/` directory inherits the license of its parent domain:
 
 | Prefix | Inherits from | License | Count |
 |---|---|---|---|
-| `app-console-*` | `os-console` | AGPL-3.0-or-later | 16 |
-| `app-privategit-*` | `os-privategit` | **FSL-1.1-ALv2 — corrected 2026-08-02** (was stale AGPL-3.0-or-later; never updated when `os-privategit` moved to FSL 2026-07-07) | 7 |
-| `app-totebox-*` | `os-totebox` | **FSL-1.1-ALv2 — corrected 2026-08-02** (was stale AGPL-3.0-or-later; never updated when `os-totebox` moved to FSL 2026-07-07) | 2 |
-| `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later | 9 |
+| `app-console-*` | `os-console` | AGPL-3.0-or-later — **relicense to Apache-2.0 ratified 2026-09-25, pending execution alongside `os-console` (§4.1c, §4.7).** | 16 |
+| `app-privategit-*` | `os-privategit` | ~~FSL-1.1-ALv2~~ **FSL retired 2026-09-25 — resolves to Apache-2.0** alongside `os-privategit` (§4.1, §4.7). Ratified, pending Cargo.toml/SPDX execution by project-software and project-design (owner of `app-privategit-design`). | 7 |
+| `app-totebox-*` | `os-totebox` | ~~FSL-1.1-ALv2~~ **FSL retired + unblocked 2026-09-25 — resolves to Apache-2.0** alongside `os-totebox` (§4.1, §4.1c, §4.7). Ratified, pending Cargo.toml/SPDX execution by project-totebox. | 2 |
+| `app-workplace-*` | `os-workplace` | AGPL-3.0-or-later — **relicense to Apache-2.0 ratified 2026-09-25**, alongside `os-workplace` (§4.7 item 4, "whole `os-workplace`/`app-workplace-*` family"). Pending execution by project-workplace. | 9 |
 | `app-mediakit-*` | `os-mediakit` | **Apache-2.0 — relicensed 2026-09-01** (was FSL-1.1-ALv2) | 7 |
-| `app-network-*` | `os-network-admin` | FSL-1.1-ALv2 | 9 |
+| `app-network-*` | `os-network-admin` | ~~FSL-1.1-ALv2~~ **FSL retired 2026-09-25 — resolves to AGPL-3.0-or-later** (explicitly named staying-AGPL, §4.7 item 4). Pending Cargo.toml/SPDX execution by project-infrastructure. | 9 |
 | `app-orchestration-*` | `os-interface` (→ `os-orchestration`) | **Removed from `pointsav-monorepo` 2026-09-01 — see §4.1b.** Formerly PointSav-ARR (proprietary), corrected 2026-07-07. | 0 (was 7) |
 
 Counts refreshed 2026-08-02 against live `pointsav-monorepo`; §4.2's prefix-category counts below carry the same staleness pattern and are refreshed in the same pass.
@@ -300,7 +353,7 @@ require explicit license assignment.
 | `scripts/` | AGPL-3.0-or-later | Build and automation scripts |
 | `slm/` | AGPL-3.0-or-later | Language model module configuration |
 | `docs/` | AGPL-3.0-or-later | Internal technical documentation |
-| `templates/` | FSL-1.1-ALv2 | HTML/CSS shell templates (app-mediakit surface) |
+| `templates/` | ~~FSL-1.1-ALv2~~ **Apache-2.0 — FSL retired 2026-09-25, resolves to Apache-2.0** matching its own mediakit surface (`app-mediakit-*` moved 2026-09-01). Pending Cargo.toml/SPDX execution. | HTML/CSS shell templates (app-mediakit surface) |
 | `vendor-virtio/` | upstream | virtio driver stubs; README.md states upstream SPDX identifier |
 | `vendor-wireguard/` | upstream | WireGuard tooling; README.md states upstream SPDX identifier |
 
@@ -374,6 +427,87 @@ follow-up item.
 | `.cargo/` | Workspace/build config, not a licensable code module — likely out of scope for a license assignment rather than a defect; flagged for a scope decision, not silently excluded |
 | `.github/` | CI/workflow config, not a licensable code module — same flag as `.cargo/` above |
 
+### 4.7 FSL-1.1-ALv2 retirement and linkage-surface boundary rule (2026-09-25)
+
+**Ratified this session** via `BRIEF-dogfood-licensing-handoff-2026-09-25.md`
+(project-dogfood's vision-reinvention licensing sub-track), reconciling
+`business-admin/project-vision/vision/doctrine/DOCTRINE.md` §4.2b/§4.2c
+against this matrix and live source (not memory), with explicit operator
+sign-off on each disagreement. Full reasoning trail lives in DOCTRINE
+§4.2b/§4.2c; this section is the operational ratification record. **This
+table update is the ratification record — the corresponding source-file
+SPDX/`Cargo.toml` edits are tracked as follow-up work, executed by each
+owning project-* archive via its own normal Stage 6 flow, not by this
+repository's maintainers directly.**
+
+1. **FSL-1.1-ALv2 retired as policy.** No new FSL assignment permitted going
+   forward. Every live instance resolves to Apache-2.0 or AGPL-3.0-or-later
+   per its family — see §4.1 (`os-privategit`, `os-totebox`, `os-infrastructure`,
+   `os-network-admin`), §4.3 (`app-privategit-*`, `app-totebox-*`,
+   `app-network-*`), and §4.4 (`templates/`). Footprint: 170 files, 25
+   top-level locations, 11 `Cargo.toml` fields across the fleet (full audit in
+   DOCTRINE §4.2b). A narrow future exception is theoretically possible; the
+   default going forward is no more new FSL assignments. The live
+   `software.pointsav.com` site still listed FSL-1.1-ALv2 as an active tier as
+   of 2026-09-25 — needs correcting once execution lands (owner:
+   project-software).
+
+2. **Linkage-surface boundary rule**, superseding DOCTRINE §3.1's "Platform
+   (`system-*`) → AGPL like the Linux kernel" analogy (Rust's static linking
+   has no process boundary the way a kernel/userspace syscall boundary does —
+   the analogy never transferred). New rule: **Apache-2.0** for anything
+   linked into, or shipped as part of, a Product's own declared binary set;
+   **AGPL-3.0-or-later** reserved for daemons that are genuinely PointSav's
+   own separate infrastructure layer. External precedent considered: Google's
+   org-wide AGPL ban, Fuchsia's device-component policy, cBioPortal's 2026-09
+   AGPL→Apache relicense, Android Bionic's BSD-not-LGPL choice — all point to
+   the deterrent being corporate legal/procurement policy and third-party
+   linking, not end-user discomfort (Signal/Nextcloud/Grafana/Ghostscript are
+   AGPL and mass-adopted). Full per-crate application: §4.2a.
+
+3. **Real, accepted cost:** this gives up AGPL protection on the
+   capability-ledger substrate (`system-core`/`system-ledger`) — the layer
+   both independent design passes (Fable, Opus) flagged as most competitively
+   valuable. Operator accepted this explicitly against the mass-adoption
+   goal, not overlooked.
+
+4. **MSP/reseller question resolved — no new license mechanism.** Checked
+   directly against `pointsav-orchestration-private`'s actual code: the
+   license gate covers exactly three things (shared-GPU Tier-B brokering,
+   central fleet pairing, cross-archive DataGraph federation) and never gates
+   an MSP running separate, unrelated client `os-totebox` instances (boots and
+   runs fully standalone). The real MSP AGPL exposure was the now-fixed
+   `os-totebox` daemon-set misclassification (§4.2a), not a gap needing a new
+   §7 additional-permission carve-out — a carve-out would be irrevocable once
+   granted and would make the license AGPL in name only. `TRADEMARK.md`
+   §3(d)/§5(a) remains the actual lever against a reseller rebranding a
+   modified fork, independent of copyright license, and applies the same to
+   Apache or AGPL components.
+
+5. **Distribution defaults:** `tool-*` reversed from internal-only tooling to
+   individually downloadable on the public storefront, same as `os-*` —
+   `conventions/soft-distribution-pipeline.md` updated in place to match
+   (project-dogfood, same session). Family-bound `app-*` (console, privategit,
+   workplace, network, totebox families) default to **bundled inside their
+   `os-*` parent's own binary** for now; standalone/cross-cutting products
+   (mediakit family, orchestration-side apps, standalone services) were never
+   bundling candidates and are unaffected.
+6. **Payment currency confirmed: USDC-only, no change.** USDT considered and
+   declined — reputational/scrutiny cost with institutional buyers (2021
+   NYAG/CFTC reserve-transparency settlements) outweighs any benefit toward
+   the mass-adoption-comfort goal.
+
+**Not yet actioned — real bugs found, not licensing decisions (owners
+named, tracked in NEXT.md, not re-litigated here):** `os-orchestration`'s
+license-gate implementation has 3 real gaps against DOCTRINE (missing
+`fleet-max-N` field; tokens expire, conflicting with item 6's buy-once
+decision; a `COMMAND_SELF_ISSUE_LICENSE=1` dev-key fallback that may ship in
+the public binary) — owner: project-orchestration. `service-slm`'s 51 `.rs`
+files under `crates/` carry `SPDX-License-Identifier: Apache-2.0 OR MIT`
+while every `Cargo.toml` there currently declares `AGPL-3.0-or-later` —
+which one actually controls is an open legal question, not resolved by this
+pass — owner: project-totebox, needs a legal read.
+
 ## 5. Propagation artifacts per license
 
 Every licensed repository receives a standard set of artifacts. This
@@ -383,7 +517,7 @@ table states what the propagation script generates per license.
 |-----------------------|-----------------------------------|------------------------------|-------------|--------------------------|------------------------------------------|
 | AGPL-3.0-or-later     | licenses/AGPL-3.0.txt             | agpl-3.0-header.txt          | optional    | yes                      | CODE_OF_CONDUCT, CONTRIBUTING, SECURITY  |
 | Apache-2.0            | licenses/Apache-2.0.txt           | apache-2.0-header.txt        | required    | yes                      | CODE_OF_CONDUCT, CONTRIBUTING, SECURITY  |
-| FSL-1.1-ALv2          | licenses/FSL-1.1-Apache-2.0.txt   | fsl-1.1-header.txt           | optional    | yes                      | CODE_OF_CONDUCT, CONTRIBUTING, SECURITY  |
+| FSL-1.1-ALv2 **(retired 2026-09-25, §4.7 — no new assignments)** | licenses/FSL-1.1-Apache-2.0.txt | fsl-1.1-header.txt | optional | yes | CODE_OF_CONDUCT, CONTRIBUTING, SECURITY  |
 | CC BY 4.0             | licenses/CC-BY-4.0.txt            | none (content license)       | no          | yes                      | CODE_OF_CONDUCT                          |
 | CC BY-ND 4.0          | licenses/CC-BY-ND-4.0.txt         | none (content license)       | no          | English-only section     | CODE_OF_CONDUCT                          |
 | PointSav-ARR          | licenses/PointSav-ARR.txt         | proprietary-header.txt       | no          | yes                      | TRADEMARK, SECURITY                      |

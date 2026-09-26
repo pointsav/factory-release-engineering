@@ -1,6 +1,16 @@
 MULTI-LICENSE NOTICE
-Version 1.3 — Effective 2026-09-14
+Version 1.4 — Effective 2026-09-25
 Copyright © 2026 Woodfine Capital Projects Inc. All rights reserved.
+
+NOTE ON THIS VERSION: reflects the 2026-09-25 licensing ratification
+(LICENSE-MATRIX.md §4.7, BRIEF-dogfood-licensing-handoff-2026-09-25.md).
+The category assignments below are the new authoritative source of truth;
+they are RATIFIED but each owning project-* archive's own Cargo.toml/SPDX
+header execution is still pending as of this version. Per NO SINGLE-LICENSE
+WARRANTY below, an individual source file's own SPDX header controls over
+this notice when the two disagree — until each archive executes its own
+relicense, some source files below the Apache-2.0 heading may still carry
+their prior AGPL-3.0-or-later or FSL-1.1-ALv2 header.
 
 This repository contains code under multiple licenses. Each source file
 carries an SPDX-License-Identifier header identifying the license
@@ -17,46 +27,84 @@ is maintained in:
 
 Directories under AGPL-3.0-or-later:
 
-  os-console/        — platform console
-  os-workplace/      — workplace module
-  service-*/         — all platform services
-  system-*/          — all platform systems
-  tool-*/            — all platform tools (no exceptions — tool-wallet/'s 2026-07-07
-                       Apache-2.0 exception was reversed 2026-09-01)
-  app-console-*/     — applications extending os-console
-  app-workplace-*/   — applications extending os-workplace
-  xtask/             — workspace build-task runner
+  os-infrastructure/   — infrastructure module (was FSL-1.1-ALv2; FSL retired 2026-09-25)
+  os-network-admin/    — network administration module (was FSL-1.1-ALv2; FSL retired 2026-09-25)
+  app-network-*/       — applications extending os-network-admin (was FSL-1.1-ALv2)
+  service-*/           — all platform services except the Apache-2.0 exceptions below
+  system-*/            — all platform systems except the Apache-2.0 exceptions below
+  tool-*/              — all platform tools except the Apache-2.0 exceptions below
+                         (tool-wallet/'s 2026-07-07 Apache-2.0 exception was reversed
+                         2026-09-01; tool-typeset/ and tool-wiki-core/ moved to
+                         Apache-2.0 2026-09-25, see below)
+  moonshot-sel4-vmm/   — seL4 Protection Domain; real GPL-2.0 ABI coupling to
+                         vendor-sel4-kernel via seL4 syscalls, kept pending legal review
+  xtask/               — workspace build-task runner
   pointsav-pty-bridge/ — PTY bridge service
-  foundry-nodeclass/ — workspace node classification library
-  scripts/           — workspace build and automation scripts
-  slm/               — language model module configuration
-  docs/              — internal technical documentation
+  foundry-nodeclass/   — workspace node classification library
+  scripts/             — workspace build and automation scripts
+  slm/                 — language model module configuration
+  docs/                — internal technical documentation
 
-Directories under FSL-1.1-ALv2 (Functional Source License 1.1 with
-Apache-2.0 future license):
-
-  os-infrastructure/   — infrastructure module
-  os-privategit/       — private git / storefront engine module
-  os-totebox/          — sovereign data vault module
-  os-network-admin/    — network administration module
-  app-privategit-*/    — applications extending os-privategit
-  app-totebox-*/       — applications extending os-totebox
-  app-network-*/       — applications extending os-network-admin
-  templates/           — HTML/CSS shell templates for app-mediakit surfaces
+FSL-1.1-ALv2 (Functional Source License 1.1 with Apache-2.0 future license)
+IS RETIRED AS OF 2026-09-25 — no directory in this repository carries a new
+FSL assignment going forward. Every directory formerly under FSL-1.1-ALv2 has
+been reassigned above (AGPL-3.0-or-later) or below (Apache-2.0), per family.
 
 Directories under Apache-2.0:
 
   os-mediakit/         — media kit module (relicensed 2026-09-01, was FSL-1.1-ALv2;
-                         linking-boundary audit clean, zero cross-tier dependencies)
+                         linking-boundary audit clean, zero cross-tier dependencies;
+                         reconfirmed correct 2026-09-25)
   app-mediakit-*/      — applications extending os-mediakit (relicensed with os-mediakit)
+  os-console/          — platform console (was AGPL-3.0-or-later; unblocked 2026-09-25
+                         via dependency relicense, ratified pending execution)
+  app-console-*/       — applications extending os-console (moves with os-console)
+  console-core/        — os-console interaction core (moves with os-console)
+  os-totebox/          — sovereign data vault module (was FSL-1.1-ALv2; FSL retired +
+                         unblocked 2026-09-25, ratified pending execution)
+  app-totebox-*/       — applications extending os-totebox (moves with os-totebox)
+  os-privategit/       — private git / storefront engine module (was FSL-1.1-ALv2;
+                         FSL retired 2026-09-25, zero AGPL-tier dependencies, ratified
+                         pending execution)
+  app-privategit-*/    — applications extending os-privategit (moves with os-privategit)
+  os-workplace/        — workplace module (was AGPL-3.0-or-later; whole family moves
+                         2026-09-25, ratified pending execution)
+  app-workplace-*/     — applications extending os-workplace (moves with os-workplace)
+  templates/           — HTML/CSS shell templates for app-mediakit surfaces
+                         (was FSL-1.1-ALv2; FSL retired 2026-09-25, matches its own
+                         mediakit surface)
+  system-core/         — capability-ledger core library (was AGPL-3.0-or-later; only
+  system-ledger/       — 3 of 22 system-* crates move, verified via direct dependency
+  system-gateway-mba/  — check against the live monorepo, not a design-pass guess)
+  service-content/     — (was AGPL-3.0-or-later; unblocks os-totebox's relicense above)
+  service-fs/          — os-totebox's own declared bundled-daemon binary set
+  service-input/       — (was AGPL-3.0-or-later; not standalone infrastructure —
+  service-people/      — these are the literal os-totebox product binary set per
+  service-email/       — project-totebox's own BRIEF)
+  service-extraction/
+  service-http/
+  service-ingress/
+  service-slm/crates/slm-doorman/         — service-slm's Doorman-side crates, part
+  service-slm/crates/slm-doorman-server/  — of os-totebox's bundled daemon set.
+  service-slm/crates/slm-mcp-server/      — service-slm/router/, crates/slm-core/,
+                                             and crates/adapter-hub/ are NOT included
+                                             and stay AGPL-3.0-or-later under the
+                                             general service-* default.
+  tool-typeset/        — reverses the 2026-07-07 round-11 decision
+  tool-wiki-core/      — same reversal as tool-typeset/
   moonshot-*/          — experimental and speculative work (relicensed 2026-09-01, was
                          AGPL-3.0-or-later; except moonshot-sel4-vmm/, see AGPL-3.0-or-later
                          above — real GPL-2.0 ABI coupling to vendor-sel4-kernel via seL4
                          syscalls, kept pending legal review)
 
+  **All 2026-09-25 items above are RATIFIED, PENDING each owning archive's own
+  Cargo.toml/SPDX execution** (LICENSE-MATRIX.md §4.7) — this notice records the
+  new source of truth; per-file SPDX headers still control per the NO
+  SINGLE-LICENSE WARRANTY clause below until each archive's own relicense lands.
+
 Directories under PointSav-ARR (proprietary — permanent commercial moat,
 not distributed under either the AGPL commercial-alternative tier or the
-FSL tier described below):
+now-retired FSL tier described above):
 
   os-interface/        — orchestration/aggregation module (renames to
                          os-orchestration/; both currently exist mid-rename)
@@ -79,7 +127,9 @@ relicensed or SPDX-stamped by this repository's tooling):
 The full AGPL-3.0-or-later text is available at:
   https://github.com/pointsav/factory-release-engineering/blob/main/licenses/AGPL-3.0.txt
 
-The full FSL-1.1-ALv2 text is available at:
+The full FSL-1.1-ALv2 text (RETIRED 2026-09-25, no new assignments — kept
+available for any legacy source file still carrying this header pending its
+owning archive's relicense execution) is available at:
   https://github.com/pointsav/factory-release-engineering/blob/main/licenses/FSL-1.1-Apache-2.0.txt
 
 The full Apache-2.0 text is available at:
@@ -112,10 +162,11 @@ be used, copied, modified, or distributed.
 COMMERCIAL ALTERNATIVE
 --------------------------------------------------------------------------------
 
-Customers who cannot accept the terms of AGPLv3 or who require use of
-FSL-licensed code before its Delayed Open Source Publication window
-expires may obtain a PointSav Commercial License. Contact
-corporate.secretary@woodfinegroup.com for details.
+Customers who cannot accept the terms of AGPLv3 may obtain a PointSav
+Commercial License. Contact corporate.secretary@woodfinegroup.com for
+details. (The FSL pre-DOSP commercial-alternative use case is retired
+2026-09-25 alongside FSL-1.1-ALv2 itself — no directory carries a new FSL
+assignment going forward.)
 
 --------------------------------------------------------------------------------
 POLICIES AND GOVERNANCE

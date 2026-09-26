@@ -91,13 +91,13 @@ factory-release-engineering/
 
 | License | Used for | Where |
 |---|---|---|
-| AGPL-3.0 | Open-source platform core | `os-totebox`, `os-console`, `os-workplace`, `os-privategit`, all `service-*`, `system-*`, `tool-*`, `moonshot-*`, dependent `app-*` classes |
-| Apache-2.0 | Permissive-licensed code | Marketing site code (`*.github.io`), generic build tooling, `pointsav-design-system`, `os-mediakit` + `app-mediakit-*` (relicensed 2026-09-01) |
-| FSL-1.1-ALv2 | Paid commercial tier with 2-year DOSP | `os-orchestration`, `os-infrastructure`, `os-network-admin`, dependent `app-*` classes |
+| AGPL-3.0 | Open-source platform core, infrastructure daemons | `os-infrastructure`, `os-network-admin`, most `service-*`/`system-*`/`tool-*`, `moonshot-sel4-vmm`, dependent `app-*` classes not listed under Apache below |
+| Apache-2.0 | Permissive-licensed code, Product binary sets | Marketing site code (`*.github.io`), generic build tooling, `pointsav-design-system`, `os-mediakit`/`app-mediakit-*` (2026-09-01), `os-totebox`/`os-console`/`os-privategit`/`os-workplace` + their `app-*` families, `system-core`/`system-ledger`/`system-gateway-mba`, `service-content`, `tool-typeset`/`tool-wiki-core`, `console-core`, `moonshot-*` (except `moonshot-sel4-vmm`) — the 2026-09-25 items ratified, pending each owning archive's Cargo.toml/SPDX execution (`LICENSE-MATRIX.md` §4.7) |
+| FSL-1.1-ALv2 | ~~Paid commercial tier with 2-year DOSP~~ **RETIRED 2026-09-25 — no new assignments; see `LICENSE-MATRIX.md` §4.7.** | Historical only |
 | CC BY 4.0 | Open documentation content | `content-wiki-documentation` |
 | CC BY-ND 4.0 | Corporate content, attribution required, no derivatives | `content-wiki-corporate`, `content-wiki-projects` |
-| PointSav-ARR (public showcase) | Public operational reference | `*-fleet-deployment` repos, `*-media-assets` |
-| PointSav Commercial | Commercial alternative to AGPLv3 for customers who cannot accept AGPL; commercial license for FSL-tier during 2-year window | Purchased separately by customers |
+| PointSav-ARR (public showcase) | Public operational reference; also `os-orchestration`/`app-orchestration-*` (proprietary, permanent commercial moat, private repo) | `*-fleet-deployment` repos, `*-media-assets`, `pointsav-orchestration-private` |
+| PointSav Commercial | Commercial alternative to AGPLv3 for customers who cannot accept AGPL | Purchased separately by customers |
 
 Full mapping: see `LICENSE-MATRIX.md`.
 
